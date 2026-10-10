@@ -11,10 +11,42 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "IUS Routine Portal | Fall 2026 - International University of Scholars",
-  description: "Official Automatic Class Routine Checker System for Department of Computer Science & Engineering (CSE), International University of Scholars (IUS), Fall 2026.",
-  keywords: ["IUS", "International University of Scholars", "CSE Routine", "Fall 2026 Routine", "IUS Routine Checker", "University of Scholars Routine"],
-  authors: [{ name: "IUS CSE Department" }],
+  title: "IUS CSE Class Routine & Schedule Engine | Fall 2026",
+  description: "Official Automatic Class Routine & Clash Management Portal for the Department of Computer Science & Engineering (CSE), International University of Scholars (IUS), Fall 2026. Engineered by Razin Ibn Asad.",
+  keywords: [
+    "IUS",
+    "International University of Scholars",
+    "IUS CSE Routine",
+    "Fall 2026 Routine",
+    "IUS Routine Checker",
+    "University of Scholars Routine",
+    "Computer Science and Engineering",
+    "Razin Ibn Asad"
+  ],
+  authors: [{ name: "Razin Ibn Asad", url: "https://razinibnasad.vercel.app/" }],
+  creator: "Razin Ibn Asad",
+  publisher: "International University of Scholars - CSE Department",
+  openGraph: {
+    title: "IUS CSE Class Routine & Schedule Engine | Fall 2026",
+    description: "Official Interactive Routine Engine for Department of Computer Science & Engineering (CSE), International University of Scholars (IUS). Features Section Routines, Clash Checker, Room Schedules & Teacher Workloads.",
+    siteName: "International University of Scholars",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "International University of Scholars (IUS) Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IUS CSE Class Routine & Schedule Engine | Fall 2026",
+    description: "Official Interactive Routine Engine for IUS Computer Science & Engineering students. Section Routines, Clash Checker, and Teacher Schedules.",
+    images: ["/logo.png"],
+  },
 };
 
 export default function RootLayout({
