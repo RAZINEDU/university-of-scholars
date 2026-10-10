@@ -173,7 +173,7 @@ const doItemsOverlap = (a: RoutineItem, b: RoutineItem): boolean => {
 };
 
 export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => {
-  const [primarySection, setPrimarySection] = useState<string>("Section 19A");
+  const [primarySection, setPrimarySection] = useState<string>("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [searchFilter, setSearchFilter] = useState<string>("");
   const [retakeSecFilter, setRetakeSecFilter] = useState<string>("ALL");
@@ -213,6 +213,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
 
   // Quick Action: Auto-load all courses of Primary Section
   const handleLoadPrimarySection = () => {
+    if (!primarySection) return;
     const secClasses = routineData.filter(
       (item) => item.section === primarySection && item.type !== "Break" && item.type !== "No Class"
     );
@@ -587,6 +588,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
               onChange={(e) => setPrimarySection(e.target.value)}
               className="bg-slate-900 text-amber-300 font-extrabold px-3.5 py-2 rounded-xl border border-amber-400/40 focus:outline-none cursor-pointer text-xs sm:text-sm shadow-md"
             >
+              <option value="" disabled>-- Select Your Section --</option>
               {sectionsList.map((sec) => (
                 <option key={sec} value={sec}>
                   {sec}
@@ -597,10 +599,15 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
 
           <button
             onClick={handleLoadPrimarySection}
-            className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/25 transition-all transform hover:scale-105 active:scale-95"
+            disabled={!primarySection}
+            className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-black text-xs sm:text-sm shadow-lg transition-all transform ${
+              primarySection
+                ? "bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 shadow-amber-500/25 cursor-pointer hover:scale-105 active:scale-95"
+                : "bg-slate-800 text-slate-400 border border-slate-700/80 cursor-not-allowed opacity-75"
+            }`}
           >
             <Bookmark className="w-4 h-4" />
-            📥 Load {primarySection} Routine
+            📥 {primarySection ? `Load ${primarySection} Routine` : "Select a Section First"}
           </button>
         </div>
       </div>
