@@ -1,0 +1,32 @@
+import { TeacherInfo } from "@/types/routine";
+
+export const TEACHER_DIRECTORY: Record<string, TeacherInfo> = {
+  MAA:  { code: "MAA",  name: "Engr. Md. Ahsan Arif",     designation: "Associate Professor & Head of the Department", department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628522/ius_faculty/eylkudgmeithba6u79ql.png" },
+  MAR:  { code: "MAR",  name: "Mamoon Al Rasheed",        designation: "Associate Professor & Director IQAC",           department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628524/ius_faculty/q2qac8smq02cyq6qvpok.jpg" },
+  DRA:  { code: "DRA",  name: "Dr. Rowsanara Akhter",    designation: "Associate Professor",                            department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628528/ius_faculty/rlaipriombiydzc36tes.jpg" },
+  RBS:  { code: "RBS",  name: "Reduanul Bari Shovon",    designation: "Assistant Professor",                            department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628530/ius_faculty/hjstqpe1ji7fkcat04w4.jpg" },
+  MMI:  { code: "MMI",  name: "A K M Monzurul Islam",    designation: "Assistant Professor",                            department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628532/ius_faculty/ysqgjkuhxorydsubgtv3.jpg" },
+  SI:   { code: "SI",   name: "Dr. Md Shaiful Islam",    designation: "Assistant Professor",                            department: "Department of CSE" },
+  AMJ:  { code: "AMJ",  name: "Md. Ashif Mahmud Joy",    designation: "Assistant Professor",                            department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628538/ius_faculty/q2zmlxjnbjsslgazpxri.jpg" },
+  MNI:  { code: "MNI",  name: "Md. Nurul Islam",         designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628535/ius_faculty/k1aqgkd9gtelsvajrvgk.jpg" },
+  SMM:  { code: "SMM",  name: "S M Moniruzzaman",        designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628541/ius_faculty/tj26ymsn1xcvgbeap7ze.jpg" },
+  ASMS: { code: "ASMS", name: "Abu Sufian Md. Shahed",   designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628543/ius_faculty/a85c562ulfmccojuyoyz.jpg" },
+  AR:   { code: "AR",   name: "Arpita Roy",              designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628545/ius_faculty/b4i33ppnq2odnsdq5azb.jpg" },
+  MII:  { code: "MII",  name: "Md. Israfil Islam",       designation: "Lecturer",                                       department: "Department of CSE" },
+  MES:  { code: "MES",  name: "Mahbub-E-Sobhani",        designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628547/ius_faculty/rx7cjgzsdcberca6nyha.jpg" },
+  IJ:   { code: "IJ",   name: "Israt Jahan",             designation: "Lecturer",                                       department: "Department of CSE" },
+  SNN:  { code: "SNN",  name: "Sadia Nur Nazifa",        designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628550/ius_faculty/ewcse925m507voiku0yc.jpg" },
+  SNZ:  { code: "SNZ",  name: "Sabikun Nahar Zerin",     designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628552/ius_faculty/xiokcjf3z0macoggxbwz.jpg" },
+  ST:   { code: "ST",   name: "Syada Tasfia Rahman",     designation: "Lecturer",                                       department: "Department of CSE" },
+  AMF:  { code: "AMF",  name: "Asib Mostakim Fony",      designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628555/ius_faculty/hsolicbdz0dvioytude4.jpg" },
+  HMK:  { code: "HMK",  name: "H M Ikram Kays",          designation: "Lecturer",                                       department: "Department of CSE" },
+  TH:   { code: "TH",   name: "Tuhin Hossain",           designation: "Lecturer",                                       department: "Department of CSE" , imageUrl: "https://res.cloudinary.com/wmxwx0oi/image/upload/v1791628557/ius_faculty/cnmpo1bwnyjms69yysrp.jpg" },
+  TA:   { code: "TA",   name: "Tahmid Ahomod",           designation: "Lecturer",                                       department: "Department of CSE" },
+  SS:   { code: "SS",   name: "Samia Sabah",             designation: "Lecturer",                                       department: "Department of CSE" },
+  DHS:  { code: "DHS",  name: "Dr. Hasan Sarwar",        designation: "Professor",                                      department: "Department of CSE" },
+  AA:   { code: "AA",   name: "Arafat Azom",             designation: "Lecturer",                                       department: "Department of CSE" },
+  TBA:  { code: "TBA",  name: "To Be Announced",         designation: "Faculty Member",                                 department: "Department of CSE" },
+  // Legacy / fallback entries
+  "EEE-F1": { code: "EEE-F1", name: "EEE Faculty 1", designation: "Guest Faculty", department: "Department of EEE" },
+  "EEE-F2": { code: "EEE-F2", name: "EEE Faculty 2", designation: "Guest Faculty", department: "Department of EEE" },
+};
