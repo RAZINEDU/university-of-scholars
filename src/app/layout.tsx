@@ -1,15 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SakuraBackground } from "@/components/SakuraBackground";
+
+export const viewport: Viewport = {
+  width: 1280,
+  initialScale: 0.35,
+};
 
 export const metadata: Metadata = {
   title: "IUS Routine Portal | Fall 2026 - International University of Scholars",
   description: "Official Automatic Class Routine Checker System for Department of Computer Science & Engineering (CSE), International University of Scholars (IUS), Fall 2026.",
   keywords: ["IUS", "International University of Scholars", "CSE Routine", "Fall 2026 Routine", "IUS Routine Checker", "University of Scholars Routine"],
   authors: [{ name: "IUS CSE Department" }],
-  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
@@ -19,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden">
+      <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen min-w-[1280px] flex flex-col relative overflow-x-auto">
         
         {/* ── GLOBAL SITE BACKGROUND ── */}
         <div className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center">
