@@ -12,9 +12,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ius-routine.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://iuscse.vercel.app"),
   title: "IUS CSE Class Routine & Schedule Portal | Fall 2026",
-  description: "Official Interactive Routine Portal for the Department of CSE, International University of Scholars (IUS). Features Section Routines, Retake Clash Checker, Teacher Workloads & Room Schedules.",
+  description: "Official Interactive Routine Portal for Dept. of CSE, International University of Scholars (IUS). Section Timetables, Retake Clash Checker, Teacher Schedules & Room Availability.",
   keywords: [
     "IUS",
     "International University of Scholars",
@@ -31,15 +31,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "IUS CSE Class Routine & Schedule Portal | Fall 2026",
     description: "Official Interactive Class Routine & Retake Management Engine for Dept. of CSE, International University of Scholars (IUS).",
-    siteName: "International University of Scholars",
+    url: "https://iuscse.vercel.app",
+    siteName: "The International University of Scholars",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://iuscse.vercel.app/og-image.png",
+        secureUrl: "https://iuscse.vercel.app/og-image.png",
         width: 1200,
         height: 630,
-        alt: "IUS CSE Class Routine & Schedule Portal Fall 2026",
+        type: "image/png",
+        alt: "The International University of Scholars - CSE Class Routine & Schedule Portal Fall 2026",
       },
     ],
   },
@@ -47,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "IUS CSE Class Routine & Schedule Portal | Fall 2026",
     description: "Official Interactive Class Routine & Retake Management Engine for Dept. of CSE, International University of Scholars (IUS).",
-    images: ["/og-image.png"],
+    images: ["https://iuscse.vercel.app/og-image.png"],
   },
 };
 
