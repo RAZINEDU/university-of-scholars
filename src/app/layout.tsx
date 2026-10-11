@@ -81,7 +81,7 @@ export default function RootLayout({
       <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col justify-between relative">
         
         {/* ── GLOBAL SITE BACKGROUND ── */}
-        <div className="fixed inset-0 z-0 pointer-events-none select-none flex items-center justify-center">
+        <div className="fixed inset-0 z-0 pointer-events-none select-none flex items-center justify-center print:hidden">
           <img 
             src="/building-sketch.jpg" 
             alt="IUS Building Sketch Background" 
@@ -93,14 +93,18 @@ export default function RootLayout({
         </div>
         
         {/* ── SAKURA ANIMATION OVERLAY ── */}
-        <SakuraBackground />
+        <div className="print:hidden">
+          <SakuraBackground />
+        </div>
 
         {/* ── PWA OFFLINE & INSTALL MANAGER ── */}
-        <PwaManager />
+        <div className="print:hidden">
+          <PwaManager />
+        </div>
 
-        <div className="relative z-20 flex-1 flex flex-col justify-between w-full min-w-[1200px]">
+        <div className="relative z-20 flex-1 flex flex-col justify-between w-full min-w-[1200px] print:min-w-0 print:w-full print:block">
           <Header />
-          <main className="flex-1 max-w-[1700px] mx-auto w-full px-6 lg:px-8 py-6">
+          <main className="flex-1 max-w-[1700px] mx-auto w-full px-6 lg:px-8 py-6 print:p-0 print:m-0 print:max-w-none print:w-full">
             {children}
           </main>
           <div className="print:hidden mt-auto w-full">

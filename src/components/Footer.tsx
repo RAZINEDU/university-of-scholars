@@ -5,7 +5,7 @@ import { ExternalLink, Globe, Heart, ShieldCheck, Mail, MapPin } from "lucide-re
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-slate-900 text-slate-300 border-t border-slate-800 mt-12 pt-10 pb-32 relative overflow-hidden">
+    <footer className="w-full bg-slate-900 text-slate-300 border-t border-slate-800 mt-12 pt-10 pb-32 relative overflow-hidden print:hidden">
       
       {/* Background Animation Images */}
       <div className="footer_bg">

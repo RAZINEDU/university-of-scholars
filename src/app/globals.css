@@ -159,3 +159,228 @@ body {
   scrollbar-width: none;
 }
 
+/* ── PRINT / SAVE AS PDF (PERFECT A4 LANDSCAPE 1-PAGE FIT) ────────── */
+@media print {
+  @page {
+    size: landscape;
+    margin: 4mm 6mm 5mm 6mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: unset !important;
+  }
+
+  /* Hide: headers, footers, animations, install banner, background images, modals */
+  header,
+  footer,
+  nav,
+  aside,
+  canvas,
+  dialog,
+  .print\:hidden,
+  .footer_bg,
+  .footer_bg_one,
+  .footer_bg_two,
+  .live-indicator,
+  [role="dialog"],
+  [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Full-width container */
+  main, body > div, #__next {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Table wrapper */
+  .print\:overflow-visible,
+  .print\:block {
+    display: block !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Proportional table to fit complete A4 landscape comfortably */
+  table {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  thead tr {
+    height: 7.5mm !important;
+  }
+
+  tbody, tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  tbody tr {
+    height: 20.5mm !important;
+  }
+
+  th {
+    padding: 2.5px 2px !important;
+    font-size: 7pt !important;
+    line-height: 1.15 !important;
+    border: 1px solid #1e3a8a !important;
+  }
+
+  td {
+    padding: 1.5px 1.5px !important;
+    height: 20.5mm !important;
+    vertical-align: stretch !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  /* Inner cell wrappers fill row height comfortably */
+  td > div {
+    height: 100% !important;
+    min-height: 19.5mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: stretch !important;
+  }
+
+  /* Class cards sized for complete visibility without overflow */
+  .routine-class-card {
+    height: 100% !important;
+    min-height: 19mm !important;
+    padding: 3px 4px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 1.5px !important;
+    border-radius: 4px !important;
+    border: 1px solid #94a3b8 !important;
+    border-left-width: 4px !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .routine-break-card {
+    height: 100% !important;
+    min-height: 19mm !important;
+    padding: 2px 2px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 4px !important;
+    background: #fef3c7 !important;
+    border: 1px solid #fde68a !important;
+  }
+
+  .routine-noclass-card {
+    height: 100% !important;
+    min-height: 19mm !important;
+    padding: 2px 2px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 4px !important;
+    background: #f8fafc !important;
+  }
+
+  /* Clean, readable print typography */
+  .routine-card-code {
+    font-size: 8pt !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+  }
+
+  .routine-card-badge {
+    font-size: 6.5pt !important;
+    font-weight: 800 !important;
+    padding: 0.5px 3px !important;
+    line-height: 1 !important;
+  }
+
+  .routine-card-title {
+    font-size: 7.5pt !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    color: #0f172a !important;
+  }
+
+  .routine-card-teacher {
+    font-size: 7pt !important;
+    font-weight: 600 !important;
+    color: #334155 !important;
+    line-height: 1 !important;
+  }
+
+  .routine-card-pill {
+    font-size: 7pt !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    padding: 1px 3px !important;
+  }
+
+  .routine-card-room {
+    font-size: 7pt !important;
+    font-weight: 800 !important;
+    color: #047857 !important;
+    line-height: 1 !important;
+  }
+
+  /* Remove sticky so table renders flat */
+  .sticky {
+    position: static !important;
+    box-shadow: none !important;
+  }
+
+  /* No blur effects in print */
+  .backdrop-blur-sm,
+  .backdrop-blur-2xl {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Keep all background colors and text colors when printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

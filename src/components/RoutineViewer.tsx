@@ -204,9 +204,9 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
     // BREAK card
     if (item.type === "Break") {
       return (
-        <div key={item.id} className="w-full h-full min-h-[130px] flex flex-col items-center justify-center gap-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 text-center px-3 py-3">
-          <Coffee className="w-5 h-5 text-amber-400 dark:text-amber-500 flex-shrink-0" />
-          <div className="text-[11px] font-black uppercase tracking-widest text-amber-500 dark:text-amber-400">
+        <div key={item.id} className="routine-break-card w-full h-full min-h-[130px] print:min-h-[19mm] flex flex-col items-center justify-center gap-1.5 print:gap-0.5 rounded-xl print:rounded bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 text-center px-3 py-3 print:px-1.5 print:py-1">
+          <Coffee className="w-5 h-5 print:w-3.5 print:h-3.5 text-amber-500 flex-shrink-0" />
+          <div className="text-[11px] print:text-[8.5px] font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 print:text-amber-800 leading-tight">
             {item.title || item.rawText}
           </div>
         </div>
@@ -216,9 +216,9 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
     // NO CLASS card
     if (item.type === "No Class") {
       return (
-        <div key={item.id} className="w-full h-full min-h-[130px] flex flex-col items-center justify-center gap-1.5 rounded-xl bg-slate-50 dark:bg-slate-800/20 border border-dashed border-slate-200 dark:border-slate-700/50 text-center px-3 py-3">
-          <CalendarOff className="w-4 h-4 text-slate-300 dark:text-slate-600 flex-shrink-0" />
-          <div className="text-[10px] font-semibold text-slate-400 dark:text-slate-600">
+        <div key={item.id} className="routine-noclass-card w-full h-full min-h-[130px] print:min-h-[19mm] flex flex-col items-center justify-center gap-1.5 print:gap-0.5 rounded-xl print:rounded bg-slate-50 dark:bg-slate-800/20 border border-dashed border-slate-200 dark:border-slate-700/50 text-center px-3 py-3 print:px-1.5 print:py-1">
+          <CalendarOff className="w-4 h-4 print:w-3.5 print:h-3.5 text-slate-400 flex-shrink-0" />
+          <div className="text-[10px] print:text-[8.5px] font-semibold text-slate-500 leading-tight">
             {item.title || item.rawText}
           </div>
         </div>
@@ -243,21 +243,22 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
         key={item.id}
         onClick={() => setSelectedItemDetail(item)}
         className={`
-          relative w-full h-full min-h-[130px] rounded-xl
+          routine-class-card
+          relative w-full h-full min-h-[130px] print:min-h-[19mm] rounded-xl print:rounded
           cursor-pointer transition-all duration-200
           hover:-translate-y-0.5 hover:shadow-md
           flex flex-col justify-between
-          p-3 gap-1.5
+          p-3 print:p-1.5 gap-1.5 print:gap-0.5
           ${cfg.wrap}
         `}
       >
         {/* ── TOP: code + type badge ── */}
-        <div className="flex items-start justify-between gap-1">
-          <span className={`text-[10px] font-black uppercase tracking-widest leading-none ${cfg.code}`}>
+        <div className="flex items-start justify-between gap-1 leading-none">
+          <span className={`routine-card-code text-[10px] print:text-[9px] font-black uppercase tracking-widest leading-none ${cfg.code}`}>
             {item.courseCode || ""}
           </span>
           {isLab && (
-            <span className={`text-[9px] font-extrabold uppercase tracking-wide px-1.5 py-0.5 rounded-full flex-shrink-0 leading-none ${cfg.badge}`}>
+            <span className={`routine-card-badge text-[9px] print:text-[7px] font-extrabold uppercase tracking-wide px-1.5 py-0.5 print:px-1.5 print:py-0.5 rounded-full flex-shrink-0 leading-none ${cfg.badge}`}>
               Lab · 3hr
             </span>
           )}
@@ -265,27 +266,27 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
 
         {/* ── MID: title ── */}
         <div
-          className={`flex-1 font-semibold leading-snug text-slate-700 dark:text-slate-200 ${isWide ? "text-[13px]" : "text-[11px]"}`}
+          className={`routine-card-title flex-1 font-semibold leading-snug text-slate-700 dark:text-slate-200 print:text-slate-900 print:font-bold ${isWide ? "text-[13px]" : "text-[11px]"} print:text-[8.5px] print:leading-tight`}
           style={{ display: "-webkit-box", WebkitLineClamp: isWide ? 3 : 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
         >
           {item.courseTitle || item.title || item.rawText}
         </div>
 
         {/* ── BOTTOM: teacher + section + room ── */}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 print:gap-0.5 leading-none">
           {teacherName && (
-            <div className="flex items-center gap-1 text-[10px] text-slate-400 dark:text-slate-500">
-              <User className="w-2.5 h-2.5 flex-shrink-0" />
+            <div className="routine-card-teacher flex items-center gap-1 text-[10px] print:text-[7.5px] text-slate-400 dark:text-slate-500 print:text-slate-700 leading-none">
+              <User className="w-2.5 h-2.5 print:w-2 print:h-2 flex-shrink-0" />
               <span className="truncate">{teacherName}</span>
             </div>
           )}
-          <div className="flex items-center justify-between gap-1">
-            <span className="text-[9px] font-black px-1.5 py-[2px] rounded bg-amber-400 text-slate-900 leading-none">
+          <div className="flex items-center justify-between gap-1 leading-none">
+            <span className="routine-card-pill text-[9px] print:text-[7.5px] font-black px-1.5 py-[2px] print:px-1.5 print:py-[1px] rounded bg-amber-400 text-slate-900 leading-none">
               {item.section}
             </span>
             {item.room && (
-              <span className="flex items-center gap-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
-                <Building2 className="w-2.5 h-2.5 flex-shrink-0" />
+              <span className="routine-card-room flex items-center gap-0.5 text-[10px] print:text-[7.5px] font-bold text-emerald-600 dark:text-emerald-400 print:text-emerald-800 leading-none">
+                <Building2 className="w-2.5 h-2.5 print:w-2 print:h-2 flex-shrink-0" />
                 {item.room}
               </span>
             )}
@@ -334,16 +335,16 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
         <td
           key={slot.colIndex}
           colSpan={span}
-          className={`p-2 align-top border-r border-slate-200 dark:border-slate-800 ${
+          className={`p-2 print:p-0.5 align-top border-r border-slate-200 dark:border-slate-800 ${
             isBreakCol ? "bg-amber-50/60 dark:bg-amber-950/20" : ""
           }`}
           style={{ height: "1px" }}
         >
-          <div className="h-full flex flex-col gap-2 min-h-[130px]">
+          <div className="h-full flex flex-col gap-2 print:gap-0.5 min-h-[130px] print:min-h-[19.5mm]">
             {colItems.length > 0 ? (
               colItems.map((item) => renderCard(item, isWide))
             ) : (
-              <div className="min-h-[130px] h-full flex items-center justify-center text-slate-300 dark:text-slate-700 text-sm font-medium select-none">
+              <div className="min-h-[130px] print:min-h-[19.5mm] h-full flex items-center justify-center text-slate-300 dark:text-slate-700 print:text-slate-400 text-sm print:text-xs font-medium select-none">
                 —
               </div>
             )}
@@ -354,11 +355,11 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
 
     // Add 2 empty filler cells to reach 7 columns total
     cells.push(
-      <td key="empty-fill-1" className="p-2 align-top border-r border-slate-200 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-900/20" style={{ height: "1px" }}>
-        <div className="min-h-[130px] h-full flex items-center justify-center text-slate-300 dark:text-slate-700 text-sm select-none">—</div>
+      <td key="empty-fill-1" className="p-2 print:p-0.5 align-top border-r border-slate-200 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-900/20" style={{ height: "1px" }}>
+        <div className="min-h-[130px] print:min-h-[19.5mm] h-full flex items-center justify-center text-slate-300 dark:text-slate-700 print:text-slate-400 text-sm print:text-xs select-none">—</div>
       </td>,
-      <td key="empty-fill-2" className="p-2 align-top bg-slate-50/30 dark:bg-slate-900/20" style={{ height: "1px" }}>
-        <div className="min-h-[130px] h-full flex items-center justify-center text-slate-300 dark:text-slate-700 text-sm select-none">—</div>
+      <td key="empty-fill-2" className="p-2 print:p-0.5 align-top bg-slate-50/30 dark:bg-slate-900/20" style={{ height: "1px" }}>
+        <div className="min-h-[130px] print:min-h-[19.5mm] h-full flex items-center justify-center text-slate-300 dark:text-slate-700 print:text-slate-400 text-sm print:text-xs select-none">—</div>
       </td>
     );
 
@@ -401,16 +402,16 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
         <td
           key={slot.colIndex}
           colSpan={span}
-          className={`p-2 align-top border-r border-slate-200 dark:border-slate-800 last:border-r-0 ${
+          className={`p-2 print:p-0.5 align-top border-r border-slate-200 dark:border-slate-800 last:border-r-0 ${
             isBreakCol ? "bg-amber-50/60 dark:bg-amber-950/20" : ""
           }`}
           style={{ height: "1px" }}
         >
-          <div className="h-full flex flex-col gap-2 min-h-[130px]">
+          <div className="h-full flex flex-col gap-2 print:gap-0.5 min-h-[130px] print:min-h-[19.5mm]">
             {colItems.length > 0 ? (
               colItems.map((item) => renderCard(item, isWide))
             ) : (
-              <div className="min-h-[130px] h-full flex items-center justify-center text-slate-300 dark:text-slate-700 text-sm font-medium select-none">
+              <div className="min-h-[130px] print:min-h-[19.5mm] h-full flex items-center justify-center text-slate-300 dark:text-slate-700 print:text-slate-400 text-sm print:text-xs font-medium select-none">
                 —
               </div>
             )}
@@ -541,10 +542,30 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
         </div>
       </div>
 
+      {/* ── OFFICIAL PRINT HEADER (Only on paper / PDF) ── */}
+      <div className="hidden print:flex items-center justify-between pb-1.5 mb-1.5 border-b-2 border-blue-900 w-full">
+        <div>
+          <div className="text-[13px] font-black uppercase tracking-wider text-blue-950 leading-tight">
+            The International University of Scholars (IUS)
+          </div>
+          <div className="text-[10px] font-bold text-slate-700 leading-tight">
+            Department of Computer Science & Engineering • Class Routine (Fall 2026)
+          </div>
+        </div>
+        <div className="text-right flex items-center gap-2.5">
+          <div className="px-2.5 py-0.5 rounded bg-blue-900 text-white font-black text-xs uppercase tracking-wider">
+            {selectedSection === "ALL" ? "All Sections" : selectedSection}
+          </div>
+          <div className="text-[10px] font-bold text-slate-700">
+            Classes: {filteredRoutine.filter((i) => i.type !== "Break" && i.type !== "No Class").length}
+          </div>
+        </div>
+      </div>
+
       {/* ── DESKTOP TIMETABLE MATRIX (EXACT DESKTOP VIEW) ────── */}
-      <div className="print:block rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full print:shadow-none print:border-none print:overflow-visible">
+      <div className="print:block rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full print:shadow-none print:border-none print:overflow-visible print:m-0 print:p-0">
         <div className="w-full max-w-full overflow-x-auto scrollbar-thin print:overflow-visible">
-          <table className="w-full min-w-[1100px] border-collapse text-left table-fixed print:[color-adjust:exact] print:[-webkit-print-color-adjust:exact]" style={{ WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" }}>
+          <table className="w-full min-w-[1100px] print:min-w-0 print:w-full border-collapse text-left table-fixed print:[color-adjust:exact] print:[-webkit-print-color-adjust:exact]" style={{ WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" }}>
             <colgroup>
               {/* Day column - 11% */}
               <col style={{ width: "11%" }} />
@@ -609,14 +630,14 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
 
                       {/* ── FRIDAY CLASS CARDS ROW ─── */}
                       <tr className="border-b-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1120]">
-                        <td className="sticky left-0 z-20 px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100 dark:bg-[#0B1120] shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
-                          <div className="text-sm font-black text-slate-900 dark:text-white tracking-wide leading-tight">Fri</div>
+                        <td className="sticky left-0 z-20 px-3 py-4 print:px-2 print:py-1 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100 dark:bg-[#0B1120] print:bg-slate-50 shadow-[2px_0_5px_rgba(0,0,0,0.25)] print:shadow-none">
+                          <div className="text-sm print:text-xs font-black text-slate-900 dark:text-white tracking-wide leading-tight">Fri</div>
                         </td>
                         {isOffDay ? (
-                          <td colSpan={7} className="p-4">
-                            <div className="w-full py-8 rounded-2xl bg-stripes bg-slate-50 dark:bg-slate-900/40 border-2 border-dashed border-slate-200 dark:border-slate-700 flex items-center justify-center gap-3 text-slate-500 dark:text-slate-400">
-                              <CalendarOff className="w-6 h-6 opacity-50" />
-                              <span className="text-base font-bold text-slate-600 dark:text-slate-300">
+                          <td colSpan={7} className="p-4 print:p-1">
+                            <div className="w-full py-8 print:py-2.5 print:h-full print:min-h-[19.5mm] rounded-2xl print:rounded-lg bg-stripes bg-slate-50 dark:bg-slate-900/40 border-2 border-dashed border-slate-200 dark:border-slate-700 flex items-center justify-center gap-3 print:gap-2 text-slate-500 dark:text-slate-400">
+                              <CalendarOff className="w-6 h-6 print:w-4 print:h-4 opacity-60" />
+                              <span className="text-base print:text-xs font-black text-slate-700 dark:text-slate-300">
                                 {offDayItem?.title || offDayItem?.rawText || "No Classes"}
                               </span>
                             </div>
@@ -633,16 +654,16 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
                 return (
                   <React.Fragment key={dayName}>
                     <tr className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1120]">
-                      <td className="sticky left-0 z-20 px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100 dark:bg-[#0B1120] shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
-                        <div className="text-sm font-black text-slate-900 dark:text-white tracking-wide leading-tight">
+                      <td className="sticky left-0 z-20 px-3 py-4 print:px-2 print:py-1 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100 dark:bg-[#0B1120] print:bg-slate-50 shadow-[2px_0_5px_rgba(0,0,0,0.25)] print:shadow-none">
+                        <div className="text-sm print:text-xs font-black text-slate-900 dark:text-white tracking-wide leading-tight">
                           {dayName.slice(0, 3)}
                         </div>
                       </td>
                       {isOffDay ? (
-                        <td colSpan={7} className="p-4">
-                          <div className="w-full py-8 rounded-2xl bg-stripes bg-slate-50 dark:bg-slate-900/40 border-2 border-dashed border-slate-200 dark:border-slate-700 flex items-center justify-center gap-3 text-slate-500 dark:text-slate-400">
-                            <CalendarOff className="w-6 h-6 opacity-50" />
-                            <span className="text-base font-bold text-slate-600 dark:text-slate-300">
+                        <td colSpan={7} className="p-4 print:p-1">
+                          <div className="w-full py-8 print:py-2.5 print:h-full print:min-h-[19.5mm] rounded-2xl print:rounded-lg bg-stripes bg-slate-50 dark:bg-slate-900/40 border-2 border-dashed border-slate-200 dark:border-slate-700 flex items-center justify-center gap-3 print:gap-2 text-slate-500 dark:text-slate-400">
+                            <CalendarOff className="w-6 h-6 print:w-4 print:h-4 opacity-60" />
+                            <span className="text-base print:text-xs font-black text-slate-700 dark:text-slate-300">
                               {offDayItem?.title || offDayItem?.rawText || "No Classes"}
                             </span>
                           </div>
