@@ -3,18 +3,35 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SakuraBackground } from "@/components/SakuraBackground";
+import { PwaManager } from "@/components/PwaManager";
 
 export const viewport: Viewport = {
   width: 1200,
   initialScale: 0.35,
   maximumScale: 5,
   userScalable: true,
+  themeColor: "#0B1120",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://iuscse.vercel.app"),
   title: "IUS CSE Class Routine & Schedule Portal | Fall 2026",
   description: "Official Interactive Routine Portal for Dept. of CSE, International University of Scholars (IUS). Section Timetables, Retake Clash Checker, Teacher Schedules & Room Availability.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "IUS Routine",
+  },
+  icons: {
+    icon: [
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   keywords: [
     "IUS",
     "International University of Scholars",
@@ -77,6 +94,9 @@ export default function RootLayout({
         
         {/* ── SAKURA ANIMATION OVERLAY ── */}
         <SakuraBackground />
+
+        {/* ── PWA OFFLINE & INSTALL MANAGER ── */}
+        <PwaManager />
 
         <div className="relative z-20 flex-1 flex flex-col justify-between w-full min-w-[1200px]">
           <Header />

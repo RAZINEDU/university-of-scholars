@@ -1,0 +1,56 @@
+{
+  "name": "IUS CSE Class Routine & Schedule Portal",
+  "short_name": "IUS Routine",
+  "description": "Official Interactive Routine Portal for Dept. of CSE, International University of Scholars (IUS). Offline section timetables, retake clash checker & room availability.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0B1120",
+  "theme_color": "#1E3A8A",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "utilities", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Section Routine",
+      "short_name": "Sections",
+      "description": "View section routine timetables",
+      "url": "/section",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Today's Schedule",
+      "short_name": "Today",
+      "description": "Live ongoing and upcoming classes today",
+      "url": "/today",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Retake Clash Checker",
+      "short_name": "Retake",
+      "description": "Check course schedule overlaps",
+      "url": "/retake",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Teacher Schedule",
+      "short_name": "Teachers",
+      "description": "Lookup faculty routines & consultation times",
+      "url": "/teacher",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

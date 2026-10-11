@@ -14,7 +14,8 @@ import {
   Layers, 
   Sparkles,
   User,
-  GraduationCap
+  GraduationCap,
+  Smartphone
 } from "lucide-react";
 import { PdfModal } from "./PdfModal";
 
@@ -116,6 +117,25 @@ export const Header: React.FC = () => {
             >
               <FileText className="w-3.5 h-3.5" />
               <span className="text-xs">Official PDF</span>
+            </button>
+
+            {/* Install App for Offline Use Button */}
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  const promptEvent = (window as any).__pwaInstallPrompt;
+                  if (promptEvent) {
+                    promptEvent.prompt();
+                  } else {
+                    alert("📱 Install IUS Routine App for Offline Access:\n\n• Android / Chrome: Tap Chrome menu (⋮) -> 'Install app' or 'Add to Home screen'.\n• iPhone / Safari: Tap the Share button -> 'Add to Home Screen'.\n\nOnce installed, all routine sections work completely offline without internet!");
+                  }
+                }
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 transition-all shadow-sm active:scale-95"
+              title="Install App to Home Screen for Offline Access"
+            >
+              <Smartphone className="w-3.5 h-3.5" />
+              <span className="text-xs">Install App</span>
             </button>
 
             {/* Dark Mode Toggle */}
