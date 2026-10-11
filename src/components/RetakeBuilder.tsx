@@ -708,14 +708,8 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
             ) : activeViewMode === "grid" ? (
               
               <div className="rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full">
-                {/* Mobile Swipe Hint Banner */}
-                <div className="md:hidden flex items-center justify-between px-3.5 py-2 bg-indigo-50/90 dark:bg-indigo-950/70 border-b border-indigo-100 dark:border-indigo-900/40 text-[11px] text-indigo-700 dark:text-indigo-300 font-semibold">
-                  <span className="flex items-center gap-1">👉 Swipe sideways to view all periods</span>
-                  <span className="text-[10px] text-amber-500 dark:text-amber-400 font-bold">📱 Rotate for landscape</span>
-                </div>
-
-                <div className="w-full max-w-full overflow-x-auto scrollbar-thin touch-pan-x">
-                  <table className="w-full min-w-[760px] sm:min-w-[860px] border-collapse text-left table-fixed">
+                <div className="w-full max-w-full overflow-x-auto scrollbar-thin">
+                  <table className="w-full min-w-[1100px] border-collapse text-left table-fixed">
                     <colgroup>
                       {/* Day column - 11% */}
                       <col style={{ width: "11%" }} />

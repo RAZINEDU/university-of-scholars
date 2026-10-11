@@ -533,32 +533,6 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
               <span className="text-indigo-600 dark:text-indigo-400 font-bold">{filteredRoutine.length}</span> results
             </span>
 
-            {/* View Mode Switcher (Table Matrix vs Card List) */}
-            <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
-              <button
-                onClick={() => setViewMode("table")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                  viewMode === "table"
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                }`}
-                title="Timetable Matrix View"
-              >
-                <Grid className="w-3.5 h-3.5" /> Table
-              </button>
-              <button
-                onClick={() => setViewMode("list")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                  viewMode === "list"
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                }`}
-                title="Card List by Day"
-              >
-                <List className="w-3.5 h-3.5" /> List
-              </button>
-            </div>
-
             <button onClick={onOpenExportModal}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 transition-all">
               <Download className="w-3.5 h-3.5" /> Export
@@ -567,121 +541,10 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
         </div>
       </div>
 
-      {/* ── CONDITIONAL VIEW RENDERER: LIST OR TABLE (TABLE DEFAULT ON ALL DEVICES) ── */}
-      {viewMode === "list" ? (
-        /* ── CARD LIST VIEW (VERTICAL CARDS PER DAY) ────────────────── */
-        <div className="space-y-4 print:hidden">
-          {WEEKDAYS.map((dayName) => {
-            if (selectedDayFilter !== "ALL" && selectedDayFilter !== dayName) return null;
-
-            const dayClasses = filteredRoutine.filter((item) => item.day === dayName);
-            const actualClasses = dayClasses.filter((c) => c.type !== "Break" && c.type !== "No Class");
-            const isOffDay = dayClasses.length > 0 && dayClasses.every((c) => c.type === "No Class");
-
-            return (
-              <div key={dayName} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden p-4 space-y-3">
-                {/* Day Header */}
-                <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-indigo-500" />
-                    <h3 className="text-base font-black text-slate-900 dark:text-white">{dayName}</h3>
-                  </div>
-                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/40">
-                    {isOffDay ? "Off Day" : `${actualClasses.length} ${actualClasses.length === 1 ? "Class" : "Classes"}`}
-                  </span>
-                </div>
-
-                {/* Day Content */}
-                {isOffDay ? (
-                  <div className="py-6 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-700/60 flex items-center justify-center gap-2 text-slate-400">
-                    <CalendarOff className="w-5 h-5 opacity-60" />
-                    <span className="text-xs font-bold">No Classes Scheduled</span>
-                  </div>
-                ) : actualClasses.length === 0 ? (
-                  <div className="py-4 text-center text-xs text-slate-400">No classes match filter</div>
-                ) : (
-                  <div className="space-y-2.5">
-                    {actualClasses.map((item) => {
-                      const facultyInfo = item.faculty ? TEACHER_DIRECTORY[item.faculty] : null;
-                      const teacherName = facultyInfo ? facultyInfo.name : item.faculty;
-                      const isLab = item.type === "Lab";
-
-                      return (
-                        <div
-                          key={item.id}
-                          onClick={() => setSelectedItemDetail(item)}
-                          className={`p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer space-y-2.5 active:scale-[0.99] ${
-                            isLab
-                              ? "border-l-4 border-l-sky-500 border-slate-200 dark:border-slate-800 bg-sky-50/40 dark:bg-sky-950/20"
-                              : "border-l-4 border-l-indigo-500 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60"
-                          }`}
-                        >
-                          {/* Top Badges */}
-                          <div className="flex flex-wrap items-center justify-between gap-1.5 text-xs">
-                            <span className="flex items-center gap-1 font-black text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">
-                              <Clock className="w-3 h-3 text-amber-500 flex-shrink-0" />
-                              {item.timeSlot}
-                            </span>
-                            <div className="flex items-center gap-1">
-                              <span className="text-[10px] font-black px-2 py-0.5 rounded bg-amber-400 text-slate-950">
-                                {item.section}
-                              </span>
-                              {isLab && (
-                                <span className="text-[10px] font-black px-2 py-0.5 rounded bg-sky-500 text-white">
-                                  Lab · 3hr
-                                </span>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Title */}
-                          <div>
-                            {item.courseCode && (
-                              <div className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-0.5">
-                                {item.courseCode}
-                              </div>
-                            )}
-                            <h4 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
-                              {item.courseTitle || item.title || item.rawText}
-                            </h4>
-                          </div>
-
-                          {/* Instructor & Location */}
-                          <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                            {teacherName ? (
-                              <div className="flex items-center gap-1.5 truncate">
-                                <User className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
-                                <span className="truncate">{teacherName}</span>
-                              </div>
-                            ) : <div />}
-                            {item.room && (
-                              <div className="flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 flex-shrink-0">
-                                <Building2 className="w-3.5 h-3.5" />
-                                <span>Room {item.room}</span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        /* ── MATRIX TABLE (SHOWN ON ALL DEVICES WITH HORIZONTAL SWIPE ON MOBILE) ────── */
-        <div className="print:block rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full print:shadow-none print:border-none print:overflow-visible">
-          
-          {/* Mobile Swipe Guidance Banner */}
-          <div className="md:hidden flex items-center justify-between px-3.5 py-2 bg-indigo-50/90 dark:bg-indigo-950/70 border-b border-indigo-100 dark:border-indigo-900/40 text-[11px] text-indigo-700 dark:text-indigo-300 font-semibold">
-            <span className="flex items-center gap-1">👉 Swipe sideways to view all periods</span>
-            <span className="text-[10px] text-amber-500 dark:text-amber-400 font-bold">📱 Rotate phone for wide view</span>
-          </div>
-
-          <div className="w-full max-w-full overflow-x-auto scrollbar-thin print:overflow-visible touch-pan-x">
-            <table className="w-full min-w-[760px] sm:min-w-[860px] border-collapse text-left table-fixed print:[color-adjust:exact] print:[-webkit-print-color-adjust:exact]" style={{ WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" }}>
+      {/* ── DESKTOP TIMETABLE MATRIX (EXACT DESKTOP VIEW) ────── */}
+      <div className="print:block rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full print:shadow-none print:border-none print:overflow-visible">
+        <div className="w-full max-w-full overflow-x-auto scrollbar-thin print:overflow-visible">
+          <table className="w-full min-w-[1100px] border-collapse text-left table-fixed print:[color-adjust:exact] print:[-webkit-print-color-adjust:exact]" style={{ WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" }}>
             <colgroup>
               {/* Day column - 11% */}
               <col style={{ width: "11%" }} />
@@ -795,7 +658,6 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
           </table>
         </div>
       </div>
-      )}
 
       {/* ── DETAIL MODAL ──────────────────────────────────── */}
       {selectedItemDetail && (

@@ -97,8 +97,8 @@ export const Header: React.FC = () => {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-inner">
+          {/* Desktop Navigation Links (Always active as requested for desktop-site view) */}
+          <nav className="flex items-center gap-1.5 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-inner">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -125,8 +125,8 @@ export const Header: React.FC = () => {
           {/* Right Header Actions */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             
-            {/* Live Clock Widget (Tablet & Desktop) */}
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800/80 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm">
+            {/* Live Clock Widget */}
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800/80 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm">
               <Clock className="w-3.5 h-3.5 text-amber-500 animate-spin-slow" />
               <span className="font-mono font-bold">{time || "00:00:00"}</span>
               <span className="text-slate-300 dark:text-slate-700">•</span>
@@ -157,30 +157,6 @@ export const Header: React.FC = () => {
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation Bar - wraps into 2 rows, zero side scroll */}
-        <div className="lg:hidden flex flex-wrap items-center gap-1 py-2 border-t border-slate-200/60 dark:border-slate-800/60">
-          {navLinks.map((link) => {
-            const Icon = link.icon;
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold rounded-xl transition-all ${
-                  isActive
-                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30 scale-[1.02]"
-                    : "bg-slate-100/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-800/60"
-                }`}
-              >
-                <Icon className={`w-3 h-3 flex-shrink-0 ${isActive ? "text-white" : "text-slate-500 dark:text-slate-400"}`} />
-                <span className="whitespace-nowrap">{link.label}</span>
-              </Link>
-            );
-          })}
-        </div>
-
-
       </div>
 
       {/* Official PDF Modal */}

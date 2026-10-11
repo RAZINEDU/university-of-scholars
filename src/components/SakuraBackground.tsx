@@ -283,9 +283,9 @@ export const SakuraBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none">
       {/* Canvas for Sakura Animation */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-10" />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />
     </div>
   );
 };
