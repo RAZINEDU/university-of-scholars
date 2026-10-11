@@ -73,7 +73,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ totalClasses }) => {
   ];
 
   return (
-    <div className="relative w-full min-h-[85vh] flex flex-col justify-center animate-in fade-in duration-700 pb-12 overflow-hidden">
+    <div className="relative w-full flex flex-col justify-center animate-in fade-in duration-700 py-6 md:py-10 overflow-hidden">
       
       <div className="relative z-10 w-full">
         {/* ── Hero Header (Centered) ── */}

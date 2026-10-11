@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/logo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "International University of Scholars (IUS) Official Logo",
+        alt: "IUS CSE Class Routine & Schedule Portal Fall 2026",
       },
     ],
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "IUS CSE Class Routine & Schedule Portal | Fall 2026",
     description: "Official Interactive Class Routine & Retake Management Engine for Dept. of CSE, International University of Scholars (IUS).",
-    images: ["/logo.png"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -58,7 +58,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col relative">
+      <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col justify-between relative">
         
         {/* ── GLOBAL SITE BACKGROUND ── */}
         <div className="fixed inset-0 z-0 pointer-events-none select-none flex items-center justify-center">
@@ -75,12 +75,12 @@ export default function RootLayout({
         {/* ── SAKURA ANIMATION OVERLAY ── */}
         <SakuraBackground />
 
-        <div className="relative z-20 flex-1 flex flex-col w-full min-w-[1200px]">
+        <div className="relative z-20 flex-1 flex flex-col justify-between w-full min-w-[1200px]">
           <Header />
           <main className="flex-1 max-w-[1700px] mx-auto w-full px-6 lg:px-8 py-6">
             {children}
           </main>
-          <div className="print:hidden">
+          <div className="print:hidden mt-auto w-full">
             <Footer />
           </div>
         </div>
