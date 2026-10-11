@@ -123,9 +123,10 @@ export const Header: React.FC = () => {
             <button
               onClick={() => {
                 if (typeof window !== "undefined") {
-                  const promptEvent = (window as any).__pwaInstallPrompt;
-                  if (promptEvent) {
-                    promptEvent.prompt();
+                  if ((window as any).__triggerPwaInstall) {
+                    (window as any).__triggerPwaInstall();
+                  } else if ((window as any).__pwaInstallPrompt) {
+                    (window as any).__pwaInstallPrompt.prompt();
                   } else {
                     alert("📱 Install IUS Routine App for Offline Access:\n\n• Android / Chrome: Tap Chrome menu (⋮) -> 'Install app' or 'Add to Home screen'.\n• iPhone / Safari: Tap the Share button -> 'Add to Home Screen'.\n\nOnce installed, all routine sections work completely offline without internet!");
                   }
@@ -153,7 +154,7 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Row 2: Navigation Bar on 2nd Line (No side scroll needed) */}
+        {/* Row 2: Navigation Bar on 2nd Line (With Install Option) */}
         <div className="py-2 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-center">
           <nav className="flex items-center justify-center flex-wrap gap-1.5 sm:gap-2 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-inner">
             {navLinks.map((link) => {
@@ -177,6 +178,29 @@ export const Header: React.FC = () => {
                 </Link>
               );
             })}
+
+            {/* Prominent Navbar Install App Button */}
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  if ((window as any).__triggerPwaInstall) {
+                    (window as any).__triggerPwaInstall();
+                  } else if ((window as any).__pwaInstallPrompt) {
+                    (window as any).__pwaInstallPrompt.prompt();
+                  } else {
+                    alert("📱 Install IUS Routine App for 100% Offline Access:\n\n• Android / Chrome: Tap Chrome menu (⋮) -> 'Install app' or 'Add to Home screen'.\n• iPhone / Safari: Tap Share (⎙) -> 'Add to Home Screen'.\n\nOnce installed, you can open all section routines anytime even without internet!");
+                  }
+                }
+              }}
+              className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 text-xs font-black rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-md shadow-emerald-600/30 active:scale-95 transition-all whitespace-nowrap ml-0.5 cursor-pointer"
+              title="Install App to Home Screen for Offline Access"
+            >
+              <Smartphone className="w-3.5 h-3.5 animate-bounce-subtle" />
+              <span>Install Offline App</span>
+              <span className="text-[10px] font-black px-1.5 py-0.2 rounded bg-white/20 text-white">
+                Offline
+              </span>
+            </button>
           </nav>
         </div>
       </div>
