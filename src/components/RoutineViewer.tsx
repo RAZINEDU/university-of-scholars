@@ -14,6 +14,8 @@ import {
   Coffee,
   Building2,
   CalendarOff,
+  Grid,
+  List,
 } from "lucide-react";
 
 interface RoutineViewerProps {
@@ -160,6 +162,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
   const [selectedDayFilter, setSelectedDayFilter] = useState<string>("ALL");
   const [typeFilter, setTypeFilter] = useState<string>("ALL");
   const [selectedItemDetail, setSelectedItemDetail] = useState<RoutineItem | null>(null);
+  const [viewMode, setViewMode] = useState<"table" | "list">("table");
 
   const sectionsList = useMemo(() =>
     Array.from(new Set(routineData.map((d) => d.section))).sort()
@@ -250,11 +253,11 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
       >
         {/* ── TOP: code + type badge ── */}
         <div className="flex items-start justify-between gap-1">
-          <span className={`text-xs font-black uppercase tracking-wider leading-none ${cfg.code}`}>
+          <span className={`text-[10px] font-black uppercase tracking-widest leading-none ${cfg.code}`}>
             {item.courseCode || ""}
           </span>
           {isLab && (
-            <span className={`text-[10px] font-extrabold uppercase tracking-wide px-2 py-0.5 rounded-full flex-shrink-0 leading-none ${cfg.badge}`}>
+            <span className={`text-[9px] font-extrabold uppercase tracking-wide px-1.5 py-0.5 rounded-full flex-shrink-0 leading-none ${cfg.badge}`}>
               Lab · 3hr
             </span>
           )}
@@ -262,7 +265,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
 
         {/* ── MID: title ── */}
         <div
-          className={`flex-1 font-bold leading-snug text-slate-700 dark:text-slate-200 ${isWide ? "text-sm" : "text-xs"}`}
+          className={`flex-1 font-semibold leading-snug text-slate-700 dark:text-slate-200 ${isWide ? "text-[13px]" : "text-[11px]"}`}
           style={{ display: "-webkit-box", WebkitLineClamp: isWide ? 3 : 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
         >
           {item.courseTitle || item.title || item.rawText}
@@ -271,18 +274,18 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
         {/* ── BOTTOM: teacher + section + room ── */}
         <div className="flex flex-col gap-1">
           {teacherName && (
-            <div className="flex items-center gap-1 text-[11px] text-slate-400 dark:text-slate-500 font-medium">
-              <User className="w-3 h-3 flex-shrink-0" />
+            <div className="flex items-center gap-1 text-[10px] text-slate-400 dark:text-slate-500">
+              <User className="w-2.5 h-2.5 flex-shrink-0" />
               <span className="truncate">{teacherName}</span>
             </div>
           )}
           <div className="flex items-center justify-between gap-1">
-            <span className="text-[10px] font-black px-2 py-[2px] rounded bg-amber-400 text-slate-900 leading-none">
+            <span className="text-[9px] font-black px-1.5 py-[2px] rounded bg-amber-400 text-slate-900 leading-none">
               {item.section}
             </span>
             {item.room && (
-              <span className="flex items-center gap-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-                <Building2 className="w-3 h-3 flex-shrink-0" />
+              <span className="flex items-center gap-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+                <Building2 className="w-2.5 h-2.5 flex-shrink-0" />
                 {item.room}
               </span>
             )}
@@ -420,90 +423,38 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
   };
 
   return (
-    <div className="w-full space-y-6">
-      {/* ── FILTER BAR ────────────────────────────────────── */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 print:hidden">
-        
-        {/* Top Filter Row: Specific Section Filter & Search */}
-        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
-          
-          {/* Enhanced Section Filter */}
-          <div className="flex-1 space-y-3">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-indigo-500" />
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-                  Specific Section Filter:
-                </span>
-              </div>
+    <div className="w-full space-y-4 sm:space-y-6">
+      {/* ── FILTER BAR (Mobile-First, Zero Side Scroll) ──────────── */}
+      <div className="p-3 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3 sm:space-y-4 print:hidden">
 
-              {/* Direct Grouped Dropdown */}
-              <select
-                value={selectedSection}
-                onChange={(e) => onSectionSelect(e.target.value)}
-                className="bg-slate-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-extrabold px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-xs"
-              >
-                {BATCH_GROUPS.map((bg) => (
-                  <optgroup key={bg.batch} label={bg.label}>
-                    {bg.sections.map((sec) => (
-                      <option key={sec} value={sec}>
-                        {sec}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
+        {/* Row 1: Section Dropdown + Search (stacked on mobile, side-by-side on lg) */}
+        <div className="flex flex-col gap-3">
+
+          {/* Section Quick-Select Dropdown (always visible, always usable) */}
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Filter className="w-4 h-4 text-indigo-500" />
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                Section:
+              </span>
             </div>
-
-            {/* Batch Filter Pills (flex-wrap, NO side-scroll!) */}
-            <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider mr-1">Batch:</span>
-              {BATCH_GROUPS.map((bg) => {
-                const isBatchActive = getBatchFromSection(selectedSection) === bg.batch;
-
-                return (
-                  <button
-                    key={bg.batch}
-                    onClick={() => {
-                      if (bg.sections && bg.sections.length > 0) {
-                        onSectionSelect(bg.sections[0]);
-                      }
-                    }}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      isBatchActive
-                        ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                    }`}
-                  >
-                    {bg.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Sub-Section Pills for the Active Batch */}
-            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
-              <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider mr-1">Sub-Section:</span>
-              {sectionsList
-                .filter((sec) => getBatchFromSection(sec) === getBatchFromSection(selectedSection))
-                .map((sec) => (
-                  <button
-                    key={sec}
-                    onClick={() => onSectionSelect(sec)}
-                    className={`px-3 py-1 rounded-lg text-xs font-black transition-all ${
-                      selectedSection === sec
-                        ? "bg-amber-400 text-slate-950 shadow-sm"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                    }`}
-                  >
-                    {sec}
-                  </button>
-                ))}
-            </div>
+            <select
+              value={selectedSection}
+              onChange={(e) => onSectionSelect(e.target.value)}
+              className="flex-1 max-w-xs bg-slate-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-extrabold px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-sm"
+            >
+              {BATCH_GROUPS.map((bg) => (
+                <optgroup key={bg.batch} label={bg.label}>
+                  {bg.sections.map((sec) => (
+                    <option key={sec} value={sec}>{sec}</option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
           </div>
 
-          {/* Search */}
-          <div className="relative w-full lg:w-72 self-start">
+          {/* Search (full width on mobile) */}
+          <div className="relative w-full">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
@@ -520,38 +471,217 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
           </div>
         </div>
 
-        {/* Secondary filters */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 dark:border-slate-800/80">
-          <div className="flex flex-wrap items-center gap-4">
+        {/* Row 2: Batch Pills (wrapping, no scroll) */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+          <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Batch:</span>
+          {BATCH_GROUPS.map((bg) => {
+            const isBatchActive = getBatchFromSection(selectedSection) === bg.batch;
+            return (
+              <button
+                key={bg.batch}
+                onClick={() => { if (bg.sections?.length > 0) onSectionSelect(bg.sections[0]); }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                  isBatchActive
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                }`}
+              >
+                {bg.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Row 3: Sub-Section Pills (wrapping) */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Section:</span>
+          {sectionsList
+            .filter((sec) => getBatchFromSection(sec) === getBatchFromSection(selectedSection))
+            .map((sec) => (
+              <button
+                key={sec}
+                onClick={() => onSectionSelect(sec)}
+                className={`px-3 py-1 rounded-lg text-xs font-black transition-all ${
+                  selectedSection === sec
+                    ? "bg-amber-400 text-slate-950 shadow-sm"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                }`}
+              >
+                {sec}
+              </button>
+            ))}
+        </div>
+
+        {/* Row 4: Day / Type filters + Export (stacked on mobile) */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+          <div className="flex flex-wrap items-center gap-2">
             {[
               { label: "Day", value: selectedDayFilter, setter: setSelectedDayFilter, options: [["ALL","All Days"], ...WEEKDAYS.map(d=>[d,d])] },
               { label: "Type", value: typeFilter, setter: setTypeFilter, options: [["ALL","All Classes"],["Theory","Theory"],["Lab","Lab"],["Break","Breaks"]] },
             ].map(({ label, value, setter, options }) => (
-              <div key={label} className="flex items-center gap-2">
+              <div key={label} className="flex items-center gap-1.5">
                 <span className="text-slate-500 font-medium text-xs uppercase tracking-wider">{label}:</span>
                 <select value={value} onChange={(e) => setter(e.target.value)}
-                  className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none cursor-pointer text-sm">
+                  className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold px-2 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none cursor-pointer text-xs">
                   {options.map(([val, lbl]) => <option key={val} value={val}>{lbl}</option>)}
                 </select>
               </div>
             ))}
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg">
-              Found <span className="text-indigo-600 dark:text-indigo-400 font-bold">{filteredRoutine.length}</span> items
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg">
+              <span className="text-indigo-600 dark:text-indigo-400 font-bold">{filteredRoutine.length}</span> results
             </span>
+
+            {/* View Mode Switcher (Table Matrix vs Card List) */}
+            <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+              <button
+                onClick={() => setViewMode("table")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                  viewMode === "table"
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
+                title="Timetable Matrix View"
+              >
+                <Grid className="w-3.5 h-3.5" /> Table
+              </button>
+              <button
+                onClick={() => setViewMode("list")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                  viewMode === "list"
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
+                title="Card List by Day"
+              >
+                <List className="w-3.5 h-3.5" /> List
+              </button>
+            </div>
+
             <button onClick={onOpenExportModal}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm shadow-md shadow-amber-500/20 transition-all">
-              <Download className="w-4 h-4" /> Export &amp; Print
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 transition-all">
+              <Download className="w-3.5 h-3.5" /> Export
             </button>
           </div>
         </div>
       </div>
 
-      {/* ── TIMETABLE MATRIX TABLE (SECTION 15B PDF FORMAT - ALWAYS VISIBLE DESKTOP & MOBILE) ── */}
-      <div className="rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full print:shadow-none print:border-none print:overflow-visible">
-        <div className="w-full max-w-full overflow-x-auto scrollbar-thin print:overflow-visible">
-          <table className="w-full min-w-[920px] border-collapse text-left table-fixed print:[color-adjust:exact] print:[-webkit-print-color-adjust:exact]" style={{ WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" }}>
+      {/* ── CONDITIONAL VIEW RENDERER: LIST OR TABLE (TABLE DEFAULT ON ALL DEVICES) ── */}
+      {viewMode === "list" ? (
+        /* ── CARD LIST VIEW (VERTICAL CARDS PER DAY) ────────────────── */
+        <div className="space-y-4 print:hidden">
+          {WEEKDAYS.map((dayName) => {
+            if (selectedDayFilter !== "ALL" && selectedDayFilter !== dayName) return null;
+
+            const dayClasses = filteredRoutine.filter((item) => item.day === dayName);
+            const actualClasses = dayClasses.filter((c) => c.type !== "Break" && c.type !== "No Class");
+            const isOffDay = dayClasses.length > 0 && dayClasses.every((c) => c.type === "No Class");
+
+            return (
+              <div key={dayName} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden p-4 space-y-3">
+                {/* Day Header */}
+                <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-indigo-500" />
+                    <h3 className="text-base font-black text-slate-900 dark:text-white">{dayName}</h3>
+                  </div>
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800/40">
+                    {isOffDay ? "Off Day" : `${actualClasses.length} ${actualClasses.length === 1 ? "Class" : "Classes"}`}
+                  </span>
+                </div>
+
+                {/* Day Content */}
+                {isOffDay ? (
+                  <div className="py-6 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-700/60 flex items-center justify-center gap-2 text-slate-400">
+                    <CalendarOff className="w-5 h-5 opacity-60" />
+                    <span className="text-xs font-bold">No Classes Scheduled</span>
+                  </div>
+                ) : actualClasses.length === 0 ? (
+                  <div className="py-4 text-center text-xs text-slate-400">No classes match filter</div>
+                ) : (
+                  <div className="space-y-2.5">
+                    {actualClasses.map((item) => {
+                      const facultyInfo = item.faculty ? TEACHER_DIRECTORY[item.faculty] : null;
+                      const teacherName = facultyInfo ? facultyInfo.name : item.faculty;
+                      const isLab = item.type === "Lab";
+
+                      return (
+                        <div
+                          key={item.id}
+                          onClick={() => setSelectedItemDetail(item)}
+                          className={`p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer space-y-2.5 active:scale-[0.99] ${
+                            isLab
+                              ? "border-l-4 border-l-sky-500 border-slate-200 dark:border-slate-800 bg-sky-50/40 dark:bg-sky-950/20"
+                              : "border-l-4 border-l-indigo-500 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60"
+                          }`}
+                        >
+                          {/* Top Badges */}
+                          <div className="flex flex-wrap items-center justify-between gap-1.5 text-xs">
+                            <span className="flex items-center gap-1 font-black text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">
+                              <Clock className="w-3 h-3 text-amber-500 flex-shrink-0" />
+                              {item.timeSlot}
+                            </span>
+                            <div className="flex items-center gap-1">
+                              <span className="text-[10px] font-black px-2 py-0.5 rounded bg-amber-400 text-slate-950">
+                                {item.section}
+                              </span>
+                              {isLab && (
+                                <span className="text-[10px] font-black px-2 py-0.5 rounded bg-sky-500 text-white">
+                                  Lab · 3hr
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Title */}
+                          <div>
+                            {item.courseCode && (
+                              <div className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-0.5">
+                                {item.courseCode}
+                              </div>
+                            )}
+                            <h4 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
+                              {item.courseTitle || item.title || item.rawText}
+                            </h4>
+                          </div>
+
+                          {/* Instructor & Location */}
+                          <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400 font-medium">
+                            {teacherName ? (
+                              <div className="flex items-center gap-1.5 truncate">
+                                <User className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
+                                <span className="truncate">{teacherName}</span>
+                              </div>
+                            ) : <div />}
+                            {item.room && (
+                              <div className="flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+                                <Building2 className="w-3.5 h-3.5" />
+                                <span>Room {item.room}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        /* ── MATRIX TABLE (SHOWN ON ALL DEVICES WITH HORIZONTAL SWIPE ON MOBILE) ────── */
+        <div className="print:block rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full print:shadow-none print:border-none print:overflow-visible">
+          
+          {/* Mobile Swipe Guidance Banner */}
+          <div className="md:hidden flex items-center justify-between px-3.5 py-2 bg-indigo-50/90 dark:bg-indigo-950/70 border-b border-indigo-100 dark:border-indigo-900/40 text-[11px] text-indigo-700 dark:text-indigo-300 font-semibold">
+            <span className="flex items-center gap-1">👉 Swipe sideways to view all periods</span>
+            <span className="text-[10px] text-amber-500 dark:text-amber-400 font-bold">📱 Rotate phone for wide view</span>
+          </div>
+
+          <div className="w-full max-w-full overflow-x-auto scrollbar-thin print:overflow-visible touch-pan-x">
+            <table className="w-full min-w-[760px] sm:min-w-[860px] border-collapse text-left table-fixed print:[color-adjust:exact] print:[-webkit-print-color-adjust:exact]" style={{ WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" }}>
             <colgroup>
               {/* Day column - 11% */}
               <col style={{ width: "11%" }} />
@@ -568,7 +698,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
             {/* ── GLOBAL THEAD (SAT-THU HEADER ROW) ─── */}
             <thead>
               <tr className="bg-[#1E3A8A] text-white dark:bg-indigo-950 border-b border-blue-900">
-                <th className="px-3 py-3.5 border-r border-blue-800 dark:border-indigo-800 align-middle">
+                <th className="sticky left-0 z-20 px-3 py-3.5 border-r border-blue-800 dark:border-indigo-800 align-middle bg-[#1E3A8A] dark:bg-indigo-950 shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                   <div className="text-[10px] font-extrabold uppercase tracking-widest text-blue-200 mb-0.5">Day</div>
                   <div className="text-xs font-black text-white whitespace-pre-line leading-snug">{sectionLabel}</div>
                 </th>
@@ -601,7 +731,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
                     <React.Fragment key={dayName}>
                       {/* ── FRIDAY HEADER ROW ("Fri time") ─── */}
                       <tr className="bg-[#1E3A8A] text-white dark:bg-indigo-950 border-t-2 border-b border-blue-900">
-                        <th className="px-3 py-3 border-r border-blue-800 dark:border-indigo-800 align-middle text-center">
+                        <th className="sticky left-0 z-20 px-3 py-3 border-r border-blue-800 dark:border-indigo-800 align-middle text-center bg-[#1E3A8A] dark:bg-indigo-950 shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                           <div className="text-xs font-black text-amber-300 uppercase tracking-wider">Fri time</div>
                         </th>
                         {FRIDAY_TIME_SLOTS.map((slot) => (
@@ -616,7 +746,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
 
                       {/* ── FRIDAY CLASS CARDS ROW ─── */}
                       <tr className="border-b-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1120]">
-                        <td className="px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100/60 dark:bg-slate-900/60">
+                        <td className="sticky left-0 z-20 px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100 dark:bg-[#0B1120] shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                           <div className="text-sm font-black text-slate-900 dark:text-white tracking-wide leading-tight">Fri</div>
                         </td>
                         {isOffDay ? (
@@ -640,7 +770,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
                 return (
                   <React.Fragment key={dayName}>
                     <tr className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1120]">
-                      <td className="px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100/60 dark:bg-slate-900/60">
+                      <td className="sticky left-0 z-20 px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100 dark:bg-[#0B1120] shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                         <div className="text-sm font-black text-slate-900 dark:text-white tracking-wide leading-tight">
                           {dayName.slice(0, 3)}
                         </div>
@@ -665,17 +795,27 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
           </table>
         </div>
       </div>
+      )}
 
       {/* ── DETAIL MODAL ──────────────────────────────────── */}
       {selectedItemDetail && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto bg-slate-950/70 backdrop-blur-sm print:hidden"
+          onClick={() => setSelectedItemDetail(null)}
+        >
+          <div 
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-7 max-w-md w-full shadow-2xl space-y-4 sm:space-y-5 my-auto max-h-[92vh] overflow-y-auto relative"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center justify-between">
               <span className="px-3 py-1 rounded-lg text-xs font-black uppercase tracking-wider bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
                 {selectedItemDetail.section}
               </span>
-              <button onClick={() => setSelectedItemDetail(null)}
-                className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <button 
+                onClick={() => setSelectedItemDetail(null)}
+                className="p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+                aria-label="Close"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>

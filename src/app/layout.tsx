@@ -5,31 +5,31 @@ import { Footer } from "@/components/Footer";
 import { SakuraBackground } from "@/components/SakuraBackground";
 
 export const viewport: Viewport = {
-  width: 1024,
-  initialScale: 0.6,
-  minimumScale: 0.25,
+  width: "device-width",
+  initialScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  title: "IUS CSE Class Routine & Schedule Engine | Fall 2026",
-  description: "Official Automatic Class Routine & Clash Management Portal for the Department of Computer Science & Engineering (CSE), International University of Scholars (IUS), Fall 2026. Engineered by Razin Ibn Asad.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ius-routine.vercel.app"),
+  title: "IUS CSE Class Routine & Schedule Portal | Fall 2026",
+  description: "Official Interactive Routine Portal for the Department of CSE, International University of Scholars (IUS). Features Section Routines, Retake Clash Checker, Teacher Workloads & Room Schedules.",
   keywords: [
     "IUS",
     "International University of Scholars",
     "IUS CSE Routine",
-    "Fall 2026 Routine",
-    "IUS Routine Checker",
+    "CSE Fall 2026 Routine",
+    "IUS Class Routine",
+    "IUS Retake Clash Checker",
     "University of Scholars Routine",
-    "Computer Science and Engineering",
-    "Razin Ibn Asad"
+    "CSE Department IUS"
   ],
   authors: [{ name: "Razin Ibn Asad", url: "https://razinibnasad.vercel.app/" }],
   creator: "Razin Ibn Asad",
-  publisher: "International University of Scholars - CSE Department",
+  publisher: "Department of Computer Science & Engineering, International University of Scholars",
   openGraph: {
-    title: "IUS CSE Class Routine & Schedule Engine | Fall 2026",
-    description: "Official Interactive Routine Engine for Department of Computer Science & Engineering (CSE), International University of Scholars (IUS). Features Section Routines, Clash Checker, Room Schedules & Teacher Workloads.",
+    title: "IUS CSE Class Routine & Schedule Portal | Fall 2026",
+    description: "Official Interactive Class Routine & Retake Management Engine for Dept. of CSE, International University of Scholars (IUS).",
     siteName: "International University of Scholars",
     locale: "en_US",
     type: "website",
@@ -38,14 +38,14 @@ export const metadata: Metadata = {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "International University of Scholars (IUS) Logo",
+        alt: "International University of Scholars (IUS) Official Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IUS CSE Class Routine & Schedule Engine | Fall 2026",
-    description: "Official Interactive Routine Engine for IUS Computer Science & Engineering students. Section Routines, Clash Checker, and Teacher Schedules.",
+    title: "IUS CSE Class Routine & Schedule Portal | Fall 2026",
+    description: "Official Interactive Class Routine & Retake Management Engine for Dept. of CSE, International University of Scholars (IUS).",
     images: ["/logo.png"],
   },
 };
@@ -57,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen min-w-[1024px] flex flex-col relative overflow-x-auto">
+      <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden">
         
         {/* ── GLOBAL SITE BACKGROUND ── */}
         <div className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center">

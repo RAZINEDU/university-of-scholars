@@ -343,20 +343,20 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
       >
         {/* ── TOP: code + badges ── */}
         <div className="flex items-start justify-between gap-1">
-          <span className={`text-xs font-black uppercase tracking-wider leading-none ${codeStyle}`}>
+          <span className={`text-[10px] font-black uppercase tracking-widest leading-none ${codeStyle}`}>
             {item.courseCode || ""}
           </span>
 
           {itemClashes ? (
-            <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded bg-red-950 text-red-200 flex items-center gap-0.5">
+            <span className="text-[8px] font-black uppercase px-1.5 py-0.5 rounded bg-red-950 text-red-200 flex items-center gap-0.5">
               <XCircle className="w-2.5 h-2.5" /> Crash
             </span>
           ) : isRetake ? (
-            <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-400 text-slate-950 flex items-center gap-0.5 shadow-sm animate-pulse">
+            <span className="text-[8px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 flex items-center gap-0.5 shadow-sm animate-pulse">
               <Sparkles className="w-2.5 h-2.5" /> Retake
             </span>
           ) : isLab ? (
-            <span className="text-[10px] font-extrabold uppercase tracking-wide px-2 py-0.5 rounded-full leading-none bg-sky-100 dark:bg-sky-900/60 text-sky-700 dark:text-sky-300">
+            <span className="text-[9px] font-extrabold uppercase tracking-wide px-1.5 py-0.5 rounded-full leading-none bg-sky-100 dark:bg-sky-900/60 text-sky-700 dark:text-sky-300">
               Lab · 3hr
             </span>
           ) : null}
@@ -364,7 +364,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
 
         {/* ── MID: title ── */}
         <div
-          className={`flex-1 font-bold leading-snug ${isWide ? "text-sm" : "text-xs"} ${
+          className={`flex-1 font-semibold leading-snug ${isWide ? "text-[13px]" : "text-[11px]"} ${
             isRetake || itemClashes ? "text-white" : "text-slate-700 dark:text-slate-200"
           }`}
           style={{
@@ -380,16 +380,16 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
         {/* ── BOTTOM: teacher + section + room ── */}
         <div className="flex flex-col gap-1">
           {teacherName && (
-            <div className={`flex items-center gap-1 text-[11px] font-medium ${
+            <div className={`flex items-center gap-1 text-[10px] ${
               isRetake || itemClashes ? "text-slate-200 opacity-90" : "text-slate-400 dark:text-slate-500"
             }`}>
-              <User className="w-3 h-3 flex-shrink-0" />
+              <User className="w-2.5 h-2.5 flex-shrink-0" />
               <span className="truncate">{teacherName}</span>
             </div>
           )}
           <div className="flex items-center justify-between gap-1">
             <span
-              className={`text-[10px] font-black px-2 py-[2px] rounded leading-none ${
+              className={`text-[9px] font-black px-1.5 py-[2px] rounded leading-none ${
                 itemClashes
                   ? "bg-white text-red-600 font-extrabold"
                   : isRetake
@@ -402,13 +402,13 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
 
             {item.room && (
               <span
-                className={`flex items-center gap-0.5 text-[11px] font-bold ${
+                className={`flex items-center gap-0.5 text-[10px] font-bold ${
                   isRetake || itemClashes
                     ? "text-emerald-300"
                     : "text-emerald-600 dark:text-emerald-400"
                 }`}
               >
-                <Building2 className="w-3 h-3 flex-shrink-0" />
+                <Building2 className="w-2.5 h-2.5 flex-shrink-0" />
                 {item.room}
               </span>
             )}
@@ -588,7 +588,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
               onChange={(e) => setPrimarySection(e.target.value)}
               className="bg-slate-900 text-amber-300 font-extrabold px-3.5 py-2 rounded-xl border border-amber-400/40 focus:outline-none cursor-pointer text-xs sm:text-sm shadow-md"
             >
-              <option value="" disabled>-- Select Your Section --</option>
+              <option value="">-- Select Your Section --</option>
               {sectionsList.map((sec) => (
                 <option key={sec} value={sec}>
                   {sec}
@@ -702,16 +702,20 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
                 <Bookmark className="w-12 h-12 mx-auto opacity-30 text-indigo-500" />
                 <h4 className="text-base font-bold text-slate-700 dark:text-slate-300">Your Timetable Matrix is Empty</h4>
                 <p className="text-xs max-w-sm mx-auto">
-                  Click <strong>"📥 Load {primarySection} Routine"</strong> above or add courses manually from the retake finder panel.
+                  Click <strong>"📥 {primarySection ? `Load ${primarySection} Routine` : "Select Your Section"}</strong> above or add courses manually from the retake finder panel.
                 </p>
               </div>
             ) : activeViewMode === "grid" ? (
               
-              <>
-                {/* ── TIMETABLE MATRIX GRID (ALWAYS VISIBLE DESKTOP & MOBILE) ── */}
-                <div className="rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full">
-                  <div className="w-full max-w-full overflow-x-auto scrollbar-thin">
-                    <table className="w-full min-w-[920px] border-collapse text-left table-fixed">
+              <div className="rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full">
+                {/* Mobile Swipe Hint Banner */}
+                <div className="md:hidden flex items-center justify-between px-3.5 py-2 bg-indigo-50/90 dark:bg-indigo-950/70 border-b border-indigo-100 dark:border-indigo-900/40 text-[11px] text-indigo-700 dark:text-indigo-300 font-semibold">
+                  <span className="flex items-center gap-1">👉 Swipe sideways to view all periods</span>
+                  <span className="text-[10px] text-amber-500 dark:text-amber-400 font-bold">📱 Rotate for landscape</span>
+                </div>
+
+                <div className="w-full max-w-full overflow-x-auto scrollbar-thin touch-pan-x">
+                  <table className="w-full min-w-[760px] sm:min-w-[860px] border-collapse text-left table-fixed">
                     <colgroup>
                       {/* Day column - 11% */}
                       <col style={{ width: "11%" }} />
@@ -728,9 +732,9 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
                     {/* ── GLOBAL THEAD (SAT-THU HEADER ROW) ─── */}
                     <thead>
                       <tr className="bg-[#1E3A8A] text-white dark:bg-indigo-950 border-b border-blue-900">
-                        <th className="px-3 py-3.5 border-r border-blue-800 dark:border-indigo-800 align-middle">
+                        <th className="sticky left-0 z-20 px-3 py-3.5 border-r border-blue-800 dark:border-indigo-800 align-middle bg-[#1E3A8A] dark:bg-indigo-950 shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                           <div className="text-[10px] font-extrabold uppercase tracking-widest text-blue-200 mb-0.5">Day</div>
-                          <div className="text-xs font-black text-white leading-snug">{primarySection}</div>
+                          <div className="text-xs font-black text-white leading-snug">{primarySection || "My Schedule"}</div>
                         </th>
                         {TIME_SLOTS.map((slot) => (
                           <th key={slot.colIndex}
@@ -759,7 +763,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
                             <React.Fragment key={dayName}>
                               {/* ── FRIDAY HEADER ROW ("Fri time") ─── */}
                               <tr className="bg-[#1E3A8A] text-white dark:bg-indigo-950 border-t-2 border-b border-blue-900">
-                                <th className="px-3 py-3 border-r border-blue-800 dark:border-indigo-800 align-middle text-center">
+                                <th className="sticky left-0 z-20 px-3 py-3 border-r border-blue-800 dark:border-indigo-800 align-middle text-center bg-[#1E3A8A] dark:bg-indigo-950 shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                                   <div className="text-xs font-black text-amber-300 uppercase tracking-wider">Fri time</div>
                                 </th>
                                 {FRIDAY_TIME_SLOTS.map((slot) => (
@@ -774,7 +778,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
 
                               {/* ── FRIDAY CLASS CARDS ROW ─── */}
                               <tr className="border-b-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1120]">
-                                <td className="px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100/60 dark:bg-slate-900/60">
+                                <td className="sticky left-0 z-20 px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100 dark:bg-[#0B1120] shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                                   <div className="text-sm font-black text-slate-900 dark:text-white tracking-wide leading-tight">Fri</div>
                                 </td>
                                 {isOffDay ? (
@@ -798,7 +802,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
                         return (
                           <React.Fragment key={dayName}>
                             <tr className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B1120]">
-                              <td className="px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100/60 dark:bg-slate-900/60">
+                              <td className="sticky left-0 z-20 px-3 py-4 border-r border-slate-200 dark:border-slate-800 align-middle text-center bg-slate-100 dark:bg-[#0B1120] shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                                 <div className="text-sm font-black text-slate-900 dark:text-white tracking-wide leading-tight">
                                   {dayName.slice(0, 3)}
                                 </div>
@@ -823,7 +827,6 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
                   </table>
                 </div>
               </div>
-              </>
             ) : (
               
               /* ── LIST VIEW ────────────────────────────────────────────────── */

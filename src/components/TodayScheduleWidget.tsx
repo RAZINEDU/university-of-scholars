@@ -85,8 +85,8 @@ export const TodayScheduleWidget: React.FC<TodayScheduleWidgetProps> = ({
           </div>
         </div>
 
-        {/* Day Selector Pills */}
-        <div className="flex items-center gap-1.5 mt-6 pt-4 border-t border-white/10 overflow-x-auto scrollbar-none no-scrollbar flex-nowrap sm:flex-wrap">
+        {/* Day Selector Pills - wraps on mobile, no side scroll */}
+        <div className="flex flex-wrap items-center gap-1.5 mt-6 pt-4 border-t border-white/10">
           {DAYS_LIST.map((day) => {
             const isActive = activeDay === day;
             return (
