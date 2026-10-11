@@ -343,20 +343,20 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
       >
         {/* ── TOP: code + badges ── */}
         <div className="flex items-start justify-between gap-1">
-          <span className={`text-[10px] font-black uppercase tracking-widest leading-none ${codeStyle}`}>
+          <span className={`text-xs font-black uppercase tracking-wider leading-none ${codeStyle}`}>
             {item.courseCode || ""}
           </span>
 
           {itemClashes ? (
-            <span className="text-[8px] font-black uppercase px-1.5 py-0.5 rounded bg-red-950 text-red-200 flex items-center gap-0.5">
+            <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded bg-red-950 text-red-200 flex items-center gap-0.5">
               <XCircle className="w-2.5 h-2.5" /> Crash
             </span>
           ) : isRetake ? (
-            <span className="text-[8px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 flex items-center gap-0.5 shadow-sm animate-pulse">
+            <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-400 text-slate-950 flex items-center gap-0.5 shadow-sm animate-pulse">
               <Sparkles className="w-2.5 h-2.5" /> Retake
             </span>
           ) : isLab ? (
-            <span className="text-[9px] font-extrabold uppercase tracking-wide px-1.5 py-0.5 rounded-full leading-none bg-sky-100 dark:bg-sky-900/60 text-sky-700 dark:text-sky-300">
+            <span className="text-[10px] font-extrabold uppercase tracking-wide px-2 py-0.5 rounded-full leading-none bg-sky-100 dark:bg-sky-900/60 text-sky-700 dark:text-sky-300">
               Lab · 3hr
             </span>
           ) : null}
@@ -364,7 +364,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
 
         {/* ── MID: title ── */}
         <div
-          className={`flex-1 font-semibold leading-snug ${isWide ? "text-[13px]" : "text-[11px]"} ${
+          className={`flex-1 font-bold leading-snug ${isWide ? "text-sm" : "text-xs"} ${
             isRetake || itemClashes ? "text-white" : "text-slate-700 dark:text-slate-200"
           }`}
           style={{
@@ -380,16 +380,16 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
         {/* ── BOTTOM: teacher + section + room ── */}
         <div className="flex flex-col gap-1">
           {teacherName && (
-            <div className={`flex items-center gap-1 text-[10px] ${
+            <div className={`flex items-center gap-1 text-[11px] font-medium ${
               isRetake || itemClashes ? "text-slate-200 opacity-90" : "text-slate-400 dark:text-slate-500"
             }`}>
-              <User className="w-2.5 h-2.5 flex-shrink-0" />
+              <User className="w-3 h-3 flex-shrink-0" />
               <span className="truncate">{teacherName}</span>
             </div>
           )}
           <div className="flex items-center justify-between gap-1">
             <span
-              className={`text-[9px] font-black px-1.5 py-[2px] rounded leading-none ${
+              className={`text-[10px] font-black px-2 py-[2px] rounded leading-none ${
                 itemClashes
                   ? "bg-white text-red-600 font-extrabold"
                   : isRetake
@@ -402,13 +402,13 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
 
             {item.room && (
               <span
-                className={`flex items-center gap-0.5 text-[10px] font-bold ${
+                className={`flex items-center gap-0.5 text-[11px] font-bold ${
                   isRetake || itemClashes
                     ? "text-emerald-300"
                     : "text-emerald-600 dark:text-emerald-400"
                 }`}
               >
-                <Building2 className="w-2.5 h-2.5 flex-shrink-0" />
+                <Building2 className="w-3 h-3 flex-shrink-0" />
                 {item.room}
               </span>
             )}
@@ -708,122 +708,10 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
             ) : activeViewMode === "grid" ? (
               
               <>
-                {/* ── MOBILE EXCLUSIVE SCHEDULE MATRIX VIEW (VERTICAL CARDS - 0 SIDE SCROLL) ── */}
-                <div className="block md:hidden space-y-4">
-                  {WEEKDAYS.map((dayName) => {
-                    const dayClasses = myRoutineItems.filter((item) => item.day === dayName);
-                    const actualClasses = dayClasses.filter((c) => c.type !== "Break" && c.type !== "No Class");
-
-                    if (actualClasses.length === 0) return null;
-
-                    return (
-                      <div key={dayName} className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm p-4 space-y-3">
-                        <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-                          <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-indigo-500" />
-                            <h3 className="text-sm font-black text-slate-900 dark:text-white">{dayName}</h3>
-                          </div>
-                          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
-                            {actualClasses.length} {actualClasses.length === 1 ? "Class" : "Classes"}
-                          </span>
-                        </div>
-
-                        <div className="space-y-2.5">
-                          {actualClasses.map((item) => {
-                            const isRetake = item.section !== primarySection;
-                            const itemClashes = clashes.some(
-                              (c) => c.item1.id === item.id || c.item2.id === item.id
-                            );
-                            const facultyInfo = item.faculty ? TEACHER_DIRECTORY[item.faculty] : null;
-                            const teacherName = facultyInfo ? facultyInfo.name : item.faculty;
-
-                            return (
-                              <div
-                                key={item.id}
-                                className={`p-3.5 rounded-xl border transition-all space-y-2 relative ${
-                                  itemClashes
-                                    ? "bg-red-500/20 border-2 border-red-500 text-red-200 animate-pulse"
-                                    : isRetake
-                                    ? "bg-purple-950/40 border-2 border-purple-500/80 text-white shadow-md shadow-purple-500/20"
-                                    : "bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/60"
-                                }`}
-                              >
-                                {/* Badges */}
-                                <div className="flex flex-wrap items-center justify-between gap-1.5 text-xs">
-                                  <span className="flex items-center gap-1 font-black text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">
-                                    <Clock className="w-3 h-3 text-amber-500 flex-shrink-0" />
-                                    {item.timeSlot}
-                                  </span>
-                                  <div className="flex items-center gap-1">
-                                    <span
-                                      className={`text-[10px] font-black px-2 py-0.5 rounded ${
-                                        isRetake ? "bg-purple-600 text-white" : "bg-indigo-600 text-white"
-                                      }`}
-                                    >
-                                      {item.section}
-                                    </span>
-                                    {isRetake && (
-                                      <span className="text-[10px] font-black px-2 py-0.5 rounded bg-amber-400 text-slate-950">
-                                        Retake
-                                      </span>
-                                    )}
-                                    {itemClashes && (
-                                      <span className="text-[10px] font-black px-2 py-0.5 rounded bg-red-600 text-white flex items-center gap-0.5">
-                                        <AlertTriangle className="w-3 h-3" /> Crash
-                                      </span>
-                                    )}
-                                  </div>
-                                </div>
-
-                                {/* Course info */}
-                                <div>
-                                  {item.courseCode && (
-                                    <div className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-0.5">
-                                      {item.courseCode}
-                                    </div>
-                                  )}
-                                  <h4 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
-                                    {item.courseTitle || item.title || item.rawText}
-                                  </h4>
-                                </div>
-
-                                {/* Instructor + Room + Remove action */}
-                                <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-200/40 dark:border-slate-800/60 text-xs">
-                                  {teacherName ? (
-                                    <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 truncate">
-                                      <User className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
-                                      <span className="truncate">{teacherName}</span>
-                                    </div>
-                                  ) : <div />}
-                                  <div className="flex items-center gap-3">
-                                    {item.room && (
-                                      <div className="flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400">
-                                        <Building2 className="w-3.5 h-3.5" />
-                                        <span>Rm {item.room}</span>
-                                      </div>
-                                    )}
-                                    <button
-                                      onClick={() => toggleSelect(item.id)}
-                                      className="p-1 text-slate-400 hover:text-red-500 transition-colors"
-                                      title="Remove"
-                                    >
-                                      <Trash2 className="w-4 h-4" />
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* ── DESKTOP EXCLUSIVE TIMETABLE MATRIX GRID ────────────────────────────── */}
-                <div className="hidden md:block rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full">
+                {/* ── TIMETABLE MATRIX GRID (ALWAYS VISIBLE DESKTOP & MOBILE) ── */}
+                <div className="rounded-2xl bg-white dark:bg-[#0B1120] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden w-full max-w-full">
                   <div className="w-full max-w-full overflow-x-auto scrollbar-thin">
-                    <table className="w-full border-collapse text-left table-fixed">
+                    <table className="w-full min-w-[920px] border-collapse text-left table-fixed">
                     <colgroup>
                       {/* Day column - 11% */}
                       <col style={{ width: "11%" }} />

@@ -5,8 +5,9 @@ import { Footer } from "@/components/Footer";
 import { SakuraBackground } from "@/components/SakuraBackground";
 
 export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
+  width: 1024,
+  initialScale: 0.6,
+  minimumScale: 0.25,
   maximumScale: 5,
 };
 
@@ -56,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col relative overflow-x-hidden">
+      <body className="antialiased selection:bg-amber-400 selection:text-slate-900 bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 min-h-screen min-w-[1024px] flex flex-col relative overflow-x-auto">
         
         {/* ── GLOBAL SITE BACKGROUND ── */}
         <div className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center">
