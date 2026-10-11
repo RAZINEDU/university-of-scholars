@@ -65,8 +65,8 @@ export const Header: React.FC = () => {
 
       <div className="max-w-[1700px] mx-auto px-3 sm:px-6 lg:px-8">
         
-        {/* Main Header Bar */}
-        <div className="flex items-center justify-between h-14 sm:h-16 gap-2 sm:gap-4">
+        {/* Row 1: Brand & Actions */}
+        <div className="flex items-center justify-between h-14 sm:h-16 gap-3">
           
           {/* Brand Logo & Title */}
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
                 <span className="text-sm sm:text-lg font-black tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   University of Scholars
                 </span>
-                <span className="hidden md:inline-flex items-center px-2 py-0.5 text-[10px] font-bold rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                <span className="inline-flex items-center px-2 py-0.5 text-[10px] font-bold rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
                   CSE • Fall 2026
                 </span>
               </div>
@@ -89,38 +89,13 @@ export const Header: React.FC = () => {
                 <span className="font-semibold text-emerald-600 dark:text-emerald-400 text-[10px] sm:text-xs">
                   Routine Engine
                 </span>
-                <span className="hidden sm:inline text-slate-300 dark:text-slate-700">•</span>
-                <span className="hidden sm:inline text-[11px] text-slate-400 dark:text-slate-500">
+                <span className="text-slate-300 dark:text-slate-700">•</span>
+                <span className="text-[11px] text-slate-400 dark:text-slate-500">
                   Computer Science Dept
                 </span>
               </div>
             </div>
           </Link>
-
-          {/* Desktop Navigation Links (Always active as requested for desktop-site view) */}
-          <nav className="flex items-center gap-1.5 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-inner">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold rounded-xl transition-all duration-200 whitespace-nowrap relative ${
-                    isActive
-                      ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30 scale-[1.02]"
-                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-800/60"
-                  }`}
-                >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-slate-500 dark:text-slate-400"}`} />
-                  <span>{link.label}</span>
-                  {link.badge && !isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping" />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
 
           {/* Right Header Actions */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -136,7 +111,7 @@ export const Header: React.FC = () => {
             {/* View Official PDF Button */}
             <button
               onClick={() => setIsPdfModalOpen(true)}
-              className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 transition-all shadow-sm active:scale-95"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 transition-all shadow-sm active:scale-95"
               title="View & Download Official Routine PDF"
             >
               <FileText className="w-3.5 h-3.5" />
@@ -146,7 +121,7 @@ export const Header: React.FC = () => {
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="p-1.5 sm:p-2 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all shadow-sm active:scale-95"
+              className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all shadow-sm active:scale-95"
               title="Toggle Dark / Light Theme"
             >
               {darkMode ? (
@@ -156,6 +131,33 @@ export const Header: React.FC = () => {
               )}
             </button>
           </div>
+        </div>
+
+        {/* Row 2: Navigation Bar on 2nd Line (No side scroll needed) */}
+        <div className="py-2 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-center">
+          <nav className="flex items-center justify-center flex-wrap gap-1.5 sm:gap-2 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-inner">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`flex items-center gap-2 px-3 sm:px-3.5 py-1.5 text-xs font-bold rounded-xl transition-all duration-200 whitespace-nowrap relative ${
+                    isActive
+                      ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30 scale-[1.02]"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-800/60"
+                  }`}
+                >
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-slate-500 dark:text-slate-400"}`} />
+                  <span>{link.label}</span>
+                  {link.badge && !isActive && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping" />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
       </div>
 
