@@ -184,17 +184,24 @@ export const TodayScheduleWidget: React.FC<TodayScheduleWidgetProps> = ({
                   {/* Faculty */}
                   {item.faculty && (
                     <div className="flex items-center gap-3 mt-3 pt-3 border-t border-slate-100 dark:border-slate-800/40">
-                      {facultyInfo?.imageUrl ? (
+                      {facultyInfo?.imageUrl && (
                         <img 
                           src={facultyInfo.imageUrl} 
                           alt={facultyInfo.name} 
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                            const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                            if (fallback) fallback.style.display = "flex";
+                          }}
                           className="w-10 h-10 rounded-full bg-white object-cover shadow-sm border border-slate-200 dark:border-slate-700 flex-shrink-0" 
                         />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 shadow-sm flex-shrink-0">
-                          <User className="w-5 h-5" />
-                        </div>
                       )}
+                      <div 
+                        style={{ display: facultyInfo?.imageUrl ? "none" : "flex" }}
+                        className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 shadow-sm flex-shrink-0"
+                      >
+                        <User className="w-5 h-5" />
+                      </div>
                       <div className="flex flex-col">
                         <span className="font-semibold text-xs text-slate-800 dark:text-slate-200 leading-tight">
                           {facultyInfo ? facultyInfo.name : item.faculty}

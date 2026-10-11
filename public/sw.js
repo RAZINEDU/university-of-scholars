@@ -1,4 +1,4 @@
-const CACHE_NAME = "ius-routine-v4";
+const CACHE_NAME = "ius-routine-v5";
 
 const CORE_PAGES = [
   "/",
@@ -17,6 +17,7 @@ const STATIC_ASSETS = [
   "/icon-512.png",
   "/apple-touch-icon.png",
   "/og-image.png",
+  "/author-image.jpg",
   "/building-sketch.jpg"
 ];
 

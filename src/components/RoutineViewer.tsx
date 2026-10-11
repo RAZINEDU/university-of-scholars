@@ -730,17 +730,24 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
 
               {selectedItemDetail.faculty && (
                 <div className="p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/50 flex gap-4 items-center">
-                  {TEACHER_DIRECTORY[selectedItemDetail.faculty]?.imageUrl ? (
+                  {TEACHER_DIRECTORY[selectedItemDetail.faculty]?.imageUrl && (
                     <img 
                       src={TEACHER_DIRECTORY[selectedItemDetail.faculty].imageUrl}
                       alt={TEACHER_DIRECTORY[selectedItemDetail.faculty].name}
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                        const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.style.display = "flex";
+                      }}
                       className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover shadow-sm border-2 border-indigo-200 dark:border-indigo-800 flex-shrink-0 bg-white"
                     />
-                  ) : (
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-indigo-200 dark:bg-indigo-900 flex items-center justify-center text-indigo-700 dark:text-indigo-300 flex-shrink-0">
-                      <User className="w-10 h-10" />
-                    </div>
                   )}
+                  <div 
+                    style={{ display: TEACHER_DIRECTORY[selectedItemDetail.faculty]?.imageUrl ? "none" : "flex" }}
+                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-indigo-200 dark:bg-indigo-900 items-center justify-center text-indigo-700 dark:text-indigo-300 flex-shrink-0"
+                  >
+                    <User className="w-10 h-10" />
+                  </div>
                   <div>
                     <span className="text-[11px] text-indigo-600 dark:text-indigo-500 font-bold uppercase tracking-wider block mb-1">Instructor</span>
                     <span className="text-base font-black text-indigo-900 dark:text-indigo-300 flex items-center gap-2">

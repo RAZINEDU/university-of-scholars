@@ -188,17 +188,24 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
           {/* Profile Details */}
           <div className="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-5">
             
-            {teacherInfo?.imageUrl ? (
+            {teacherInfo?.imageUrl && (
               <img 
                 src={teacherInfo.imageUrl} 
                 alt={teacherInfo.name} 
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = "flex";
+                }}
                 className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white object-cover shadow-md border-2 border-indigo-100 dark:border-indigo-900/50 flex-shrink-0"
               />
-            ) : (
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-indigo-600 text-white flex items-center justify-center text-3xl font-black shadow-md shadow-indigo-600/30 flex-shrink-0">
-                {selectedTeacherCode}
-              </div>
             )}
+            <div 
+              style={{ display: teacherInfo?.imageUrl ? "none" : "flex" }}
+              className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-indigo-600 text-white items-center justify-center text-3xl font-black shadow-md shadow-indigo-600/30 flex-shrink-0"
+            >
+              {selectedTeacherCode}
+            </div>
 
             <div className="space-y-1">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
