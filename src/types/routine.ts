@@ -21,8 +21,41 @@ export interface TeacherInfo {
   name: string;
   designation: string;
   department: string;
+  phone?: string;
   email?: string;
   imageUrl?: string;
+  room?: string;
 }
 
-export type ViewMode = 'home' | 'section' | 'today' | 'retake' | 'teacher' | 'room' | 'all';
+export interface EducationItem {
+  degree: string;
+  institute: string;
+  year?: string;
+}
+
+export interface ExperienceItem {
+  role: string;
+  company: string;
+  duration?: string;
+}
+
+export interface PublicationItem {
+  title: string;
+  url?: string;
+}
+
+export interface FacultyProfile extends TeacherInfo {
+  serial: number;
+  slug: string;
+  cleanSlug: string;
+  profileUrl?: string;
+  officeAddress?: string;
+  bio?: string;
+  researchInterests?: string[];
+  education?: EducationItem[];
+  experience?: ExperienceItem[];
+  publications?: PublicationItem[];
+}
+
+export type ViewMode = 'home' | 'section' | 'today' | 'retake' | 'teacher' | 'faculty' | 'room' | 'all';
+

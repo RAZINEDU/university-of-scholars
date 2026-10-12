@@ -7,14 +7,13 @@ import {
   UserCheck, 
   Search, 
   Clock, 
-  MapPin, 
   Calendar, 
-  BookOpen, 
   Building2, 
   Filter,
-  Layers,
-  Sparkles,
-  ChevronRight
+  Phone,
+  Mail,
+  Copy,
+  Check
 } from "lucide-react";
 
 interface TeacherWorkloadProps {
@@ -25,20 +24,30 @@ const WEEKDAYS = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thurs
 
 const getRankWeight = (code: string): number => {
   const des = TEACHER_DIRECTORY[code]?.designation || "";
-  if (des.includes("Head of the Department")) return 1;
+  if (des.includes("Head of the Department") || des.includes("Head")) return 1;
   if (des.includes("Director IQAC")) return 2;
-  if (des.includes("Professor")) return 3;
+  if (des.includes("Professor") && !des.includes("Associate") && !des.includes("Assistant")) return 3;
   if (des.includes("Associate Professor")) return 4;
   if (des.includes("Assistant Professor")) return 5;
   if (des.includes("Senior Lecturer")) return 6;
   if (des.includes("Lecturer")) return 7;
-  return 8;
+  if (des.includes("Research Assistant")) return 8;
+  return 9;
 };
 
 export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData }) => {
   const [selectedTeacherCode, setSelectedTeacherCode] = useState<string>("MAA");
   const [teacherSearch, setTeacherSearch] = useState<string>("");
   const [selectedDayFilter, setSelectedDayFilter] = useState<string>("ALL");
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  const handleCopy = (text: string, key: string) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      setCopiedKey(key);
+      setTimeout(() => setCopiedKey(null), 2000);
+    }
+  };
 
   // Get unique teachers list sorted by official rank & seniority
   const teachersList = useMemo(() => {
@@ -48,6 +57,7 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
         set.add(item.faculty);
       }
     });
+
     return Array.from(set).sort((a, b) => {
       const rankA = getRankWeight(a);
       const rankB = getRankWeight(b);
@@ -91,7 +101,7 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
 
   return (
     <div className="w-full space-y-6 animate-fade-in">
-      
+
       {/* ── HEADER & SEARCH BAR ────────────────────────────────────── */}
       <div className="p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white shadow-xl border border-indigo-500/20 space-y-5">
         
@@ -101,13 +111,13 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
               <UserCheck className="w-4 h-4" />
               Faculty Timetable & Serial Schedule Engine
             </div>
-            <h2 className="text-2xl font-bold tracking-tight">Teacher Workload Directory</h2>
+            <h2 className="text-2xl font-bold tracking-tight">Teacher Workload Routine</h2>
             <p className="text-sm text-slate-300 mt-1">
               Select any faculty member to view their complete serial schedule structured by Day, Time & Section.
             </p>
           </div>
 
-          {/* Teacher Selection Dropdown (Dropdown Option Requested) */}
+          {/* Teacher Selection Dropdown */}
           <div className="w-full md:w-80 space-y-1">
             <label className="text-[11px] font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1">
               <Filter className="w-3.5 h-3.5" /> Select Faculty:
@@ -152,7 +162,7 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
             </div>
           </div>
 
-          {/* Teacher Pills (flex-wrap, NO side-scroll!) */}
+          {/* Teacher Pills */}
           <div className="flex flex-wrap items-center gap-2 pt-1 max-h-36 overflow-y-auto pr-1">
             {filteredTeachers.map((code) => {
               const isActive = selectedTeacherCode === code;
@@ -186,9 +196,9 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
           
           {/* Profile Details */}
-          <div className="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-5">
+          <div className="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-5">
             
-            {teacherInfo?.imageUrl && (
+            {teacherInfo?.imageUrl ? (
               <img 
                 src={teacherInfo.imageUrl} 
                 alt={teacherInfo.name} 
@@ -199,7 +209,7 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
                 }}
                 className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white object-cover shadow-md border-2 border-indigo-100 dark:border-indigo-900/50 flex-shrink-0"
               />
-            )}
+            ) : null}
             <div 
               style={{ display: teacherInfo?.imageUrl ? "none" : "flex" }}
               className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-indigo-600 text-white items-center justify-center text-3xl font-black shadow-md shadow-indigo-600/30 flex-shrink-0"
@@ -207,17 +217,55 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
               {selectedTeacherCode}
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-1 flex-1 min-w-0">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
                 {teacherInfo ? teacherInfo.name : selectedTeacherCode}
               </h3>
               <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
                 {teacherInfo ? teacherInfo.designation : "Faculty Member"} • {teacherInfo ? teacherInfo.department : "Department of CSE"}
               </p>
-              <p className="text-sm text-slate-500 dark:text-slate-400 pt-1">
-                Assigned to <span className="font-bold text-slate-700 dark:text-slate-300">{uniqueSections.length} Sections</span> ({uniqueSections.join(", ")})
+              <p className="text-sm text-slate-500 dark:text-slate-400 pt-0.5">
+                Assigned to <span className="font-bold text-slate-700 dark:text-slate-300">{uniqueSections.length} Sections</span> ({uniqueSections.length > 0 ? uniqueSections.join(", ") : "None scheduled"})
               </p>
+
+              {/* Direct Contact details if available */}
+              {(teacherInfo?.phone || teacherInfo?.email) && (
+                <div className="flex flex-wrap items-center gap-2 pt-2">
+                  {teacherInfo.phone && (
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs font-bold">
+                      <Phone className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                      <a href={`tel:${teacherInfo.phone.replace(/[^0-9]/g, "")}`} className="hover:underline font-mono">
+                        {teacherInfo.phone}
+                      </a>
+                      <button
+                        onClick={() => handleCopy(teacherInfo.phone || "", "phone")}
+                        title="Copy Phone"
+                        className="text-emerald-600 hover:text-emerald-800 ml-0.5"
+                      >
+                        {copiedKey === "phone" ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                      </button>
+                    </div>
+                  )}
+
+                  {teacherInfo.email && (
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-indigo-800 dark:text-indigo-200 text-xs font-bold">
+                      <Mail className="w-3 h-3 text-indigo-600 dark:text-indigo-400" />
+                      <a href={`mailto:${teacherInfo.email}`} className="hover:underline font-mono truncate max-w-[200px]">
+                        {teacherInfo.email}
+                      </a>
+                      <button
+                        onClick={() => handleCopy(teacherInfo.email || "", "email")}
+                        title="Copy Email"
+                        className="text-indigo-600 hover:text-indigo-800 ml-0.5"
+                      >
+                        {copiedKey === "email" ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
+
           </div>
 
           {/* Stat Counters */}
@@ -251,7 +299,7 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
         </div>
       )}
 
-      {/* ── DAY FILTER CONTROL BAR (Requested Day Filter) ───────────── */}
+      {/* ── DAY FILTER CONTROL BAR ───────────────────────────────────── */}
       <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <Calendar className="w-4 h-4 text-amber-500" />
@@ -260,7 +308,7 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
           </span>
         </div>
 
-        {/* Day Filter Buttons (flex-wrap, NO side-scroll!) */}
+        {/* Day Filter Buttons */}
         <div className="flex flex-wrap items-center gap-1.5">
           {["ALL", ...WEEKDAYS].map((dayName) => {
             const isActive = selectedDayFilter === dayName;
@@ -281,7 +329,7 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
         </div>
       </div>
 
-      {/* ── SERIALIZED WEEKLY SCHEDULE BY DAY & SECTION (Section Routine Style) ── */}
+      {/* ── SERIALIZED WEEKLY SCHEDULE BY DAY & SECTION ────────────── */}
       <div className="space-y-4">
         
         {filteredTeacherClasses.length === 0 ? (
@@ -298,7 +346,6 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
           WEEKDAYS.map((dayName) => {
             if (selectedDayFilter !== "ALL" && selectedDayFilter !== dayName) return null;
 
-            // Get classes for this specific day, sorted by colIndex (time)
             const dayClasses = allTeacherClasses
               .filter((item) => item.day === dayName)
               .sort((a, b) => a.colIndex - b.colIndex);
@@ -325,7 +372,7 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
                   </span>
                 </div>
 
-                {/* Serialized Class Items (Section Routine Serial Layout) */}
+                {/* Serialized Class Items */}
                 <div className="divide-y divide-slate-100 dark:divide-slate-800/80">
                   {dayClasses.map((item, idx) => {
                     const isLab = item.type === "Lab";
@@ -358,19 +405,16 @@ export const TeacherWorkload: React.FC<TeacherWorkloadProps> = ({ routineData })
                         {/* Batch / Section & Course Details */}
                         <div className="flex-1 space-y-1">
                           <div className="flex flex-wrap items-center gap-2">
-                            {/* Section Badge */}
                             <span className="px-2.5 py-0.5 rounded-md bg-indigo-600 text-white text-xs font-black tracking-wide">
                               {item.section}
                             </span>
 
-                            {/* Course Code */}
                             {item.courseCode && (
                               <span className="text-xs font-black uppercase text-indigo-600 dark:text-indigo-400">
                                 {item.courseCode}
                               </span>
                             )}
 
-                            {/* Class Type Badge */}
                             <span
                               className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                                 isLab

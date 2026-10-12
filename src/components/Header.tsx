@@ -15,7 +15,8 @@ import {
   Sparkles,
   User,
   GraduationCap,
-  Smartphone
+  Smartphone,
+  Users
 } from "lucide-react";
 import { PdfModal } from "./PdfModal";
 
@@ -54,6 +55,7 @@ export const Header: React.FC = () => {
     { href: "/today", label: "Today's Routine", icon: Sparkles, badge: true },
     { href: "/retake", label: "Retake & Custom", icon: GraduationCap },
     { href: "/teacher", label: "Teacher Schedule", icon: UserCheck },
+    { href: "/faculty", label: "Teacher Info", icon: Users },
     { href: "/room", label: "Room Availability", icon: Building2 },
     { href: "/author", label: "Author", icon: User },
   ];
@@ -156,7 +158,7 @@ export const Header: React.FC = () => {
 
         {/* Row 2: Navigation Bar on 2nd Line (With Install Option) */}
         <div className="py-2 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-center">
-          <nav className="flex items-center justify-center flex-wrap gap-1.5 sm:gap-2 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-inner">
+          <nav suppressHydrationWarning className="flex items-center justify-center flex-wrap gap-1.5 sm:gap-2 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 shadow-inner">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -171,7 +173,7 @@ export const Header: React.FC = () => {
                   }`}
                 >
                   <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-slate-500 dark:text-slate-400"}`} />
-                  <span>{link.label}</span>
+                  <span suppressHydrationWarning>{link.label}</span>
                   {link.badge && !isActive && (
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping" />
                   )}

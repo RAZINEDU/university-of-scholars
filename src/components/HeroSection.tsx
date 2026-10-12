@@ -10,7 +10,8 @@ import {
   ArrowRight,
   Sparkles,
   Zap,
-  Activity
+  Activity,
+  UserCheck
 } from "lucide-react";
 
 interface HeroSectionProps {
@@ -47,18 +48,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ totalClasses }) => {
       color: "from-purple-500 to-fuchsia-600",
       bgLight: "bg-purple-50",
       bgDark: "dark:bg-purple-900/20",
-      textColor: "text-purple-600 dark:text-purple-400",
-      span: "md:col-span-2 lg:col-span-1"
+      textColor: "text-purple-600 dark:text-purple-400"
     },
     {
       id: "teacher" as ViewMode,
-      title: "Teacher Workload",
-      description: "Track faculty schedules, finding out when they are free for consultation.",
-      icon: <Users className="w-6 h-6" />,
+      title: "Teacher Schedule",
+      description: "Track faculty routine schedules, finding out when they are in class or free for consultation.",
+      icon: <UserCheck className="w-6 h-6" />,
       color: "from-emerald-400 to-teal-500",
       bgLight: "bg-emerald-50",
       bgDark: "dark:bg-emerald-900/20",
       textColor: "text-emerald-600 dark:text-emerald-400"
+    },
+    {
+      id: "faculty" as ViewMode,
+      title: "Faculty Profiles",
+      description: "Official profiles of CSE faculty members with individual slug pages, contacts, research, and schedule.",
+      icon: <Users className="w-6 h-6" />,
+      color: "from-indigo-500 to-purple-600",
+      bgLight: "bg-indigo-50",
+      bgDark: "dark:bg-indigo-900/20",
+      textColor: "text-indigo-600 dark:text-indigo-400"
     },
     {
       id: "room" as ViewMode,
@@ -110,7 +120,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ totalClasses }) => {
         </div>
 
       {/* Feature Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 xl:gap-6 max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 xl:gap-5 max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {features.map((feature, idx) => (
           <Link
             key={feature.id}

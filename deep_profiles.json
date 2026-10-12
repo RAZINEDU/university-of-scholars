@@ -1,0 +1,813 @@
+{
+  "engr.-md.-ahsan-arif": {
+    "officeAddress": "Level 13, Dept. of CSE, University of Scholars, 40, Bulu Ocean Tower, Kamel Ataturk Avenue, Banani, Dhaka",
+    "researchInterests": [
+      "Machine Learning",
+      "Data Science",
+      "the Internet of Things",
+      "Artificial Intelligence",
+      "Natural Language Processing"
+    ],
+    "education": [],
+    "experience": [
+      {
+        "role": "Associate Professor &amp; HEAD",
+        "company": "University of Scholars",
+        "duration": "October 2021- till date"
+      },
+      {
+        "role": "Associate Professor &amp; HEAD",
+        "company": "AUB",
+        "duration": "2019- OCT 2021"
+      },
+      {
+        "role": "Associate Professor",
+        "company": "AUB",
+        "duration": "2017-2019"
+      },
+      {
+        "role": "Assistant Professor &amp; Director IT-cum-Advisor, Digital Marketing",
+        "company": "AUB",
+        "duration": "2016-2017"
+      },
+      {
+        "role": "Assistant Professor &amp; Director IT",
+        "company": "AUB",
+        "duration": "2015-2016"
+      },
+      {
+        "role": "Assistant Professor",
+        "company": "AUB",
+        "duration": "2010-2015"
+      },
+      {
+        "role": "Senior Lecturer",
+        "company": "AUB",
+        "duration": "2008-2010"
+      },
+      {
+        "role": "Lecturer &amp; DBA",
+        "company": "AUB",
+        "duration": "2005-2008"
+      },
+      {
+        "role": "Adjunct Faculty",
+        "company": "ASAUB",
+        "duration": "--"
+      },
+      {
+        "role": "Adjunct Faculty",
+        "company": "SU",
+        "duration": "--"
+      },
+      {
+        "role": "Adjunct Faculty",
+        "company": "PU",
+        "duration": "--"
+      }
+    ],
+    "publications": [
+      {
+        "title": "An Improved Prediction System of Students' Performance Using Classification model and Feature Selection Algorithm.",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:roLk4NBRz8UC"
+      },
+      {
+        "title": "An Empirical Analysis of C#, PHP, JAVA, JSP and ASP.Net regarding performance analysis based on CPU utilization",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:Tyk-4Ss8FVUC"
+      },
+      {
+        "title": "Problems and Prospects: Universal Networking Language on Bangla Sentence Structure Perspective",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:u5HHmVD_uO8C"
+      },
+      {
+        "title": "An operational design of indoor tracking system in the environment of GSM structure",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:2osOgNQ5qMEC"
+      },
+      {
+        "title": "Mining structured objects (data records) based on maximum region detection by text content comparison from website",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:d1gkVwhDpl0C"
+      },
+      {
+        "title": "A Machine Learning technique to analyze and detect Corona Virus",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:0EnyYjriUFMC"
+      },
+      {
+        "title": "A Brief Analysis of Bengali Natural Language Processing: Universal Networking Language Perspective",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:_FxGoFyzp5QC"
+      },
+      {
+        "title": "Pervasive, Embedded Models for E-Business",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:Y0pCki6q_DkC"
+      },
+      {
+        "title": "An Algorithmic Approach to Develop Auto Translation System-Bengali to English",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:u-x6o8ySG0sC"
+      },
+      {
+        "title": "Integration Between Artificial Intelligence and Bengali Language Processing",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:zYLM7Y9cAGgC"
+      },
+      {
+        "title": "Algorithm for Natural Language Processing: Bengali Language Perspective",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:IjCSPb-OGe4C"
+      },
+      {
+        "title": "A Survey on Delay of Voice End User in Micro Macro Cellular System",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:9yKSN-GCB0IC"
+      },
+      {
+        "title": "Quality of Service (QOS) in Wireless Network",
+        "url": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=BXH0EuwAAAAJ&amp;citation_for_view=BXH0EuwAAAAJ:UeHWp8X0CEIC"
+      }
+    ],
+    "bio": "Assistant Professor & Director IT-cum-Advisor, Digital Marketing"
+  },
+  "dr.-rowsanara-akhter": {
+    "officeAddress": "",
+    "researchInterests": [],
+    "education": [
+      {
+        "degree": "Ph. D",
+        "institute": "Jahangirnagar University",
+        "year": "2014"
+      },
+      {
+        "degree": "M. Phil",
+        "institute": "Bangladesh University of Engineering and Technology",
+        "year": "2009"
+      },
+      {
+        "degree": "M. Sc.",
+        "institute": "Jahangirnagar University",
+        "year": "2000"
+      },
+      {
+        "degree": "B. Sc.",
+        "institute": "Jahangirnagar University",
+        "year": "1999"
+      },
+      {
+        "degree": "HSC",
+        "institute": "Gazipur Mohila College",
+        "year": "1996"
+      },
+      {
+        "degree": "SSC",
+        "institute": "Joydebpur Govt. Girls High School",
+        "year": "1994"
+      }
+    ],
+    "experience": [
+      {
+        "role": "The International University of Scholars",
+        "company": "Associate Professor",
+        "duration": "October 1st, 2022, to till now"
+      },
+      {
+        "role": "The International University of Scholars",
+        "company": "Assistant Professor",
+        "duration": "March 01, 2019, to September 30, 2022"
+      },
+      {
+        "role": "The International University of Scholars",
+        "company": "Lecturer",
+        "duration": "February 1, 2017, to February 28, 2019"
+      }
+    ],
+    "publications": [],
+    "bio": "April 2005 to October 2009 (M. Phil. Program)- Mathematics, Bangladesh University of Engineering and Technology, Dhaka-1000, Bangladesh"
+  },
+  "reduanul-bari-shovon": {
+    "officeAddress": "",
+    "researchInterests": [],
+    "education": [
+      {
+        "degree": "MSc",
+        "institute": "Jahangirnagar University",
+        "year": "2020"
+      },
+      {
+        "degree": "BSc",
+        "institute": "North South University",
+        "year": "2018"
+      },
+      {
+        "degree": "HSC",
+        "institute": "Savar Cantonment Public School and College",
+        "year": "2012"
+      },
+      {
+        "degree": "SSC",
+        "institute": "Savar Cantonment Public School and College",
+        "year": "2010"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Senior Lecturer",
+        "company": "University of Scholars (IUS)",
+        "duration": "01/06/2024 - Present"
+      },
+      {
+        "role": "Lecturer",
+        "company": "University of Scholars (IUS)",
+        "duration": "5/04/2021 - 31/05/2024"
+      },
+      {
+        "role": "Lecturer",
+        "company": "University of Global Village (UGV)",
+        "duration": "01/02/2020 - 30/11/2021"
+      },
+      {
+        "role": "Executive",
+        "company": "Service Engine Limited",
+        "duration": "1/11/2019 - 30/11/2019"
+      }
+    ],
+    "publications": [
+      {
+        "title": "Iot Based Real Time Environment Monitoring and Forecasting System incorporation with Air Pollution Detector based on Na&iuml;ve Bayes Algorithm.",
+        "url": ""
+      },
+      {
+        "title": "Environment is one of the burning issues nowadays. So, weather monitoring has received much attention in recent time. At that time, people want to stay updated about the latest weather conditions of any place like: - Industrial areas, Office&rsquo;s and Visiting areas etc. In Today&rsquo;s World, knowing live environmental condition is one of the biggest issues because there is an IoT of hurdles arrives when live environmental condition is measured. The proposed system will try to remove this problem since it monitors real time weather conditions. This proposed system monitors and forecast the real time environmental condition by measuring the parameters like temperature, humidity, moisture and rain level. But the unique solution of this proposed system is it will predict the nearest accurate value of weather forecast by integrating the detection of both air and water polluting criteria&rsquo;s using CO and CH 4 detection level in a particular area. So that what we need to measure the precautions can be easily identified. For transmitting the sensing data, we will use Arduino UNO and NODE MCU. For Data management and connection issues, we will use Na&iuml;ve Bayes and Chi Square Algorithm for Analysis. The data will be represented through web server and users can access and notified anywhere through internet connection. It is a cloud based and has easy monitoring and data visualization modules. This proposed system is comparatively low cost one and user-friendly. It evaluated in different stages and after testing the real time evaluation assessments, the validity, reliability and feasibility can be measured.",
+        "url": ""
+      },
+      {
+        "title": "Real Time Face Detection, Recognition and Verification Technology By Thesis Enhancing the Security of ATM Booth Using Raspberry Pi, Webcam Module and Image Processing with OpenCV Library.",
+        "url": ""
+      },
+      {
+        "title": "The task was to develop a system that integrates real time facial detection and recognition technology into the identity verification process which will be used in ATMs. Here the system proposes an ATM security model that would combine a RFID (Radio Frequency Identified) access card, an electronic facial detection and recognition and a navigating display output using Raspberry pi, Web-cam and Arduino module that will go as far as withdrawing money and to prevent criminal activities. The combined features approach is to serve the purpose of both the identification and authentication that card and PIN do.",
+        "url": ""
+      }
+    ],
+    "bio": "Iot Based Real Time Environment Monitoring and Forecasting System incorporation with Air Pollution Detector based on Na&iuml;ve Bayes Algorithm."
+  },
+  "a-k-m-monzurul-islam": {
+    "officeAddress": "",
+    "researchInterests": [],
+    "education": [
+      {
+        "degree": "MBA in MIS",
+        "institute": "World University of Bangladesh",
+        "year": "2009"
+      },
+      {
+        "degree": "M.Sc in CSE",
+        "institute": "Bangalore University",
+        "year": "2002"
+      },
+      {
+        "degree": "B.Sc in CSE",
+        "institute": "Bangalore University",
+        "year": "2000"
+      },
+      {
+        "degree": "HSC",
+        "institute": "Khulna Public College",
+        "year": "1995"
+      },
+      {
+        "degree": "SSC",
+        "institute": "Khulna Public College",
+        "year": "1993"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Assistant Professor and Head of Department (Natural Science)",
+        "company": "University of Scholars (IUS)",
+        "duration": "September 2020 to Date"
+      },
+      {
+        "role": "Adjunct Faculty (CSE Department)",
+        "company": "Independent University Bangladesh (IUB)",
+        "duration": "September 2016 to Date"
+      },
+      {
+        "role": "Manager",
+        "company": "Europa Group",
+        "duration": "January 2015 to August 2017."
+      },
+      {
+        "role": "Senior IT Executive",
+        "company": "MGH Group",
+        "duration": "January 2010 to December 2014."
+      },
+      {
+        "role": "Lecturer",
+        "company": "Atish Dipankar University of Science &amp; Technology",
+        "duration": "September 2005 to December 2009"
+      },
+      {
+        "role": "Lecturer",
+        "company": "World University of Bangladesh",
+        "duration": "April 2004 to August 2005"
+      },
+      {
+        "role": "Instructor",
+        "company": "Gateway Education",
+        "duration": "February 2003 to March 2004"
+      }
+    ],
+    "publications": [
+      {
+        "title": "A.K.M. Monzurul Islam & Mustafa Nizamul Aziz (2020). An example of developing a knowledge-based system. International Journal of Science and Business, 4(7), 52-56. DOI:",
+        "url": ""
+      },
+      {
+        "title": "A possible way to understand how a knowledge system works is to imagine an expert-client situation. We are all experts in our fields, but in daily life, we need assistance from an expert in an area that we do not know. This paper describes a knowledge-based system for Computer hardware diagnosis. Intermediate computer users can diagnose their hardware using the system's knowledge base when facing hardware problems with desktop computers. The main purpose of this paper is to include a real-time example of how a knowledge system can be built.",
+        "url": ""
+      },
+      {
+        "title": "Mustafa Nizamul Aziz & A.K.M. Monzurul Islam (2020). Reviewing Data Mining as an enabling technology for BI. International Journal of Science and Business, 4(7), 46-51. DOI:",
+        "url": ""
+      },
+      {
+        "title": "Data mining (DM) is the process of discovering or \"mining\" new knowledge from large databases and applying it to decision-making. In recent times, companies have been using a wide range of data mining techniques to better understand their customers and their performance and solve complex business problems. Data mining is a way to develop Business Intelligence (BI) from data that an organization collects, organizes, and stores. The purpose of this paper is to review Data Mining as an enabling technology for Business Intelligence. Documents analysis was used as the data collection method and a qualitative approach was used for data analysis in the study.",
+        "url": ""
+      }
+    ],
+    "bio": "A.K.M. Monzurul Islam & Mustafa Nizamul Aziz (2020). An example of developing a knowledge-based system. International Journal of Science and Business, 4(7), 52-56. DOI:"
+  },
+  "md.-ashif-mahmud-joy": {
+    "officeAddress": "",
+    "researchInterests": [
+      "is Machine Learning and Deep Learning using Deep Conversational Neural Networks. I have done my fully functional capstone project on it."
+    ],
+    "education": [
+      {
+        "degree": "BSc",
+        "institute": "United International University",
+        "year": "2022"
+      },
+      {
+        "degree": "HSC",
+        "institute": "Dhaka College",
+        "year": "2016"
+      },
+      {
+        "degree": "SSC",
+        "institute": "Engineering University School and College",
+        "year": "2014"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Senior Lecturer",
+        "company": "International University of Scholars",
+        "duration": "June 2024 - Present"
+      },
+      {
+        "role": "Lecturer",
+        "company": "International University of Scholars",
+        "duration": "May 2022 - May 2024"
+      },
+      {
+        "role": "Reactjs Developer",
+        "company": "Shuffle BV(Amsterdam)",
+        "duration": "2022 (2 Months)"
+      },
+      {
+        "role": "Social Media Manager",
+        "company": "Adios BD",
+        "duration": "2021 (5 Months)"
+      }
+    ],
+    "publications": [
+      {
+        "title": "No publications yet; working on two papers at this moment.",
+        "url": ""
+      }
+    ],
+    "bio": "I graduated from United International University with a Bachelor of Science in Computer Science and Engineering. I am a problem solver and passionate about software project development. My research interest is Machine Learning and Deep Learning using Deep Conversational Neural Networks. I have done my fully functional capstone project on it."
+  },
+  "dr.-md-shaiful-islam": {
+    "officeAddress": "",
+    "researchInterests": [],
+    "education": [
+      {
+        "degree": "Post-Doctoral Fellow- Department of Mechatronics",
+        "institute": "International Islamic University Malaysia (IIUM), Malaysia",
+        "year": "International Islamic University Malaysia (IIUM), Malaysia"
+      },
+      {
+        "degree": "PhD in Tun Razak Graduate School of Business",
+        "institute": "Universiti Tun Abdul Razak (UNIRAZAK), Malaysia",
+        "year": "2024"
+      },
+      {
+        "degree": "Master of Science in Computer Science",
+        "institute": "American International University, Bangladesh",
+        "year": "2012"
+      },
+      {
+        "degree": "Bachelor of Science in Computer Science",
+        "institute": "University of Madras, India",
+        "year": "2004"
+      },
+      {
+        "degree": "Higher Secondary Certificate (H.S.C) in Science",
+        "institute": "Islamic University Technical College, Dhaka, Bangladesh",
+        "year": "1999"
+      },
+      {
+        "degree": "Secondary School Certificate (S.S.C) in Science",
+        "institute": "Bindubashini Government Boys School, Dhaka, Bangladesh",
+        "year": "1997"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Assistant Professor",
+        "company": "University of Scholars",
+        "duration": "September 2025 - Present"
+      },
+      {
+        "role": "Founder &amp; CEO",
+        "company": "4beats Limited &ndash; Dhaka",
+        "duration": "May 2016 &ndash; Present"
+      },
+      {
+        "role": "Founder &amp; CEO",
+        "company": "Online News Portal 24 &ndash; Dhaka",
+        "duration": "Mar 2020 &ndash; Present"
+      },
+      {
+        "role": "Senior Project Manager",
+        "company": "Nexgen Technologies Sdn Bhd-Kuala Lumpur",
+        "duration": "Mar 2024 &ndash; Feb 2025"
+      },
+      {
+        "role": "Chief Executive Officer (Remote)",
+        "company": "QUPS (Quality Up Services) &ndash; Dhaka",
+        "duration": "Feb 2024 &ndash; Jan 2025"
+      },
+      {
+        "role": "Founder &amp; CEO",
+        "company": "Gramen Ponno &ndash; Dhaka",
+        "duration": "June 2018 &ndash; June 2024"
+      },
+      {
+        "role": "QA Manager / Test Manager",
+        "company": "Tasawr Interactive &ndash; Dhaka",
+        "duration": "Mar 2009 &ndash; Nov 2010"
+      },
+      {
+        "role": "Assistant Manager / Test Leader",
+        "company": "Bangladesh Internet Press Ltd. (BIPL) &ndash; Dhaka",
+        "duration": "Mar 2007 &ndash; Feb 2009"
+      },
+      {
+        "role": "Test Engineer",
+        "company": "UNIQA BDC. - Dhaka",
+        "duration": "Dec 2005 &ndash; Sept 2006"
+      },
+      {
+        "role": "SQA Engineer / Test Engineer",
+        "company": "DataSoft Systems Bangladesh Ltd. - Dhaka",
+        "duration": "Jan 2005 &ndash; Nov 2005"
+      }
+    ],
+    "publications": [
+      {
+        "title": "Shaiful Islam, Md. Mamun Habib, &ldquo;Integrating Forecasting & Planning Management for Sustainable Hospital Supply Chains and Societal Advancement&rdquo;, International Journal of Supply Chain Management, Vol 13, No 4 (2024), ISSN: 2050-7399 (Online) 2051- 3771 (Print), DOI: https://doi.org/10.59160/ijscm.v13i4.6263",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam, Md. Mamun Habib, &ldquo;Integrating Technology in Hospital Supply Chain: Pathway to a Sustainable Healthcare Ecosystem&rdquo;, International Journal of Supply Chain Management, Vol 13, No 1 (2024), ISSN: 2050-7399 (Online) 2051-3771 (Print), DOI: https://doi.org/10.59160/ijscm.v13i1.6223 Dr. Md Shaiful Islam Phone: +8801716314667 | Email: jshaiful@gmail.com | Location: Dhaka | LinkedIn: www.linkedin.com/in/shaiful SENIOR PROJECT / SOFTWARE QUALITY / TESTING MANAGEMENT PROFESSIONAL.",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam, Md. Mamun Habib, Gazi Md Nurul Islam, &ldquo;A Study on Sustainable Hospital Supply Chain Management towards Societal Advancement in the Post-Pandemic Era&rdquo;, International Journal of Supply Chain Management, Vol 12, No 4 (2023), ISSN: 2050-7399 (Online) 2051-3771 (Print), DOI: https://doi.org/10.59160/ijscm.v12i4.6201",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam, Md. Mamun Habib, &ldquo;The Role of Latest Technology in Sustainable Hospital Supply Chain Management&rdquo;, International Supply Chain Technology Journal, vol. 9, no. 7, 2023, DOI: https://doi.org/10.20545/isctj.v09.i07.03",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam, Md. Mamun Habib, &ldquo;Enhancing Sustainable Hospital Supply Chain Management through Collaboration and Information Flow in the Post-Pandemic Era&rdquo;, International Supply Chain Technology Journal, vol. 9, no. 6, 2023, DOI: https://doi.org/10.20545/isctj.v9i6.293",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam, Md. Mamun Habib, &ldquo;Sustainable Hospital Supply Chain Management through Hospital Infrastructure Development&rdquo;, International Supply Chain Technology Journal, vol. 9, no. 5, 2023, DOI:",
+        "url": ""
+      },
+      {
+        "title": "https://doi.org/10.20545/isctj.v09.i05.02",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam, Md. Mamun Habib, Gazi Md Nurul Islam, &ldquo;A Unified Approach to Sustainable Hospital Supply Chain Management in the Post-Pandemic Era&rdquo;, International Supply Chain Technology Journal, vol. 9, no. 8, 2023, DOI: https://doi.org/10.20545/isctj.v9i8.306",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam, Md. Mamun Habib, &ldquo;The Role of Forecasting and Planning Management in Sustainable Hospital Supply Chain&rdquo;, International Supply Chain Technology Journal, vol. 8, no. 7, 2022, DOI: https://doi.org/10.20545/isctj.v08.i07.03",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam; Bishwajit B. Pathik; Manzur H. Khan; Mamun Habib, &ldquo;Software test estimation tool: Comparable with COCOMOII model&rdquo;, 2016 IEEE International Conference on Industrial Engineering and Engineering Management (IEEM), DOI: 10.1109/IEEM.2016.7797865 [SCOPUS]",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam; Bishwajit B. Pathik; Manzur H. Khan; Mamun Habib, &ldquo;A novel tool for reducing time and cost at software test estimation: An use cases and functions based approach&rdquo;, 2014 IEEE International Conference on Industrial Engineering and Engineering Management, DOI: 10.1109/IEEM.2014.7058650 [SCOPUS]",
+        "url": ""
+      },
+      {
+        "title": "Shaiful Islam; Bishwajit B. Pathik; Manzur H. Khan; Mamun Habib, \"Software test estimation tools using use cases and functions\", 2013 IEEE International Conference on Industrial Engineering and Engineering Management, DOI: 10.1109/IEEM.2013.6962440 [SCOPUS]",
+        "url": ""
+      }
+    ],
+    "bio": "Post-Doctoral Fellow: Early Estimation of Software Development Projects Using Artificial Intelligence. (Ongoing)"
+  },
+  "mahbub-e-sobhani": {
+    "officeAddress": "",
+    "researchInterests": [],
+    "education": [
+      {
+        "degree": "M.Sc",
+        "institute": "United International University",
+        "year": "Ongoing"
+      },
+      {
+        "degree": "B.Sc",
+        "institute": "United International University",
+        "year": "2021"
+      },
+      {
+        "degree": "HSC",
+        "institute": "Dhaka Residential Model College",
+        "year": "2015"
+      },
+      {
+        "degree": "SSC",
+        "institute": "Monipur High School",
+        "year": "2013"
+      }
+    ],
+    "experience": [
+      {
+        "role": "1",
+        "company": "State University of Bangladesh",
+        "duration": "Research Assistant (Part Time)"
+      },
+      {
+        "role": "2",
+        "company": "Orange Solutions Limited, United Group",
+        "duration": "Junior Software Engineer"
+      },
+      {
+        "role": "3",
+        "company": "Bangladesh-Japan ICT Engineers' Training Program",
+        "duration": "Trainee"
+      },
+      {
+        "role": "4",
+        "company": "SoftBD Limited",
+        "duration": "Software Engineer Intern"
+      },
+      {
+        "role": "5",
+        "company": "Fronture Technologies Limited",
+        "duration": "Software Engineer Intern"
+      }
+    ],
+    "publications": [
+      {
+        "title": "https://aclanthology.org/2023.banglalp-1.3/",
+        "url": "https://aclanthology.org/2023.banglalp-1.3/"
+      },
+      {
+        "title": "https://link.springer.com/chapter/10.1007/978-981-99-7649-2_13",
+        "url": "https://link.springer.com/chapter/10.1007/978-981-99-7649-2_13"
+      }
+    ],
+    "bio": "Advancing Bangla Punctuation Restoration by a Monolingual Transformer-Based Method and a Large-Scale Corpus. Details: https://aclanthology.org/2023.banglalp-1.3/"
+  },
+  "tuhin-hossain": {
+    "officeAddress": "",
+    "researchInterests": [],
+    "education": [
+      {
+        "degree": "MSc",
+        "institute": "Jahangirnagar University",
+        "year": "2022"
+      },
+      {
+        "degree": "BSc",
+        "institute": "Daffodil International University",
+        "year": "2021"
+      },
+      {
+        "degree": "HSC",
+        "institute": "Hajigonj Model Govt. College",
+        "year": "2015"
+      },
+      {
+        "degree": "SSC",
+        "institute": "Firojpur J. K High School",
+        "year": "2013"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Lecturer",
+        "company": "University of Scholars (IUS)",
+        "duration": "18/05/2023 - Present"
+      },
+      {
+        "role": "Network Engineer",
+        "company": "Icon Infotech Limited",
+        "duration": "08/06/2021 - 31/12/2021"
+      },
+      {
+        "role": "Teaching Assistant",
+        "company": "Daffodil International University",
+        "duration": "1/10/2020 - 30/04/2021"
+      }
+    ],
+    "publications": [
+      {
+        "title": "Hossain, T., Kabir, A. A. N., Ratul, M. A. H., & Sattar, A. (2022, March). Sentence Level Sentiment Classification Using Machine Learning Approach in the Bengali Language. In 2022 International Conference on Decision Aid Sciences and Applications (DASA) (pp. 1286-1289). IEEE.",
+        "url": ""
+      }
+    ],
+    "bio": "Hossain, T., Kabir, A. A. N., Ratul, M. A. H., & Sattar, A. (2022, March). Sentence Level Sentiment Classification Using Machine Learning Approach in the Bengali Language. In 2022 International Conference on Decision Aid Sciences and Applications (DASA) (pp. 1286-1289). IEEE."
+  },
+  "asib-mostakim-fony": {
+    "officeAddress": "",
+    "researchInterests": [],
+    "education": [
+      {
+        "degree": "M.S.",
+        "institute": "University of Chittagong",
+        "year": "2019"
+      },
+      {
+        "degree": "B.Sc.",
+        "institute": "University of Chittagong",
+        "year": "2018"
+      },
+      {
+        "degree": "HSC",
+        "institute": "Govt. Hazi Muhammad Mohsin College",
+        "year": "2013"
+      },
+      {
+        "degree": "SSC",
+        "institute": "Govt. Muslim High School",
+        "year": "2011"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Lecturer",
+        "company": "University of Scholars",
+        "duration": "2023- present"
+      },
+      {
+        "role": "Jr. Software Engineer",
+        "company": "General Software Solutions",
+        "duration": "March, 2023- May, 2023"
+      }
+    ],
+    "publications": [],
+    "bio": "Hasan, S., Fony, A.M. and Uddin, M.M., 2019, February. Reduced model based feedback stabilization of large-scale sparse power system model. In 2019 International Conference on Electrical, Computer and Communication Engineering (ECCE) (pp. 1-6). IEEE."
+  },
+  "sadia-nur-nazifa": {
+    "officeAddress": "",
+    "researchInterests": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Data Science",
+      "Digital Image Processing",
+      "Computer Vision",
+      "Human-Computer Interaction",
+      "CyberSecurity",
+      "Internet of Things"
+    ],
+    "education": [
+      {
+        "degree": "H.S.C.",
+        "institute": "Holy Cross College",
+        "year": "2019"
+      },
+      {
+        "degree": "S.S.C.",
+        "institute": "Mohammadpur Preparatory School and College",
+        "year": "2017"
+      }
+    ],
+    "experience": [
+      {
+        "role": "1",
+        "company": "University of Scholars",
+        "duration": "Lecturer (Dept of CSE)"
+      },
+      {
+        "role": "2",
+        "company": "BrainStation 23",
+        "duration": "Intern"
+      }
+    ],
+    "publications": [],
+    "bio": "PPDHero: Requirements Elicitation and Development of a System to Empower New Mothers on Postpartum Depression."
+  },
+  "m.m.-fazle-rabbi": {
+    "officeAddress": "",
+    "researchInterests": [],
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institute": "University of Bedfordshire, Luton, Beds, UK",
+        "year": "2010-2011"
+      },
+      {
+        "degree": "Bachelor of Science (Honors) in Computer Information Systems (CIS)",
+        "institute": "University of Windsor, Windsor, Ontario, Canada",
+        "year": "2000-2004"
+      },
+      {
+        "degree": "HSC",
+        "institute": "Dhaka Board",
+        "year": "1997"
+      },
+      {
+        "degree": "SSC",
+        "institute": "Dhaka Board",
+        "year": "1995"
+      }
+    ],
+    "experience": [
+      {
+        "role": "Assistant Professor",
+        "company": "University of Scholars (IUS)",
+        "duration": "October 2024&ndash;Present"
+      },
+      {
+        "role": "Assistant Professor",
+        "company": "Bangladesh University of Business &amp; Technology (BUBT)",
+        "duration": "Oct 2018&ndash; Present"
+      },
+      {
+        "role": "Lecturer",
+        "company": "Bangladesh University of Business &amp; Technology (BUBT)",
+        "duration": "July 2013&ndash;Oct 2018"
+      },
+      {
+        "role": "Consultant",
+        "company": "Harvest International School, Dhaka",
+        "duration": "Jun 2024-Jun 2025"
+      }
+    ],
+    "publications": [
+      {
+        "title": "http://doi.org/10.11591/ijeecs.v38.i2.pp950-959",
+        "url": "http://doi.org/10.11591/ijeecs.v38.i2.pp950-959"
+      },
+      {
+        "title": "https://doi.org/10.1007/978-981-97-3966-0_5",
+        "url": "https://doi.org/10.1007/978-981-97-3966-0_5"
+      },
+      {
+        "title": "https://doi.org/10.1109/ICEEICT62016.2024.10534421",
+        "url": "https://doi.org/10.1109/ICEEICT62016.2024.10534421"
+      },
+      {
+        "title": "https://doi.org/10.1109/ICEEICT62016.2024.10534477",
+        "url": "https://doi.org/10.1109/ICEEICT62016.2024.10534477"
+      },
+      {
+        "title": "https://doi.org/10.1007/978-981-97-3937-0_34",
+        "url": "https://doi.org/10.1007/978-981-97-3937-0_34"
+      },
+      {
+        "title": "https://doi.org/10.1007/978-981-97-3937-0_2",
+        "url": "https://doi.org/10.1007/978-981-97-3937-0_2"
+      },
+      {
+        "title": "https://doi.org/10.1007/978-981-97-3937-0_46",
+        "url": "https://doi.org/10.1007/978-981-97-3937-0_46"
+      },
+      {
+        "title": "https://doi.org/10.1007/978-981-97-3937-0_33",
+        "url": "https://doi.org/10.1007/978-981-97-3937-0_33"
+      },
+      {
+        "title": "https://doi.org/10.1007/978-3-031-66336-9_4",
+        "url": "https://doi.org/10.1007/978-3-031-66336-9_4"
+      },
+      {
+        "title": "https://doi.org/10.1109/ICSCT53883.2021.9642550",
+        "url": "https://doi.org/10.1109/ICSCT53883.2021.9642550"
+      },
+      {
+        "title": "https://doi.org/10.1109/CEEICT.2018.8628092",
+        "url": "https://doi.org/10.1109/CEEICT.2018.8628092"
+      }
+    ],
+    "bio": "Bachelor of Science (Honors) in Computer Information Systems (CIS)"
+  }
+}

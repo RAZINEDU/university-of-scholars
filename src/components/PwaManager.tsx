@@ -14,7 +14,7 @@ export const PwaManager: React.FC = () => {
 
   // Pre-warm and prefetch all routine pages for complete offline readiness
   const warmOfflineCache = useCallback(() => {
-    const routes = ["/", "/section", "/today", "/retake", "/teacher", "/room", "/author"];
+    const routes = ["/", "/section", "/today", "/retake", "/teacher", "/faculty", "/room", "/author"];
     
     // 1. Next.js router prefetch (fetches all JS chunks and data)
     routes.forEach((route) => {
