@@ -30,7 +30,7 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({ onSuccess }) => 
         onSuccess();
       } else {
         setIsLoading(false);
-        setError("Invalid Admin PIN. Default PIN is: ius2026");
+        setError("Invalid Admin PIN. Please try again.");
       }
     }, 400);
   };
@@ -72,7 +72,7 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({ onSuccess }) => 
                     setPin(e.target.value);
                     if (error) setError("");
                   }}
-                  placeholder="Enter PIN (Default: ius2026)"
+                  placeholder="Enter admin PIN"
                   autoFocus
                   required
                   className="w-full pl-10 pr-10 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 transition-all"
@@ -110,11 +110,7 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({ onSuccess }) => 
             </button>
           </form>
 
-          <div className="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/60 text-center">
-            <span className="text-[11px] text-slate-400 dark:text-slate-500">
-              Default access PIN: <strong className="font-mono text-purple-600 dark:text-purple-400">ius2026</strong>
-            </span>
-          </div>
+
         </div>
       </div>
     </div>
