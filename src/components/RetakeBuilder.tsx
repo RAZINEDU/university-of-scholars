@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import { RoutineItem } from "@/types/routine";
+import { useDynamicTimeSlots } from "@/lib/useDynamicData";
 import { TEACHER_DIRECTORY } from "@/data/teacherData";
 import { 
   Plus, 
@@ -33,19 +34,19 @@ interface RetakeBuilderProps {
   routineData: RoutineItem[];
 }
 
-// Standard 5 time columns for Sat–Thu
+// Standard 5 time columns for Sat–Thu (Fall 2026)
 const TIME_SLOTS = [
-  { colIndex: 1, label: "9:30 AM - 11:00 AM" },
-  { colIndex: 2, label: "11:00 AM - 12:30 PM" },
-  { colIndex: 3, label: "12:30 PM - 1:30 PM" },
-  { colIndex: 4, label: "1:30 PM - 3:00 PM" },
-  { colIndex: 5, label: "3:00 PM - 4:30 PM" },
+  { colIndex: 1, label: "9:00 AM - 10:30 AM" },
+  { colIndex: 2, label: "10:30 AM - 12:00 PM" },
+  { colIndex: 3, label: "12:00 PM - 1:00 PM" },
+  { colIndex: 4, label: "1:00 PM - 2:30 PM" },
+  { colIndex: 5, label: "2:30 PM - 4:00 PM" },
 ];
 
 // Friday-specific time slots (7 columns)
 const FRIDAY_TIME_SLOTS = [
-  { colIndex: 1, label: "9:30 AM - 11:00 AM" },
-  { colIndex: 2, label: "11:00 AM - 12:30 PM" },
+  { colIndex: 1, label: "9:00 AM - 10:30 AM" },
+  { colIndex: 2, label: "10:30 AM - 12:00 PM" },
   { colIndex: 3, label: "12:30 PM - 1:00 PM" },
   { colIndex: 4, label: "1:00 PM - 2:30 PM" },   // Jumu'ah Break
   { colIndex: 5, label: "2:30 PM - 3:30 PM" },
@@ -85,17 +86,17 @@ const getTimeRange = (timeSlot: string | undefined): [number, number] => {
 };
 
 // Returns colSpan for Sat-Thu
-const getColSpan = (colIndex: number, timeSlot: string | undefined): number => {
+const getColSpan = (colIndex: number, timeSlot: string | undefined, slots: { colIndex: number; label: string }[] = TIME_SLOTS): number => {
   if (!timeSlot) return 1;
   const [start, end] = getTimeRange(timeSlot);
   if (start === 0 && end === 0) return 1;
 
-  const startIdx = TIME_SLOTS.findIndex((s) => s.colIndex === colIndex);
+  const startIdx = slots.findIndex((s) => s.colIndex === colIndex);
   if (startIdx === -1) return 1;
 
   let span = 1;
-  for (let k = startIdx + 1; k < TIME_SLOTS.length; k++) {
-    const [sStart] = getTimeRange(TIME_SLOTS[k].label);
+  for (let k = startIdx + 1; k < slots.length; k++) {
+    const [sStart] = getTimeRange(slots[k].label);
     if (end > sStart + 0.05) {
       span++;
     } else {
@@ -106,17 +107,17 @@ const getColSpan = (colIndex: number, timeSlot: string | undefined): number => {
 };
 
 // Returns colSpan for Friday
-const getFridayColSpan = (colIndex: number, timeSlot: string | undefined): number => {
+const getFridayColSpan = (colIndex: number, timeSlot: string | undefined, slots: { colIndex: number; label: string }[] = FRIDAY_TIME_SLOTS): number => {
   if (!timeSlot) return 1;
   const [start, end] = getTimeRange(timeSlot);
   if (start === 0 && end === 0) return 1;
 
-  const startIdx = FRIDAY_TIME_SLOTS.findIndex((s) => s.colIndex === colIndex);
+  const startIdx = slots.findIndex((s) => s.colIndex === colIndex);
   if (startIdx === -1) return 1;
 
   let span = 1;
-  for (let k = startIdx + 1; k < FRIDAY_TIME_SLOTS.length; k++) {
-    const [sStart] = getTimeRange(FRIDAY_TIME_SLOTS[k].label);
+  for (let k = startIdx + 1; k < slots.length; k++) {
+    const [sStart] = getTimeRange(slots[k].label);
     if (end > sStart + 0.05) {
       span++;
     } else {
@@ -126,19 +127,19 @@ const getFridayColSpan = (colIndex: number, timeSlot: string | undefined): numbe
   return span;
 };
 
-const matchSatThuSlot = (item: RoutineItem, colIndex: number) => {
+const matchSatThuSlot = (item: RoutineItem, colIndex: number, slots: { colIndex: number; label: string }[] = TIME_SLOTS) => {
   if (item.colIndex === colIndex) return true;
   const [start] = getTimeRange(item.timeSlot);
-  const slotLabel = TIME_SLOTS.find((s) => s.colIndex === colIndex)?.label;
+  const slotLabel = slots.find((s) => s.colIndex === colIndex)?.label;
   if (!slotLabel) return false;
   const [slotStart] = getTimeRange(slotLabel);
   return start > 0 && Math.abs(start - slotStart) < 0.25;
 };
 
-const matchFridaySlot = (item: RoutineItem, colIndex: number) => {
+const matchFridaySlot = (item: RoutineItem, colIndex: number, slots: { colIndex: number; label: string }[] = FRIDAY_TIME_SLOTS) => {
   if (item.colIndex === colIndex) return true;
   const [start] = getTimeRange(item.timeSlot);
-  const slotLabel = FRIDAY_TIME_SLOTS.find((s) => s.colIndex === colIndex)?.label;
+  const slotLabel = slots.find((s) => s.colIndex === colIndex)?.label;
   if (!slotLabel) return false;
   const [slotStart] = getTimeRange(slotLabel);
   return start > 0 && Math.abs(start - slotStart) < 0.25;
@@ -173,6 +174,13 @@ const doItemsOverlap = (a: RoutineItem, b: RoutineItem): boolean => {
 };
 
 export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => {
+  const { timeSlots: dynamicTimeSlots } = useDynamicTimeSlots();
+  const satThuSlots = useMemo(() => {
+    return dynamicTimeSlots?.satThuSlots?.length ? dynamicTimeSlots.satThuSlots : TIME_SLOTS;
+  }, [dynamicTimeSlots]);
+  const fridaySlots = useMemo(() => {
+    return dynamicTimeSlots?.fridaySlots?.length ? dynamicTimeSlots.fridaySlots : FRIDAY_TIME_SLOTS;
+  }, [dynamicTimeSlots]);
   const [primarySection, setPrimarySection] = useState<string>("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [searchFilter, setSearchFilter] = useState<string>("");
@@ -423,24 +431,24 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
     const cells: React.ReactNode[] = [];
     let skip = 0;
 
-    for (let i = 0; i < TIME_SLOTS.length; i++) {
+    for (let i = 0; i < satThuSlots.length; i++) {
       if (skip > 0) { skip--; continue; }
 
-      const slot = TIME_SLOTS[i];
-      const colItems = dayClasses.filter((c) => matchSatThuSlot(c, slot.colIndex));
-      const isBreakCol = slot.colIndex === 3; // Lunch break (12:00-1:00)
+      const slot = satThuSlots[i];
+      const colItems = dayClasses.filter((c) => matchSatThuSlot(c, slot.colIndex, satThuSlots));
+      const isBreakCol = Boolean((slot as any).isBreak || slot.colIndex === 3);
 
       let span = 1;
       colItems.forEach((item) => {
-        const s = getColSpan(slot.colIndex, item.timeSlot);
+        const s = getColSpan(slot.colIndex, item.timeSlot, satThuSlots);
         if (s > span) span = s;
       });
 
       if (span > 1) {
         let canSpan = true;
         for (let s = 1; s < span; s++) {
-          const nextSlot = TIME_SLOTS[i + s];
-          if (nextSlot && dayClasses.some((c) => matchSatThuSlot(c, nextSlot.colIndex))) {
+          const nextSlot = satThuSlots[i + s];
+          if (nextSlot && dayClasses.some((c) => matchSatThuSlot(c, nextSlot.colIndex, satThuSlots))) {
             canSpan = false; break;
           }
         }
@@ -490,24 +498,24 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
     const cells: React.ReactNode[] = [];
     let skip = 0;
 
-    for (let i = 0; i < FRIDAY_TIME_SLOTS.length; i++) {
+    for (let i = 0; i < fridaySlots.length; i++) {
       if (skip > 0) { skip--; continue; }
 
-      const slot = FRIDAY_TIME_SLOTS[i];
-      const colItems = dayClasses.filter((c) => matchFridaySlot(c, slot.colIndex));
-      const isBreakCol = slot.colIndex === 3 || slot.colIndex === 4; // 12:30-1:00 or 1:00-2:30 Jumu'ah Break
+      const slot = fridaySlots[i];
+      const colItems = dayClasses.filter((c) => matchFridaySlot(c, slot.colIndex, fridaySlots));
+      const isBreakCol = Boolean((slot as any).isBreak || slot.colIndex === 4);
 
       let span = 1;
       colItems.forEach((item) => {
-        const s = getFridayColSpan(slot.colIndex, item.timeSlot);
+        const s = getFridayColSpan(slot.colIndex, item.timeSlot, fridaySlots);
         if (s > span) span = s;
       });
 
       if (span > 1) {
         let canSpan = true;
         for (let s = 1; s < span; s++) {
-          const nextSlot = FRIDAY_TIME_SLOTS[i + s];
-          if (nextSlot && dayClasses.some((c) => matchFridaySlot(c, nextSlot.colIndex))) {
+          const nextSlot = fridaySlots[i + s];
+          if (nextSlot && dayClasses.some((c) => matchFridaySlot(c, nextSlot.colIndex, fridaySlots))) {
             canSpan = false; break;
           }
         }
@@ -730,7 +738,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
                           <div className="text-[10px] font-extrabold uppercase tracking-widest text-blue-200 mb-0.5">Day</div>
                           <div className="text-xs font-black text-white leading-snug">{primarySection || "My Schedule"}</div>
                         </th>
-                        {TIME_SLOTS.map((slot) => (
+                        {satThuSlots.map((slot) => (
                           <th key={slot.colIndex}
                             className={`px-1.5 py-3 text-center text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider border-r border-blue-800 dark:border-indigo-800 leading-tight ${
                               slot.colIndex === 3 ? "bg-amber-500 text-slate-950 font-black" : "text-blue-100"
@@ -760,7 +768,7 @@ export const RetakeBuilder: React.FC<RetakeBuilderProps> = ({ routineData }) => 
                                 <th className="sticky left-0 z-20 px-3 py-3 border-r border-blue-800 dark:border-indigo-800 align-middle text-center bg-[#1E3A8A] dark:bg-indigo-950 shadow-[2px_0_5px_rgba(0,0,0,0.25)]">
                                   <div className="text-xs font-black text-amber-300 uppercase tracking-wider">Fri time</div>
                                 </th>
-                                {FRIDAY_TIME_SLOTS.map((slot) => (
+                                {fridaySlots.map((slot) => (
                                   <th key={slot.colIndex}
                                     className={`px-1.5 py-2.5 text-center text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider border-r border-blue-800 dark:border-indigo-800 last:border-r-0 leading-tight ${
                                       slot.colIndex === 4 ? "bg-amber-500 text-slate-950 font-black" : "text-blue-100"

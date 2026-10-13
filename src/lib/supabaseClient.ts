@@ -590,10 +590,10 @@ export async function updateAppSettings(settings: Partial<AppSettings>): Promise
 // ─────────────────────────────────────────────────────────────
 
 export const DEFAULT_BATCH_GROUPS: BatchGroup[] = [
-  { batch: "13", label: "Batch 13", sections: ["Section 13"] },
+  { batch: "13", label: "Batch 13", sections: ["Section 13A"] },
   { batch: "14", label: "Batch 14", sections: ["Section 14A", "Section 14B"] },
   { batch: "15", label: "Batch 15", sections: ["Section 15A", "Section 15B"] },
-  { batch: "16", label: "Batch 16", sections: ["Section 16"] },
+  { batch: "16", label: "Batch 16", sections: ["Section 16A"] },
   { batch: "17", label: "Batch 17", sections: ["Section 17A", "Section 17B"] },
   { batch: "18", label: "Batch 18", sections: ["Section 18A", "Section 18B"] },
   { batch: "19", label: "Batch 19", sections: ["Section 19A", "Section 19B", "Section 19C", "Section 19D"] },
@@ -669,16 +669,16 @@ export async function saveBatchGroups(groups: BatchGroup[]): Promise<{ success: 
 // ─────────────────────────────────────────────────────────────
 
 export const DEFAULT_SAT_THU_SLOTS: TimeSlotConfig[] = [
-  { colIndex: 1, label: "9:30 AM - 11:00 AM", slotString: "09:30-11:00" },
-  { colIndex: 2, label: "11:00 AM - 12:30 PM", slotString: "11:00-12:30" },
-  { colIndex: 3, label: "12:30 PM - 1:30 PM", slotString: "12:30 PM - 1:30 PM", isBreak: true },
-  { colIndex: 4, label: "1:30 PM - 3:00 PM", slotString: "01:30-03:00" },
-  { colIndex: 5, label: "3:00 PM - 4:30 PM", slotString: "03:00-04:30" },
+  { colIndex: 1, label: "9:00 AM - 10:30 AM", slotString: "09:00-10:30" },
+  { colIndex: 2, label: "10:30 AM - 12:00 PM", slotString: "10:30-12:00" },
+  { colIndex: 3, label: "12:00 PM - 1:00 PM", slotString: "12:00-01:00", isBreak: true },
+  { colIndex: 4, label: "1:00 PM - 2:30 PM", slotString: "01:00-02:30" },
+  { colIndex: 5, label: "2:30 PM - 4:00 PM", slotString: "02:30-04:00" },
 ];
 
 export const DEFAULT_FRIDAY_SLOTS: TimeSlotConfig[] = [
-  { colIndex: 1, label: "9:30 AM - 11:00 AM", slotString: "09:30-11:00" },
-  { colIndex: 2, label: "11:00 AM - 12:30 PM", slotString: "11:00-12:30" },
+  { colIndex: 1, label: "9:00 AM - 10:30 AM", slotString: "09:00-10:30" },
+  { colIndex: 2, label: "10:30 AM - 12:00 PM", slotString: "10:30-12:00" },
   { colIndex: 3, label: "12:30 PM - 1:00 PM", slotString: "12:30-01:00" },
   { colIndex: 4, label: "1:00 PM - 2:30 PM", slotString: "01:00-02:30", isBreak: true },
   { colIndex: 5, label: "2:30 PM - 3:30 PM", slotString: "02:30-03:30" },

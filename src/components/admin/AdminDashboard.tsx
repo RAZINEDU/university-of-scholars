@@ -415,6 +415,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       throw new Error(res.error || "Failed to save batches to Supabase");
     }
     setBatchGroups(updated);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("ius_routine_updated"));
+      localStorage.setItem("ius_routine_last_update", Date.now().toString());
+    }
     showToast("Batches & Sections updated successfully!", "success");
   };
 
@@ -424,6 +428,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       throw new Error(res.error || "Failed to save time slots to Supabase");
     }
     setPortalTimeSlots(updated);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("ius_routine_updated"));
+      localStorage.setItem("ius_routine_last_update", Date.now().toString());
+    }
     showToast("Timetable columns updated successfully!", "success");
   };
 

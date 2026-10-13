@@ -20,9 +20,11 @@ import {
   ShieldCheck
 } from "lucide-react";
 import { PdfModal } from "./PdfModal";
+import { useDynamicSemesterInfo } from "@/lib/useDynamicData";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
+  const { semesterName } = useDynamicSemesterInfo();
   const [time, setTime] = useState<string>("");
   const [currentDay, setCurrentDay] = useState<string>("");
   
@@ -84,7 +86,7 @@ export const Header: React.FC = () => {
                   University of Scholars
                 </span>
                 <span className="inline-flex items-center px-2 py-0.5 text-[10px] font-bold rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                  CSE • Fall 2026
+                  CSE • {semesterName || "Fall 2026"}
                 </span>
               </div>
 

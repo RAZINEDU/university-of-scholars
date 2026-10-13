@@ -136,20 +136,107 @@ export function useDynamicTimeSlots() {
 
   useEffect(() => {
     let isMounted = true;
-    import("@/lib/supabaseClient").then(({ getPortalTimeSlots, DEFAULT_PORTAL_TIME_SLOTS }) => {
-      getPortalTimeSlots().then((res) => {
-        if (isMounted) {
-          setTimeSlots(res.data || DEFAULT_PORTAL_TIME_SLOTS);
-          setIsSupabase(res.isSupabase);
-        }
-      }).catch(() => {
-        if (isMounted) setTimeSlots(DEFAULT_PORTAL_TIME_SLOTS);
+    const fetchLatest = () => {
+      import("@/lib/supabaseClient").then(({ getPortalTimeSlots, DEFAULT_PORTAL_TIME_SLOTS }) => {
+        getPortalTimeSlots().then((res) => {
+          if (isMounted) {
+            setTimeSlots(res.data || DEFAULT_PORTAL_TIME_SLOTS);
+            setIsSupabase(res.isSupabase);
+          }
+        }).catch(() => {
+          if (isMounted) setTimeSlots(DEFAULT_PORTAL_TIME_SLOTS);
+        });
       });
-    });
+    };
+
+    fetchLatest();
+
+    const handleFocus = () => fetchLatest();
+    window.addEventListener("focus", handleFocus);
+    window.addEventListener("ius_routine_updated", handleFocus);
+
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === "ius_routine_last_update") fetchLatest();
+    };
+    window.addEventListener("storage", handleStorage);
+
+    // Supabase Realtime channel for app_settings changes (instant sync across devices)
+    const channel = supabase
+      .channel("time_slots_realtime")
+      .on(
+        "postgres_changes" as any,
+        { event: "*", schema: "public", table: "app_settings" },
+        () => {
+          if (isMounted) fetchLatest();
+        }
+      )
+      .subscribe();
+
     return () => {
       isMounted = false;
+      window.removeEventListener("focus", handleFocus);
+      window.removeEventListener("ius_routine_updated", handleFocus);
+      window.removeEventListener("storage", handleStorage);
+      supabase.removeChannel(channel);
     };
   }, []);
 
   return { timeSlots, setTimeSlots, isSupabase };
+}
+
+export function useDynamicSemesterInfo() {
+  const [semesterInfo, setSemesterInfo] = useState<{ semesterName: string; announcement: string; announcementActive: boolean }>({
+    semesterName: "Fall 2026",
+    announcement: "Welcome to IUS CSE Class Routine & Schedule Portal!",
+    announcementActive: true,
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchLatest = () => {
+      import("@/lib/supabaseClient").then(({ getAppSettings }) => {
+        getAppSettings().then((res) => {
+          if (isMounted && res) {
+            setSemesterInfo({
+              semesterName: res.semesterName || "Fall 2026",
+              announcement: res.announcement || "",
+              announcementActive: res.announcementActive ?? true,
+            });
+          }
+        }).catch(() => {});
+      });
+    };
+
+    fetchLatest();
+
+    const handleFocus = () => fetchLatest();
+    window.addEventListener("focus", handleFocus);
+    window.addEventListener("ius_routine_updated", handleFocus);
+
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === "ius_routine_last_update") fetchLatest();
+    };
+    window.addEventListener("storage", handleStorage);
+
+    const channel = supabase
+      .channel("semester_info_realtime")
+      .on(
+        "postgres_changes" as any,
+        { event: "*", schema: "public", table: "app_settings" },
+        () => {
+          if (isMounted) fetchLatest();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      isMounted = false;
+      window.removeEventListener("focus", handleFocus);
+      window.removeEventListener("ius_routine_updated", handleFocus);
+      window.removeEventListener("storage", handleStorage);
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  return semesterInfo;
 }

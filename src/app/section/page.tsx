@@ -6,7 +6,7 @@ import { RoutineViewer } from "@/components/RoutineViewer";
 import { ExportModal } from "@/components/ExportModal";
 
 export default function SectionPage() {
-  const [selectedSection, setSelectedSection] = useState<string>("Section 13");
+  const [selectedSection, setSelectedSection] = useState<string>("Section 13A");
   const [isExportModalOpen, setIsExportModalOpen] = useState<boolean>(false);
   const { routineData } = useDynamicRoutine();
 
