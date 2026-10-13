@@ -1,15 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { RoutineItem } from "@/types/routine";
-import rawRoutineData from "@/data/routineData.json";
+import { useDynamicRoutine } from "@/lib/useDynamicData";
 import { RoutineViewer } from "@/components/RoutineViewer";
 import { ExportModal } from "@/components/ExportModal";
 
 export default function SectionPage() {
   const [selectedSection, setSelectedSection] = useState<string>("Section 13");
   const [isExportModalOpen, setIsExportModalOpen] = useState<boolean>(false);
-  const routineData = rawRoutineData as unknown as RoutineItem[];
+  const { routineData } = useDynamicRoutine();
 
   return (
     <>

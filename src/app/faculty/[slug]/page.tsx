@@ -2,8 +2,11 @@ import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { CSE_FACULTY_MEMBERS, getFacultyBySlug } from "@/data/teacherData";
+import { getFacultyMembers } from "@/lib/supabaseClient";
 import { FacultyProfileView } from "@/components/FacultyProfileView";
 import { Search, ChevronLeft } from "lucide-react";
+
+export const dynamicParams = true;
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -11,7 +14,14 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const faculty = getFacultyBySlug(slug);
+  let faculty = getFacultyBySlug(slug);
+  if (!faculty) {
+    const { data: supaFaculty } = await getFacultyMembers();
+    faculty = supaFaculty.find((f) => {
+      const norm = decodeURIComponent(slug).toLowerCase().trim();
+      return f.slug?.toLowerCase() === norm || f.cleanSlug?.toLowerCase() === norm || f.code?.toLowerCase() === norm;
+    });
+  }
 
   if (!faculty) {
     return {
@@ -44,7 +54,14 @@ export async function generateStaticParams() {
 
 export default async function FacultySlugPage({ params }: Props) {
   const { slug } = await params;
-  const faculty = getFacultyBySlug(slug);
+  let faculty = getFacultyBySlug(slug);
+  if (!faculty) {
+    const { data: supaFaculty } = await getFacultyMembers();
+    faculty = supaFaculty.find((f) => {
+      const norm = decodeURIComponent(slug).toLowerCase().trim();
+      return f.slug?.toLowerCase() === norm || f.cleanSlug?.toLowerCase() === norm || f.code?.toLowerCase() === norm;
+    });
+  }
 
   if (!faculty) {
     return (

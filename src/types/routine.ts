@@ -59,3 +59,27 @@ export interface FacultyProfile extends TeacherInfo {
 
 export type ViewMode = 'home' | 'section' | 'today' | 'retake' | 'teacher' | 'faculty' | 'room' | 'all';
 
+export interface BatchGroup {
+  batch: string;
+  label: string;
+  sections: string[];
+}
+
+export interface TimeSlotConfig {
+  colIndex: number;
+  label: string;
+  slotString: string;
+  isBreak?: boolean;
+}
+
+export interface PortalTimeSlots {
+  satThuSlots: TimeSlotConfig[];
+  fridaySlots: TimeSlotConfig[];
+}
+
+export interface RoutinePublishStatus {
+  lastPublishedAt?: string | null;
+  publishedCount?: number;
+  hasUnpublishedChanges?: boolean;
+}
+

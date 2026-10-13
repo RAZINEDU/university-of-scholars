@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { RoutineItem } from "@/types/routine";
 import { TEACHER_DIRECTORY } from "@/data/teacherData";
+import { useDynamicBatches, useDynamicFaculty } from "@/lib/useDynamicData";
 import {
   Search,
   Filter,
@@ -135,21 +136,27 @@ const getFridayColSpan = (colIndex: number, timeSlot: string | undefined): numbe
 };
 
 const matchSatThuSlot = (item: RoutineItem, colIndex: number) => {
-  if (item.colIndex === colIndex) return true;
   const [start] = getTimeRange(item.timeSlot);
   const slotLabel = TIME_SLOTS.find((s) => s.colIndex === colIndex)?.label;
   if (!slotLabel) return false;
-  const [slotStart] = getTimeRange(slotLabel);
-  return start > 0 && Math.abs(start - slotStart) < 0.25;
+
+  if (start > 0) {
+    const [slotStart] = getTimeRange(slotLabel);
+    return slotStart > 0 && Math.abs(start - slotStart) < 0.25;
+  }
+  return item.colIndex === colIndex;
 };
 
 const matchFridaySlot = (item: RoutineItem, colIndex: number) => {
-  if (item.colIndex === colIndex) return true;
   const [start] = getTimeRange(item.timeSlot);
   const slotLabel = FRIDAY_TIME_SLOTS.find((s) => s.colIndex === colIndex)?.label;
   if (!slotLabel) return false;
-  const [slotStart] = getTimeRange(slotLabel);
-  return start > 0 && Math.abs(start - slotStart) < 0.25;
+
+  if (start > 0) {
+    const [slotStart] = getTimeRange(slotLabel);
+    return slotStart > 0 && Math.abs(start - slotStart) < 0.25;
+  }
+  return item.colIndex === colIndex;
 };
 
 export const RoutineViewer: React.FC<RoutineViewerProps> = ({
@@ -164,6 +171,21 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
   const [selectedItemDetail, setSelectedItemDetail] = useState<RoutineItem | null>(null);
   const [viewMode, setViewMode] = useState<"table" | "list">("table");
 
+  const { batches: dynamicBatches } = useDynamicBatches();
+  const { facultyMembers } = useDynamicFaculty();
+
+  const activeBatches = dynamicBatches && dynamicBatches.length > 0 ? dynamicBatches : BATCH_GROUPS;
+
+  const teacherMap = useMemo(() => {
+    const map: Record<string, { name: string }> = { ...TEACHER_DIRECTORY };
+    facultyMembers.forEach((f) => {
+      if (f.code) {
+        map[f.code] = { name: f.name };
+      }
+    });
+    return map;
+  }, [facultyMembers]);
+
   const sectionsList = useMemo(() =>
     Array.from(new Set(routineData.map((d) => d.section))).sort()
   , [routineData]);
@@ -177,14 +199,14 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
         const q = searchQuery.toLowerCase();
         const haystack = [
           item.courseCode, item.courseTitle, item.title,
-          item.faculty, item.faculty ? TEACHER_DIRECTORY[item.faculty]?.name : "",
+          item.faculty, item.faculty ? teacherMap[item.faculty]?.name : "",
           item.room, item.section,
         ].join(" ").toLowerCase();
         return haystack.includes(q);
       }
       return true;
     });
-  }, [routineData, selectedSection, selectedDayFilter, typeFilter, searchQuery]);
+  }, [routineData, selectedSection, selectedDayFilter, typeFilter, searchQuery, teacherMap]);
 
   const sectionLabel = useMemo(() => {
     if (selectedSection === "ALL") return "All Sections";
@@ -197,7 +219,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
 
   // ── CARD RENDERER ──────────────────────────────────────────────────
   const renderCard = (item: RoutineItem, isWide = false) => {
-    const facultyInfo = item.faculty ? TEACHER_DIRECTORY[item.faculty] : null;
+    const facultyInfo = item.faculty ? teacherMap[item.faculty] : null;
     const teacherName = facultyInfo ? facultyInfo.name : item.faculty;
     const isLab = item.type === "Lab";
 
@@ -444,7 +466,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
               onChange={(e) => onSectionSelect(e.target.value)}
               className="flex-1 max-w-xs bg-slate-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-extrabold px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer text-sm"
             >
-              {BATCH_GROUPS.map((bg) => (
+              {activeBatches.map((bg) => (
                 <optgroup key={bg.batch} label={bg.label}>
                   {bg.sections.map((sec) => (
                     <option key={sec} value={sec}>{sec}</option>
@@ -475,7 +497,7 @@ export const RoutineViewer: React.FC<RoutineViewerProps> = ({
         {/* Row 2: Batch Pills (wrapping, no scroll) */}
         <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
           <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Batch:</span>
-          {BATCH_GROUPS.map((bg) => {
+          {activeBatches.map((bg) => {
             const isBatchActive = getBatchFromSection(selectedSection) === bg.batch;
             return (
               <button

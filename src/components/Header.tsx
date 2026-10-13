@@ -16,7 +16,8 @@ import {
   User,
   GraduationCap,
   Smartphone,
-  Users
+  Users,
+  ShieldCheck
 } from "lucide-react";
 import { PdfModal } from "./PdfModal";
 
@@ -140,6 +141,20 @@ export const Header: React.FC = () => {
               <Smartphone className="w-3.5 h-3.5" />
               <span className="text-xs">Install App</span>
             </button>
+
+            {/* Admin Panel Button */}
+            <Link
+              href="/admin"
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all shadow-sm active:scale-95 ${
+                pathname === "/admin"
+                  ? "bg-purple-600 text-white shadow-purple-600/30"
+                  : "bg-purple-500/10 hover:bg-purple-500/20 text-purple-600 dark:text-purple-400 border border-purple-500/20"
+              }`}
+              title="Admin Panel - Manage Schedules & Faculty"
+            >
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span className="text-xs">Admin</span>
+            </Link>
 
             {/* Dark Mode Toggle */}
             <button

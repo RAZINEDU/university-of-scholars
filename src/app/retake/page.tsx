@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import { RoutineItem } from "@/types/routine";
-import rawRoutineData from "@/data/routineData.json";
+import { useDynamicRoutine } from "@/lib/useDynamicData";
 import { RetakeBuilder } from "@/components/RetakeBuilder";
 
 export default function RetakePage() {
-  const routineData = rawRoutineData as unknown as RoutineItem[];
+  const { routineData } = useDynamicRoutine();
 
   return <RetakeBuilder routineData={routineData} />;
 }

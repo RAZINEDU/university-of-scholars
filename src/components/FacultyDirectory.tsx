@@ -3,7 +3,8 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { CSE_FACULTY_MEMBERS, FacultyMember } from "@/data/teacherData";
+import { FacultyMember } from "@/data/teacherData";
+import { useDynamicFaculty } from "@/lib/useDynamicData";
 import {
   Search,
   Phone,
@@ -28,6 +29,7 @@ export const FacultyDirectory: React.FC<FacultyDirectoryProps> = ({
   onSelectTeacherForSchedule
 }) => {
   const router = useRouter();
+  const { facultyMembers } = useDynamicFaculty();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState<string>("ALL");
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -43,7 +45,7 @@ export const FacultyDirectory: React.FC<FacultyDirectoryProps> = ({
 
   // Designation category filter
   const filterCategories = [
-    { id: "ALL", label: "All Faculty", count: CSE_FACULTY_MEMBERS.length },
+    { id: "ALL", label: "All Faculty", count: facultyMembers.length },
     {
       id: "HEAD_ASSOC",
       label: "Head & Assoc. Prof",
@@ -79,7 +81,7 @@ export const FacultyDirectory: React.FC<FacultyDirectoryProps> = ({
 
   // Filtered faculty list
   const filteredFaculty = useMemo(() => {
-    return CSE_FACULTY_MEMBERS.filter((faculty) => {
+    return facultyMembers.filter((faculty) => {
       // Category filter
       if (selectedFilter !== "ALL") {
         const cat = filterCategories.find((c) => c.id === selectedFilter);
@@ -154,7 +156,7 @@ export const FacultyDirectory: React.FC<FacultyDirectoryProps> = ({
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white flex items-center gap-3">
                 <span>Faculty Information & Directory</span>
                 <span className="hidden sm:inline-flex px-2.5 py-0.5 rounded-xl bg-indigo-500/30 border border-indigo-400/40 text-xs font-bold text-indigo-200">
-                  {CSE_FACULTY_MEMBERS.length} Faculty Members
+                  {facultyMembers.length} Faculty Members
                 </span>
               </h1>
 
@@ -167,7 +169,7 @@ export const FacultyDirectory: React.FC<FacultyDirectoryProps> = ({
             <div className="grid grid-cols-3 gap-2 sm:gap-3 bg-white/5 backdrop-blur-md p-3 rounded-2xl border border-white/10 shrink-0">
               <div className="text-center px-3 py-2">
                 <div className="text-xl sm:text-2xl font-black text-amber-400">
-                  {CSE_FACULTY_MEMBERS.length}
+                  {facultyMembers.length}
                 </div>
                 <div className="text-[10px] sm:text-xs text-slate-300 font-medium">Total Faculty</div>
               </div>
@@ -218,8 +220,8 @@ export const FacultyDirectory: React.FC<FacultyDirectoryProps> = ({
                 <option value="" disabled className="bg-slate-900 text-slate-400">
                   ⚡ Select Specific Faculty...
                 </option>
-                {CSE_FACULTY_MEMBERS.map((fac) => (
-                  <option key={fac.slug} value={fac.slug} className="bg-slate-900 text-white py-1">
+                {facultyMembers.map((fac: FacultyMember) => (
+                  <option key={fac.slug || fac.code} value={fac.slug || fac.cleanSlug || fac.code} className="bg-slate-900 text-white py-1">
                     {fac.name} ({fac.code || fac.designation})
                   </option>
                 ))}
@@ -258,7 +260,7 @@ export const FacultyDirectory: React.FC<FacultyDirectoryProps> = ({
         {/* Results Counter */}
         <div className="flex items-center justify-between px-2">
           <div className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400">
-            Showing <span className="font-bold text-slate-900 dark:text-white">{filteredFaculty.length}</span> of {CSE_FACULTY_MEMBERS.length} Faculty Members
+            Showing <span className="font-bold text-slate-900 dark:text-white">{filteredFaculty.length}</span> of {facultyMembers.length} Faculty Members
           </div>
           {searchQuery && (
             <div className="text-xs text-indigo-600 dark:text-indigo-400 font-medium">
