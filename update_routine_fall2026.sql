@@ -1,11 +1,9 @@
 -- Fall 2026 Routine Update SQL Script
 -- Automatically generated from CSE Class Routine Fall-2026 (1).xlsx
 
--- Step 1: Truncate live and draft routine items
 TRUNCATE TABLE public.routine_items;
 TRUNCATE TABLE public.routine_drafts;
 
--- Step 2: Insert into routine_items
 INSERT INTO public.routine_items (id, section, day, day_short, col_index, time_slot, type, title, course_code, course_title, faculty, room, raw_text, updated_at)
 VALUES
 ('section13a-sat-col2-cse4149', 'Section 13A', 'Saturday', 'Sat', 2, '10:30-12:00', 'Theory', 'Data Science & Big Data Analytics', 'CSE 4149', 'Data Science & Big Data Analytics', 'MES', '1502', 'CSE 4149
@@ -188,9 +186,9 @@ Compiler Construction
 10:30 - 12:00
 RBS | 804', NOW()),
 ('section15a-fri-col4-break', 'Section 15A', 'Friday', 'Fri', 4, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Jumu''ah Break', NOW()),
-('section15a-fri-col5-eee2114', 'Section 15A', 'Friday', 'Fri', 5, '1:00-4:00', 'Lab', 'Electronics Devices & Circuits Lab', 'EEE 2114', 'Electronics Devices & Circuits Lab', 'IHS', '903', 'EEE 2114
+('section15a-fri-col5-eee2114', 'Section 15A', 'Friday', 'Fri', 5, '2:30-5:00', 'Lab', 'Electronics Devices & Circuits Lab', 'EEE 2114', 'Electronics Devices & Circuits Lab', 'IHS', '903', 'EEE 2114
 Electronics Devices & Circuits Lab
-1:00-4:00
+2:30-5:00
 IHS | 903', NOW()),
 ('section15b-sat-col3-break', 'Section 15B', 'Saturday', 'Sat', 3, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Lunch Break', NOW()),
 ('section15b-sat-col4-eee2114', 'Section 15B', 'Saturday', 'Sat', 4, '1:00-4:00', 'Lab', 'Electronics Devices & Circuits Lab', 'EEE 2114', 'Electronics Devices & Circuits Lab', 'ZAJ', '903', 'EEE 2114
@@ -840,7 +838,6 @@ Physics
 DHS | 801', NOW()),
 ('section20e-fri-col4-break', 'Section 20E', 'Friday', 'Fri', 4, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Jumu''ah Break', NOW());
 
--- Step 3: Mirror into routine_drafts
 INSERT INTO public.routine_drafts
   (id, section, day, day_short, col_index, time_slot, type, title,
    course_code, course_title, faculty, room, raw_text, updated_at)
@@ -848,10 +845,8 @@ INSERT INTO public.routine_drafts
          course_code, course_title, faculty, room, raw_text, updated_at
   FROM public.routine_items;
 
--- Step 4: Update routine_publish_status
 INSERT INTO public.app_settings (key, value, updated_at)
 VALUES ('routine_publish_status', json_build_object('published_count', 306, 'last_published_at', NOW()::text, 'has_unpublished_changes', false)::jsonb, NOW())
 ON CONFLICT (key) DO UPDATE
   SET value = EXCLUDED.value, updated_at = NOW();
 
--- Total items: 306

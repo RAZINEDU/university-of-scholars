@@ -995,14 +995,14 @@
     "day": "Friday",
     "dayShort": "Fri",
     "colIndex": 5,
-    "timeSlot": "1:00-4:00",
+    "timeSlot": "2:30-5:00",
     "type": "Lab",
     "title": "Electronics Devices & Circuits Lab",
     "courseCode": "EEE 2114",
     "courseTitle": "Electronics Devices & Circuits Lab",
     "faculty": "IHS",
     "room": "903",
-    "rawText": "EEE 2114\nElectronics Devices & Circuits Lab\n1:00-4:00\nIHS | 903"
+    "rawText": "EEE 2114\nElectronics Devices & Circuits Lab\n2:30-5:00\nIHS | 903"
   },
   {
     "id": "section15b-sat-col3-break",
