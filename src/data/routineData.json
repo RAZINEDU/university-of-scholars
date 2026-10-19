@@ -177,7 +177,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section13a-thu-col1-break",
@@ -192,7 +192,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section13a-fri-col4-break",
@@ -462,7 +462,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section14a-fri-col4-break",
@@ -702,7 +702,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section14b-fri-col1-cse4126",
@@ -780,19 +780,19 @@
     "rawText": "Lunch Break"
   },
   {
-    "id": "section15a-sat-col4-eee2114",
+    "id": "section15a-sat-col4-eee2113",
     "section": "Section 15A",
     "day": "Saturday",
     "dayShort": "Sat",
     "colIndex": 4,
-    "timeSlot": "1:00-4:00",
-    "type": "Lab",
-    "title": "Electronics Devices & Circuits Lab",
-    "courseCode": "EEE 2114",
-    "courseTitle": "Electronics Devices & Circuits Lab",
-    "faculty": "IMH",
-    "room": "EEE Lab (EEE Dept)",
-    "rawText": "EEE 2114\nElectronics Devices & Circuits Lab\n1:00-4:00\nIMH | EEE Lab (EEE Dept)"
+    "timeSlot": "1:00-2:30",
+    "type": "Theory",
+    "title": "Electronics Devices & Circuits",
+    "courseCode": "EEE 2113",
+    "courseTitle": "Electronics Devices & Circuits",
+    "faculty": "IHS",
+    "room": "1702",
+    "rawText": "EEE 2113\nElectronics Devices & Circuits\n1:00-2:30\nIHS | 1702"
   },
   {
     "id": "section15a-sun-col1-hum3103",
@@ -823,6 +823,21 @@
     "faculty": null,
     "room": null,
     "rawText": "Lunch Break"
+  },
+  {
+    "id": "section15a-sun-col4-cse3131",
+    "section": "Section 15A",
+    "day": "Sunday",
+    "dayShort": "Sun",
+    "colIndex": 4,
+    "timeSlot": "3:30-5:00",
+    "type": "Theory",
+    "title": "Data Communication & Networking",
+    "courseCode": "CSE 3131",
+    "courseTitle": "Data Communication & Networking",
+    "faculty": "TH",
+    "room": "804",
+    "rawText": "CSE 3131\nData Communication & Networking\n3:30-5:00\nTH | 804"
   },
   {
     "id": "section15a-mon-col1-cse3132",
@@ -927,7 +942,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section15a-thu-col1-break",
@@ -942,22 +957,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
-  },
-  {
-    "id": "section15a-fri-col1-eee2113",
-    "section": "Section 15A",
-    "day": "Friday",
-    "dayShort": "Fri",
-    "colIndex": 1,
-    "timeSlot": "9:00-10:30",
-    "type": "Theory",
-    "title": "Electronics Devices & Circuits",
-    "courseCode": "EEE 2113",
-    "courseTitle": "Electronics Devices & Circuits",
-    "faculty": "IMH",
-    "room": "804",
-    "rawText": "EEE 2113\nElectronics Devices & Circuits\n9:00-10:30\nIMH | 804"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section15a-fri-col2-cse3219",
@@ -990,19 +990,19 @@
     "rawText": "Jumu'ah Break"
   },
   {
-    "id": "section15a-fri-col6-cse3131",
+    "id": "section15a-fri-col5-eee2114",
     "section": "Section 15A",
     "day": "Friday",
     "dayShort": "Fri",
-    "colIndex": 6,
-    "timeSlot": "3:30-5:00",
-    "type": "Theory",
-    "title": "Data Communication & Networking",
-    "courseCode": "CSE 3131",
-    "courseTitle": "Data Communication & Networking",
-    "faculty": "TH",
-    "room": "804",
-    "rawText": "CSE 3131\nData Communication & Networking\n3:30-5:00\nTH | 804"
+    "colIndex": 5,
+    "timeSlot": "1:00-4:00",
+    "type": "Lab",
+    "title": "Electronics Devices & Circuits Lab",
+    "courseCode": "EEE 2114",
+    "courseTitle": "Electronics Devices & Circuits Lab",
+    "faculty": "IHS",
+    "room": "903",
+    "rawText": "EEE 2114\nElectronics Devices & Circuits Lab\n1:00-4:00\nIHS | 903"
   },
   {
     "id": "section15b-sat-col3-break",
@@ -1257,7 +1257,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section15b-fri-col1-cse3132",
@@ -1365,21 +1365,6 @@
     "rawText": "HUM 3103\nPrinciples of Management\n1:00-2:30\nSS | 1702"
   },
   {
-    "id": "section16a-mon-col1-cse1111",
-    "section": "Section 16A",
-    "day": "Monday",
-    "dayShort": "Mon",
-    "colIndex": 1,
-    "timeSlot": "9:00-10:30",
-    "type": "Theory",
-    "title": "Theory of Computing",
-    "courseCode": "CSE 1111",
-    "courseTitle": "Theory of Computing",
-    "faculty": "MAR",
-    "room": "1701",
-    "rawText": "CSE 1111\nTheory of Computing\n9:00-10:30\nMAR | 1701"
-  },
-  {
     "id": "section16a-mon-col2-cse3151",
     "section": "Section 16A",
     "day": "Monday",
@@ -1455,6 +1440,21 @@
     "rawText": "Lunch Break"
   },
   {
+    "id": "section16a-tue-col4-cse1111",
+    "section": "Section 16A",
+    "day": "Tuesday",
+    "dayShort": "Tue",
+    "colIndex": 4,
+    "timeSlot": "01:30-03:00",
+    "type": "Theory",
+    "title": "Theory of Computing",
+    "courseCode": "CSE 1111",
+    "courseTitle": "Theory of Computing",
+    "faculty": "MAR",
+    "room": "1401",
+    "rawText": "CSE 1111\nTheory of Computing\n01:30-03:00 |\nMAR | 1401"
+  },
+  {
     "id": "section16a-wed-col1-hum3103",
     "section": "Section 16A",
     "day": "Wednesday",
@@ -1527,7 +1527,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section16a-fri-col4-eee1212",
@@ -1797,7 +1797,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section17a-thu-col1-break",
@@ -1812,7 +1812,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section17a-fri-col4-break",
@@ -1875,34 +1875,19 @@
     "rawText": "CSE 2215\nData Structures & Algorithms\n1:00-2:30\nAA | 803"
   },
   {
-    "id": "section17b-sat-col5-cse3108",
+    "id": "section17b-sat-col5-cse1111",
     "section": "Section 17B",
     "day": "Saturday",
     "dayShort": "Sat",
     "colIndex": 5,
-    "timeSlot": "2:30-4:00",
-    "type": "Theory",
-    "title": "Integrated Design Project I",
-    "courseCode": "CSE 3108",
-    "courseTitle": "Integrated Design Project I",
-    "faculty": "MAA",
-    "room": "Auditorium (13th floor)",
-    "rawText": "CSE 3108\nIntegrated Design Project I\n2:30-4:00\nMAA | Auditorium (13th floor)"
-  },
-  {
-    "id": "section17b-sun-col1-cse1111",
-    "section": "Section 17B",
-    "day": "Sunday",
-    "dayShort": "Sun",
-    "colIndex": 1,
     "timeSlot": "9:00-10:30",
     "type": "Theory",
     "title": "Theory of Computing",
     "courseCode": "CSE 1111",
     "courseTitle": "Theory of Computing",
     "faculty": "MAR",
-    "room": "1704",
-    "rawText": "CSE 1111\nTheory of Computing\n9:00-10:30\nMAR | 1704"
+    "room": "803",
+    "rawText": "CSE 1111\nTheory of Computing\n9:00-10:30\nMAR | 803"
   },
   {
     "id": "section17b-sun-col2-cse2221",
@@ -1963,6 +1948,21 @@
     "faculty": "SS",
     "room": "1504",
     "rawText": "HUM 3103\nPrinciples of Management\n2:30-4:00\nSS | 1504"
+  },
+  {
+    "id": "section17b-mon-col1-cse3108",
+    "section": "Section 17B",
+    "day": "Monday",
+    "dayShort": "Mon",
+    "colIndex": 1,
+    "timeSlot": "9:00-10:30",
+    "type": "Theory",
+    "title": "Integrated Design Project I",
+    "courseCode": "CSE 3108",
+    "courseTitle": "Integrated Design Project I",
+    "faculty": "MAA",
+    "room": "Auditorium (13th floor)",
+    "rawText": "CSE 3108\nIntegrated Design Project I\n\nMAA | Auditorium (13th floor)"
   },
   {
     "id": "section17b-mon-col2-math2217",
@@ -2067,7 +2067,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section17b-fri-col1-cse2222sp",
@@ -2337,7 +2337,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section18a-thu-col1-break",
@@ -2352,7 +2352,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section18a-fri-col4-break",
@@ -2622,7 +2622,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section18b-fri-col4-break",
@@ -2802,7 +2802,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section19a-fri-col1-cse2105",
@@ -3042,7 +3042,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section19b-fri-col4-break",
@@ -3252,7 +3252,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section19c-fri-col4-break",
@@ -3462,7 +3462,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section19d-fri-col4-break",
@@ -3642,7 +3642,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section20a-thu-col1-break",
@@ -3657,7 +3657,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section20a-fri-col1-cse1203",
@@ -3687,7 +3687,7 @@
     "courseTitle": "Bangladesh Studies",
     "faculty": "AR",
     "room": "803",
-    "rawText": "HUM 1113\nBangladesh Studies\n10:30 - 12:00\nAR | 803"
+    "rawText": "HUM 1113 \nBangladesh Studies\n10:30 - 12:00\nAR | 803"
   },
   {
     "id": "section20a-fri-col4-break",
@@ -3762,7 +3762,7 @@
     "courseTitle": "Bangladesh Studies",
     "faculty": "AR",
     "room": "1502",
-    "rawText": "HUM 1113\nBangladesh Studies\n9:00-10:30\nAR | 1502"
+    "rawText": "HUM 1113 \nBangladesh Studies\n9:00-10:30\nAR | 1502"
   },
   {
     "id": "section20b-mon-col2-cse1213",
@@ -3777,7 +3777,7 @@
     "courseTitle": "Structured Programming Language",
     "faculty": "SNN",
     "room": "803",
-    "rawText": "CSE 1213\nStructured Programming Language\n10:30 - 12:00\nSNN | 803"
+    "rawText": "CSE 1213 \nStructured Programming Language\n10:30 - 12:00\nSNN | 803"
   },
   {
     "id": "section20b-mon-col3-break",
@@ -3852,7 +3852,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section20b-thu-col1-break",
@@ -3867,7 +3867,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section20b-fri-col4-break",
@@ -4047,7 +4047,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section20c-thu-col1-break",
@@ -4062,7 +4062,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section20c-fri-col4-break",
@@ -4302,7 +4302,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section20d-thu-col1-break",
@@ -4317,7 +4317,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section20d-fri-col4-break",
@@ -4527,7 +4527,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Teachers' off day — no classes"
+    "rawText": "—T—e—a—c—h—e—r—s—'— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—"
   },
   {
     "id": "section20e-thu-col1-break",
@@ -4542,7 +4542,7 @@
     "courseTitle": null,
     "faculty": null,
     "room": null,
-    "rawText": "Defense & Counselling Day"
+    "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
     "id": "section20e-fri-col1-hum1113",
