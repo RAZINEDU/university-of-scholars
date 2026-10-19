@@ -1,5 +1,5 @@
 -- Fall 2026 Routine Update SQL Script
--- Automatically generated from CSE Class Routine Fall-2026 (1).xlsx
+-- Automatically generated from CSE Class Routine Fall-2026 (1).xlsx with all section fixes
 
 TRUNCATE TABLE public.routine_items;
 TRUNCATE TABLE public.routine_drafts;
@@ -139,7 +139,7 @@ Software Engineering Lab
 9:00-12:00
 SNZ | 1503', NOW()),
 ('section14b-fri-col4-break', 'Section 14B', 'Friday', 'Fri', 4, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Jumu''ah Break', NOW()),
-('section14b-fri-col5-cse4148', 'Section 14B', 'Friday', 'Fri', 5, '3:30-5:00', 'Theory', 'Mobile Application Development', 'CSE 4148', 'Mobile Application Development', 'RBS', '902', 'CSE 4148
+('section14b-fri-col6-cse4148', 'Section 14B', 'Friday', 'Fri', 6, '3:30-5:00', 'Theory', 'Mobile Application Development', 'CSE 4148', 'Mobile Application Development', 'RBS', '902', 'CSE 4148
 Mobile Application Development
 3:30-5:00
 RBS | 902', NOW()),
@@ -157,9 +157,9 @@ Principles of Management
 09:00 - 12:00
 LM | 1901', NOW()),
 ('section15a-sun-col3-break', 'Section 15A', 'Sunday', 'Sun', 3, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Lunch Break', NOW()),
-('section15a-sun-col4-cse3131', 'Section 15A', 'Sunday', 'Sun', 4, '3:30-5:00', 'Theory', 'Data Communication & Networking', 'CSE 3131', 'Data Communication & Networking', 'TH', '804', 'CSE 3131
+('section15a-sun-col4-cse3131', 'Section 15A', 'Sunday', 'Sun', 4, '1:00-2:30', 'Theory', 'Data Communication & Networking', 'CSE 3131', 'Data Communication & Networking', 'TH', '804', 'CSE 3131
 Data Communication & Networking
-3:30-5:00
+1:00-2:30
 TH | 804', NOW()),
 ('section15a-mon-col1-cse3132', 'Section 15A', 'Monday', 'Mon', 1, '9:00-12:00', 'Lab', 'Data Communication & Networking Lab', 'CSE 3132', 'Data Communication & Networking Lab', 'TH', '1703', 'CSE 3132
 Data Communication & Networking Lab
@@ -291,7 +291,7 @@ Microprocessor & Assembly Language Lab
 1:00-4:00
 MNI | 802', NOW()),
 ('section16a-thu-col1-break', 'Section 16A', 'Thursday', 'Thu', 1, '', 'No Class', NULL, NULL, NULL, NULL, NULL, '—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—', NOW()),
-('section16a-fri-col4-eee1212', 'Section 16A', 'Friday', 'Fri', 4, '2:30-5:00', 'Lab', 'Electrical Circuit Analysis +  Lab', 'EEE 1212', 'Electrical Circuit Analysis +  Lab', 'MES', '1503', 'EEE 1212
+('section16a-fri-col5-eee1212', 'Section 16A', 'Friday', 'Fri', 5, '2:30-5:00', 'Lab', 'Electrical Circuit Analysis +  Lab', 'EEE 1212', 'Electrical Circuit Analysis +  Lab', 'MES', '1503', 'EEE 1212
 Electrical Circuit Analysis +  Lab
 2:30-5:00
 MES | 1503', NOW()),
@@ -304,9 +304,9 @@ MAA | 1503', NOW()),
 Math-IV (Probability & Statistics)
 1:00-2:30
 AMJ | 801', NOW()),
-('section17a-sat-col5-hum3103*', 'Section 17A', 'Saturday', 'Sat', 5, '1:00-2:30', 'Theory', 'Principles of Management', 'HUM 3103 *', 'Principles of Management', 'RH', '801', 'HUM 3103 *
+('section17a-sat-col5-hum3103*', 'Section 17A', 'Saturday', 'Sat', 5, '2:30-4:00', 'Theory', 'Principles of Management', 'HUM 3103 *', 'Principles of Management', 'RH', '801', 'HUM 3103 *
 Principles of Management
-1:00-2:30
+2:30-4:00
 RH | 801', NOW()),
 ('section17a-sun-col1-cse310817b,15a,15b', 'Section 17A', 'Sunday', 'Sun', 1, '9:00-10:30', 'Theory', 'Integrated Design Project I', 'CSE 3108 (+17B,15A,15B)', 'Integrated Design Project I', 'IJ', '1504', 'CSE 3108 (+17B,15A,15B)
 Integrated Design Project I
@@ -359,9 +359,9 @@ AA | 1703', NOW()),
 Data Structures & Algorithms
 1:00-2:30
 AA | 803', NOW()),
-('section17b-sat-col5-cse1111', 'Section 17B', 'Saturday', 'Sat', 5, '9:00-10:30', 'Theory', 'Theory of Computing', 'CSE 1111', 'Theory of Computing', 'MAR', '803', 'CSE 1111
+('section17b-sat-col5-cse1111', 'Section 17B', 'Saturday', 'Sat', 5, '2:30-4:00', 'Theory', 'Theory of Computing', 'CSE 1111', 'Theory of Computing', 'MAR', '803', 'CSE 1111
 Theory of Computing
-9:00-10:30
+2:30-4:00
 MAR | 803', NOW()),
 ('section17b-sun-col2-cse2221', 'Section 17B', 'Sunday', 'Sun', 2, '10:30-12:00', 'Theory', 'System Analysis & Design', 'CSE 2221', 'System Analysis & Design', 'MAA', '1701', 'CSE 2221
 System Analysis & Design
@@ -687,7 +687,7 @@ Mathematics-I
 9:00-10:30
 ASMS | 1101', NOW()),
 ('section20b-sun-col3-break', 'Section 20B', 'Sunday', 'Sun', 3, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Lunch Break', NOW()),
-('section20b-sun-col5-cse1203', 'Section 20B', 'Sunday', 'Sun', 5, '10:30-12:00', 'Theory', 'Discrete Mathematics', 'CSE 1203', 'Discrete Mathematics', 'IJ', '1101', 'CSE 1203
+('section20b-sun-col2-cse1203', 'Section 20B', 'Sunday', 'Sun', 2, '10:30-12:00', 'Theory', 'Discrete Mathematics', 'CSE 1203', 'Discrete Mathematics', 'IJ', '1101', 'CSE 1203
 Discrete Mathematics
 10:30 - 12:00
 IJ | 1101', NOW()),
@@ -743,7 +743,7 @@ SNN | 902', NOW()),
 ('section20c-wed-col1-break', 'Section 20C', 'Wednesday', 'Wed', 1, '', 'No Class', NULL, NULL, NULL, NULL, NULL, '—T—e—a—c—h—e—r—s—''— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—', NOW()),
 ('section20c-thu-col1-break', 'Section 20C', 'Thursday', 'Thu', 1, '', 'No Class', NULL, NULL, NULL, NULL, NULL, '—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—', NOW()),
 ('section20c-fri-col4-break', 'Section 20C', 'Friday', 'Fri', 4, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Jumu''ah Break', NOW()),
-('section20c-fri-col5-math1111', 'Section 20C', 'Friday', 'Fri', 5, '3:30-5:00', 'Theory', 'Mathematics-I', 'MATH 1111', 'Mathematics-I', 'TA', '1701', 'MATH 1111
+('section20c-fri-col6-math1111', 'Section 20C', 'Friday', 'Fri', 6, '3:30-5:00', 'Theory', 'Mathematics-I', 'MATH 1111', 'Mathematics-I', 'TA', '1701', 'MATH 1111
 Mathematics-I
 3:30-5:00
 TA | 1701', NOW()),
@@ -752,13 +752,13 @@ Physics Lab
 9:00-12:00
 TA | Physics Lab', NOW()),
 ('section20d-sat-col3-break', 'Section 20D', 'Saturday', 'Sat', 3, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Lunch Break', NOW()),
-('section20d-sat-col4-math1111', 'Section 20D', 'Saturday', 'Sat', 4, '2:30-4:00', 'Theory', 'Mathematics-I', 'MATH 1111', 'Mathematics-I', 'TA', '1701', 'MATH 1111
+('section20d-sat-col4-math1111', 'Section 20D', 'Saturday', 'Sat', 4, '1:00-2:30', 'Theory', 'Mathematics-I', 'MATH 1111', 'Mathematics-I', 'TA', '1701', 'MATH 1111
 Mathematics-I
-2:30-4:00
+1:00-2:30
 TA | 1701', NOW()),
-('section20d-sat-col5-cse1213', 'Section 20D', 'Saturday', 'Sat', 5, '10:30-12:00', 'Theory', 'Structured Programming Language', 'CSE 1213', 'Structured Programming Language', 'TBA', '1701', 'CSE 1213
+('section20d-sat-col5-cse1213', 'Section 20D', 'Saturday', 'Sat', 5, '2:30-4:00', 'Theory', 'Structured Programming Language', 'CSE 1213', 'Structured Programming Language', 'TBA', '1701', 'CSE 1213
 Structured Programming Language
-10:30 - 12:00
+2:30-4:00
 TBA | 1701', NOW()),
 ('section20d-sun-col1-cse1203', 'Section 20D', 'Sunday', 'Sun', 1, '9:00-10:30', 'Theory', 'Discrete Mathematics', 'CSE 1203', 'Discrete Mathematics', 'MII', '803', 'CSE 1203
 Discrete Mathematics
@@ -782,9 +782,9 @@ Bangladesh Studies
 10:30 - 12:00
 AR | 1402', NOW()),
 ('section20d-mon-col3-break', 'Section 20D', 'Monday', 'Mon', 3, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Lunch Break', NOW()),
-('section20d-mon-col4-cse1213', 'Section 20D', 'Monday', 'Mon', 4, '2:30-4:00', 'Theory', 'Structured Programming Language', 'CSE 1213', 'Structured Programming Language', 'TBA', '801', 'CSE 1213
+('section20d-mon-col4-cse1213', 'Section 20D', 'Monday', 'Mon', 4, '1:00-2:30', 'Theory', 'Structured Programming Language', 'CSE 1213', 'Structured Programming Language', 'TBA', '801', 'CSE 1213
 Structured Programming Language
-2:30-4:00
+1:00-2:30
 TBA | 801', NOW()),
 ('section20d-tue-col3-break', 'Section 20D', 'Tuesday', 'Tue', 3, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Lunch Break', NOW()),
 ('section20d-wed-col1-break', 'Section 20D', 'Wednesday', 'Wed', 1, '', 'No Class', NULL, NULL, NULL, NULL, NULL, '—T—e—a—c—h—e—r—s—''— —o—f—f— —d—a—y— ——— —n—o— —c—l—a—s—s—e—s—', NOW()),
@@ -836,17 +836,7 @@ TA | 801', NOW()),
 Physics
 10:30 - 12:00
 DHS | 801', NOW()),
-('section20e-fri-col4-break', 'Section 20E', 'Friday', 'Fri', 4, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Jumu''ah Break', NOW());
+('section20e-fri-col4-break', 'Section 20E', 'Friday', 'Fri', 4, '', 'Break', NULL, NULL, NULL, NULL, NULL, 'Jumu''ah Break', NOW()),
+('section16a-fri-col4-jumuah', 'Section 16A', 'Friday', 'Fri', 4, '', 'Break', 'Jumu''ah Break', NULL, NULL, NULL, NULL, 'Jumu''ah Break', NOW());
 
-INSERT INTO public.routine_drafts
-  (id, section, day, day_short, col_index, time_slot, type, title,
-   course_code, course_title, faculty, room, raw_text, updated_at)
-  SELECT id, section, day, day_short, col_index, time_slot, type, title,
-         course_code, course_title, faculty, room, raw_text, updated_at
-  FROM public.routine_items;
-
-INSERT INTO public.app_settings (key, value, updated_at)
-VALUES ('routine_publish_status', json_build_object('published_count', 306, 'last_published_at', NOW()::text, 'has_unpublished_changes', false)::jsonb, NOW())
-ON CONFLICT (key) DO UPDATE
-  SET value = EXCLUDED.value, updated_at = NOW();
-
+INSERT INTO public.routine_drafts SELECT * FROM public.routine_items;

@@ -127,22 +127,36 @@ const getFridayColSpan = (colIndex: number, timeSlot: string | undefined, slots:
   return span;
 };
 
-const matchSatThuSlot = (item: RoutineItem, colIndex: number, slots: { colIndex: number; label: string }[] = TIME_SLOTS) => {
-  if (item.colIndex === colIndex) return true;
+const getStartingColIndex = (item: RoutineItem, slots: { colIndex: number; label: string }[]) => {
   const [start] = getTimeRange(item.timeSlot);
-  const slotLabel = slots.find((s) => s.colIndex === colIndex)?.label;
-  if (!slotLabel) return false;
-  const [slotStart] = getTimeRange(slotLabel);
-  return start > 0 && Math.abs(start - slotStart) < 0.25;
+  if (start > 0) {
+    let bestSlot: number | null = null;
+    let minDiff = 0.55;
+    for (const slot of slots) {
+      const [slotStart, slotEnd] = getTimeRange(slot.label);
+      if (slotStart > 0) {
+        const diff = Math.abs(start - slotStart);
+        if (diff < minDiff) {
+          minDiff = diff;
+          bestSlot = slot.colIndex;
+        } else if (slotEnd > 0 && start >= slotStart && start < slotEnd) {
+          if (bestSlot === null) {
+            bestSlot = slot.colIndex;
+          }
+        }
+      }
+    }
+    if (bestSlot !== null) return bestSlot;
+  }
+  return item.colIndex;
+};
+
+const matchSatThuSlot = (item: RoutineItem, colIndex: number, slots: { colIndex: number; label: string }[] = TIME_SLOTS) => {
+  return getStartingColIndex(item, slots) === colIndex;
 };
 
 const matchFridaySlot = (item: RoutineItem, colIndex: number, slots: { colIndex: number; label: string }[] = FRIDAY_TIME_SLOTS) => {
-  if (item.colIndex === colIndex) return true;
-  const [start] = getTimeRange(item.timeSlot);
-  const slotLabel = slots.find((s) => s.colIndex === colIndex)?.label;
-  if (!slotLabel) return false;
-  const [slotStart] = getTimeRange(slotLabel);
-  return start > 0 && Math.abs(start - slotStart) < 0.25;
+  return getStartingColIndex(item, slots) === colIndex;
 };
 
 // Check if two routine items overlap in time

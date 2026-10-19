@@ -135,30 +135,36 @@ const getFridayColSpan = (colIndex: number, timeSlot: string | undefined, slots:
   return span;
 };
 
-const matchSatThuSlot = (item: RoutineItem, colIndex: number, slots: { colIndex: number; label: string }[]) => {
-  if (item.colIndex === colIndex) return true;
+const getStartingColIndex = (item: RoutineItem, slots: { colIndex: number; label: string }[]) => {
   const [start] = getTimeRange(item.timeSlot);
-  const slotLabel = slots.find((s) => s.colIndex === colIndex)?.label;
-  if (!slotLabel) return false;
-
   if (start > 0) {
-    const [slotStart] = getTimeRange(slotLabel);
-    return slotStart > 0 && Math.abs(start - slotStart) < 0.25;
+    let bestSlot: number | null = null;
+    let minDiff = 0.55;
+    for (const slot of slots) {
+      const [slotStart, slotEnd] = getTimeRange(slot.label);
+      if (slotStart > 0) {
+        const diff = Math.abs(start - slotStart);
+        if (diff < minDiff) {
+          minDiff = diff;
+          bestSlot = slot.colIndex;
+        } else if (slotEnd > 0 && start >= slotStart && start < slotEnd) {
+          if (bestSlot === null) {
+            bestSlot = slot.colIndex;
+          }
+        }
+      }
+    }
+    if (bestSlot !== null) return bestSlot;
   }
-  return false;
+  return item.colIndex;
+};
+
+const matchSatThuSlot = (item: RoutineItem, colIndex: number, slots: { colIndex: number; label: string }[]) => {
+  return getStartingColIndex(item, slots) === colIndex;
 };
 
 const matchFridaySlot = (item: RoutineItem, colIndex: number, slots: { colIndex: number; label: string }[]) => {
-  if (item.colIndex === colIndex) return true;
-  const [start] = getTimeRange(item.timeSlot);
-  const slotLabel = slots.find((s) => s.colIndex === colIndex)?.label;
-  if (!slotLabel) return false;
-
-  if (start > 0) {
-    const [slotStart] = getTimeRange(slotLabel);
-    return slotStart > 0 && Math.abs(start - slotStart) < 0.25;
-  }
-  return false;
+  return getStartingColIndex(item, slots) === colIndex;
 };
 
 export const RoutineViewer: React.FC<RoutineViewerProps> = ({

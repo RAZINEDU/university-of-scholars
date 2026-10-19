@@ -735,11 +735,11 @@
     "rawText": "Jumu'ah Break"
   },
   {
-    "id": "section14b-fri-col5-cse4148",
+    "id": "section14b-fri-col6-cse4148",
     "section": "Section 14B",
     "day": "Friday",
     "dayShort": "Fri",
-    "colIndex": 5,
+    "colIndex": 6,
     "timeSlot": "3:30-5:00",
     "type": "Theory",
     "title": "Mobile Application Development",
@@ -830,14 +830,14 @@
     "day": "Sunday",
     "dayShort": "Sun",
     "colIndex": 4,
-    "timeSlot": "3:30-5:00",
+    "timeSlot": "1:00-2:30",
     "type": "Theory",
     "title": "Data Communication & Networking",
     "courseCode": "CSE 3131",
     "courseTitle": "Data Communication & Networking",
     "faculty": "TH",
     "room": "804",
-    "rawText": "CSE 3131\nData Communication & Networking\n3:30-5:00\nTH | 804"
+    "rawText": "CSE 3131\nData Communication & Networking\n1:00-2:30\nTH | 804"
   },
   {
     "id": "section15a-mon-col1-cse3132",
@@ -1530,11 +1530,11 @@
     "rawText": "—D—e—f—e—n—s—e— —&— —C—o—u—n—s—e—l—l—i—n—g— —D—a—y—"
   },
   {
-    "id": "section16a-fri-col4-eee1212",
+    "id": "section16a-fri-col5-eee1212",
     "section": "Section 16A",
     "day": "Friday",
     "dayShort": "Fri",
-    "colIndex": 4,
+    "colIndex": 5,
     "timeSlot": "2:30-5:00",
     "type": "Lab",
     "title": "Electrical Circuit Analysis +  Lab",
@@ -1595,14 +1595,14 @@
     "day": "Saturday",
     "dayShort": "Sat",
     "colIndex": 5,
-    "timeSlot": "1:00-2:30",
+    "timeSlot": "2:30-4:00",
     "type": "Theory",
     "title": "Principles of Management",
     "courseCode": "HUM 3103 *",
     "courseTitle": "Principles of Management",
     "faculty": "RH",
     "room": "801",
-    "rawText": "HUM 3103 *\nPrinciples of Management\n1:00-2:30\nRH | 801"
+    "rawText": "HUM 3103 *\nPrinciples of Management\n2:30-4:00\nRH | 801"
   },
   {
     "id": "section17a-sun-col1-cse310817b,15a,15b",
@@ -1880,14 +1880,14 @@
     "day": "Saturday",
     "dayShort": "Sat",
     "colIndex": 5,
-    "timeSlot": "9:00-10:30",
+    "timeSlot": "2:30-4:00",
     "type": "Theory",
     "title": "Theory of Computing",
     "courseCode": "CSE 1111",
     "courseTitle": "Theory of Computing",
     "faculty": "MAR",
     "room": "803",
-    "rawText": "CSE 1111\nTheory of Computing\n9:00-10:30\nMAR | 803"
+    "rawText": "CSE 1111\nTheory of Computing\n2:30-4:00\nMAR | 803"
   },
   {
     "id": "section17b-sun-col2-cse2221",
@@ -3735,11 +3735,11 @@
     "rawText": "Lunch Break"
   },
   {
-    "id": "section20b-sun-col5-cse1203",
+    "id": "section20b-sun-col2-cse1203",
     "section": "Section 20B",
     "day": "Sunday",
     "dayShort": "Sun",
-    "colIndex": 5,
+    "colIndex": 2,
     "timeSlot": "10:30-12:00",
     "type": "Theory",
     "title": "Discrete Mathematics",
@@ -4080,11 +4080,11 @@
     "rawText": "Jumu'ah Break"
   },
   {
-    "id": "section20c-fri-col5-math1111",
+    "id": "section20c-fri-col6-math1111",
     "section": "Section 20C",
     "day": "Friday",
     "dayShort": "Fri",
-    "colIndex": 5,
+    "colIndex": 6,
     "timeSlot": "3:30-5:00",
     "type": "Theory",
     "title": "Mathematics-I",
@@ -4130,14 +4130,14 @@
     "day": "Saturday",
     "dayShort": "Sat",
     "colIndex": 4,
-    "timeSlot": "2:30-4:00",
+    "timeSlot": "1:00-2:30",
     "type": "Theory",
     "title": "Mathematics-I",
     "courseCode": "MATH 1111",
     "courseTitle": "Mathematics-I",
     "faculty": "TA",
     "room": "1701",
-    "rawText": "MATH 1111\nMathematics-I\n2:30-4:00\nTA | 1701"
+    "rawText": "MATH 1111\nMathematics-I\n1:00-2:30\nTA | 1701"
   },
   {
     "id": "section20d-sat-col5-cse1213",
@@ -4145,14 +4145,14 @@
     "day": "Saturday",
     "dayShort": "Sat",
     "colIndex": 5,
-    "timeSlot": "10:30-12:00",
+    "timeSlot": "2:30-4:00",
     "type": "Theory",
     "title": "Structured Programming Language",
     "courseCode": "CSE 1213",
     "courseTitle": "Structured Programming Language",
     "faculty": "TBA",
     "room": "1701",
-    "rawText": "CSE 1213\nStructured Programming Language\n10:30 - 12:00\nTBA | 1701"
+    "rawText": "CSE 1213\nStructured Programming Language\n2:30-4:00\nTBA | 1701"
   },
   {
     "id": "section20d-sun-col1-cse1203",
@@ -4265,14 +4265,14 @@
     "day": "Monday",
     "dayShort": "Mon",
     "colIndex": 4,
-    "timeSlot": "2:30-4:00",
+    "timeSlot": "1:00-2:30",
     "type": "Theory",
     "title": "Structured Programming Language",
     "courseCode": "CSE 1213",
     "courseTitle": "Structured Programming Language",
     "faculty": "TBA",
     "room": "801",
-    "rawText": "CSE 1213\nStructured Programming Language\n2:30-4:00\nTBA | 801"
+    "rawText": "CSE 1213\nStructured Programming Language\n1:00-2:30\nTBA | 801"
   },
   {
     "id": "section20d-tue-col3-break",
@@ -4583,6 +4583,21 @@
     "timeSlot": "",
     "type": "Break",
     "title": null,
+    "courseCode": null,
+    "courseTitle": null,
+    "faculty": null,
+    "room": null,
+    "rawText": "Jumu'ah Break"
+  },
+  {
+    "id": "section16a-fri-col4-jumuah",
+    "section": "Section 16A",
+    "day": "Friday",
+    "dayShort": "Fri",
+    "colIndex": 4,
+    "timeSlot": "",
+    "type": "Break",
+    "title": "Jumu'ah Break",
     "courseCode": null,
     "courseTitle": null,
     "faculty": null,
